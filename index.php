@@ -51,7 +51,19 @@
                         $email = $_POST['email'];
                         $telp = $_POST['telp'];
                         $status = $_POST['status'];
-                        SaveSiswa($namaVal, $kelas, $alamat, $email, $telp, $status);
+                        SaveSiswa($namaVal, $alamat, $kelas, $email, $telp, $status);
+                    case "update" :
+                        $namaVal = $_POST['nama'];
+                        $kelas = $_POST['kelas'];
+                        $alamat = $_POST['alamat'];
+                        $email = $_POST['email'];
+                        $telp = $_POST['telp'];
+                        $status = $_POST['status'];
+                        $id = $_POST['idSiswa'];
+                        UpdateSiswa($namaVal, $kelas, $alamat, $email, $telp, $status,$id);
+                    case "delete" :
+                        $idSiswa = $_GET['id'];
+                        DeleteSiswa($idSiswa);
                     default :
                         include 'frmSiswa.php';
                 }

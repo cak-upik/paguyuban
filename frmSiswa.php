@@ -103,7 +103,7 @@ if (isset($_GET['page'])) {
                                     <div class="form-actions">
                                     <a href="index.php?pgy=siswa&page=create" class="btn btn-primary btn">Tambah Siswa</a>
                                     <a href="index.php?pgy=siswa&page=edit" class="btn btn-info btn">Edit Siswa</a>
-                                    <a href="index.php?pgy=siswa&page=create" class="btn btn-danger btn">Hapus Siswa</a>
+                                    <a href="index.php?pgy=siswa&page=delete" class="btn btn-danger btn">Hapus Siswa</a>
                                     </div>
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>
@@ -148,7 +148,7 @@ if (isset($_GET['page'])) {
                                     <div class="form-actions">
                                     <a href="index.php?pgy=siswa&page=create" class="btn btn-primary btn">Tambah Siswa</a>
                                     <a href="index.php?pgy=siswa&page=edit" class="btn btn-info btn">Edit Siswa</a>
-                                    <a href="index.php?pgy=siswa&page=create" class="btn btn-danger btn">Hapus Siswa</a>
+                                    <a href="index.php?pgy=siswa&page=delete" class="btn btn-danger btn">Hapus Siswa</a>
                                     </div>
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>
@@ -196,36 +196,36 @@ if (isset($_GET['page'])) {
 
                                 <br />
 
-                                <form action="index.php?pgy=siswa&do=save" method="post" class="form-horizontal" />
+                                <form action="index.php?pgy=siswa&do=update" method="post" class="form-horizontal" />
                                 <fieldset>
                                     <div class="control-group">
                                         <label class="control-label" for="name">Nama Siswa</label>
                                         <div class="controls">
-                                            <input type="text" class="input-xxlarge" name="nama" id="nama" />
+                                            <input type="text" class="input-xxlarge" name="nama" id="nama" value='<?php echo getValue("nama_siswa", $_GET['id'],"id_siswa")?>'/>
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label" for="kelas">Kelas</label>
                                         <div class="controls">
-                                            <input type="text" class="input-large" name="kelas" id="kelas" />
+                                            <input type="text" class="input-large" name="kelas" id="kelas" value='<?php echo getValue("kelas", $_GET['id'],"id_siswa")?>'/>
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label" for="alamat">Alamat</label>
                                         <div class="controls">
-                                            <textarea class="span4" name="alamat" id="alamat" rows="4"></textarea>
+                                            <textarea class="span4" name="alamat" id="alamat" rows="4"><?php echo getValue("alamat", $_GET['id'],"id_siswa")?></textarea>
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label" for="email">Email</label>
                                         <div class="controls">
-                                            <input type="email" class="input-large" name="email" id="email" />
+                                            <input type="email" class="input-large" name="email" id="email" value='<?php echo getValue("email", $_GET['id'],"id_siswa")?>' />
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label" for="telp">No. Telp</label>
                                         <div class="controls">
-                                            <input type="text" class="input-large" name="telp" id="telp" />
+                                            <input type="text" class="input-large" name="telp" id="telp" value='<?php echo getValue("alamat", $_GET['id'],"id_siswa")?>' />
                                         </div>
                                     </div>
 
@@ -234,11 +234,12 @@ if (isset($_GET['page'])) {
                                         <div class="controls">
                                             <select id="status" name="status">
                                                 <option value="" />Select...
-                                                <option value="oneway" />One-Way
-                                                <option value="twoway" />Two-Way
+                                                <option value="oneway" <?php echo(getValue("status", $_GET['id'],"id_siswa") == 'oneway')?'selected':''?>>One-Way </option>
+                                                <option value="twoway" <?php echo(getValue("status", $_GET['id'],"id_siswa") == 'twoway')?'selected':''?>>Two-Way </option>
                                             </select>
                                         </div>
                                     </div>
+                                    <input type="hidden" name="idSiswa" id="idSiswa" value=<?php echo $_GET['id']?>>
 
                                     <div class="form-actions">
                                         <button type="submit" class="btn btn-danger btn">Simpan Data</button>&nbsp;&nbsp;
@@ -259,6 +260,51 @@ if (isset($_GET['page'])) {
             </div> <!-- /container -->
 
         </div> <!-- /main -->
+        <?php
+    } else if ($_GET['page'] == 'delete') {
+        ?>
+        <div class="main">
+            <div class="container">
+                <div class="row">
+                    <div class="span12">      		
+                        <div class="widget stacked ">
+                            <div class="widget-header">
+                                <i class="icon-pencil"></i>
+                                <h3>Form Data Siswa</h3>
+                            </div> <!-- /widget-header -->
+
+                            <div class="widget-content">
+                                <section id="tables">
+                                    <h3>Data Siswa</h3>
+                                    <div class="form-actions">
+                                    <a href="index.php?pgy=siswa&page=create" class="btn btn-primary btn">Tambah Siswa</a>
+                                    <a href="index.php?pgy=siswa&page=edit" class="btn btn-info btn">Edit Siswa</a>
+                                    <a href="index.php?pgy=siswa&page=delete" class="btn btn-danger btn">Hapus Siswa</a>
+                                    </div>
+                                    <table class="table table-bordered table-striped table-highlight">
+                                        <thead>
+                                            <tr>
+                                                <th class="span1">#</th>
+                                                <th>Nama Siswa</th>
+                                                <th>Kelas</th>
+                                                <th>Alamat</th>
+                                                <th>Email</th>
+                                                <th>No.Telp</th>
+                                                <th>Layanan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php DeleteSiswaView();?>
+                                        </tbody>
+                                    </table>
+                                    <br />
+                                </section>
+                            </div> <!-- /widget-content -->
+                        </div> <!-- /widget -->
+                    </div> <!-- /span12 -->
+                </div>
+            </div>
+        </div>
         <?php
     }
 }
