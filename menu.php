@@ -47,7 +47,7 @@
                         </a>	    
                         <ul class="dropdown-menu">
                             <li <?php echo $active ?>><a href="index.php?pgy=siswa&page=view">Siswa</a></li>
-                            <li <?php echo $active ?>><a href="index.php?pgy=sopir&page=view">Sopir</a></li>
+                            <li <?php echo $active ?>><a href="index.php?pgy=supir&page=view">Supir</a></li>
                             <li <?php echo $active ?>><a href="index.php?pgy=pegawai&page=view">Pegawai</a></li>
                             <li <?php echo $active ?>><a href="index.php?pgy=rute&page=view">Rute</a></li>
                         </ul> 				

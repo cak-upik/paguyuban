@@ -35,7 +35,8 @@
         include './header.php';
         include './menu.php';
         include './connection.php';
-        include './siswaDao.php';
+        include './crudDao.php';
+        
         session_start();
         $admin = $_GET['pgy'];
         $act = $_GET['do'];
@@ -67,8 +68,33 @@
                     default :
                         include 'frmSiswa.php';
                 }
-            } else if ($admin == 'sopir') {
-                include 'driver.php';
+            } else if ($admin == 'supir') {
+                switch ($act) {
+                    case "save" :
+                        $namaVal = $_POST['nama'];
+                        $alamat = $_POST['alamat'];
+                        $kota = $_POST['kota'];
+                        $telp = $_POST['telp'];
+                        $sim = $_POST['sim'];
+                        $nomobil = $_POST['nomobil'];
+                        $merk = $_POST['merk'];
+                        SaveSupir($namaVal, $alamat, $kota, $telp, $sim, $nomobil, $merk);
+                    case "update" :
+                        $namaVal = $_POST['nama'];
+                        $alamat = $_POST['alamat'];
+                        $kota = $_POST['kota'];
+                        $telp = $_POST['telp'];
+                        $sim = $_POST['sim'];
+                        $nomobil = $_POST['nomobil'];
+                        $merk = $_POST['merk'];
+                        $id = $_POST['idSupir'];
+                        UpdateSupir($namaVal, $alamat, $kota, $telp, $sim, $nomobil, $merk,$id);
+                    case "delete" :
+                        $idSupir = $_GET['id'];
+                        DeleteSupir($idSupir);
+                    default :
+                        include 'driver.php';
+                }
             } else if ($admin == 'pegawai') {
                 include 'employee.php';
             } else if ($admin == 'rute') {

@@ -201,31 +201,31 @@ if (isset($_GET['page'])) {
                                     <div class="control-group">
                                         <label class="control-label" for="name">Nama Siswa</label>
                                         <div class="controls">
-                                            <input type="text" class="input-xxlarge" name="nama" id="nama" value='<?php echo getValue("nama_siswa", $_GET['id'],"id_siswa")?>'/>
+                                            <input type="text" class="input-xxlarge" name="nama" id="nama" value='<?php echo getValueSiswa("nama_siswa", $_GET['id'],"id_siswa")?>'/>
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label" for="kelas">Kelas</label>
                                         <div class="controls">
-                                            <input type="text" class="input-large" name="kelas" id="kelas" value='<?php echo getValue("kelas", $_GET['id'],"id_siswa")?>'/>
+                                            <input type="text" class="input-large" name="kelas" id="kelas" value='<?php echo getValueSiswa("kelas", $_GET['id'],"id_siswa")?>'/>
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label" for="alamat">Alamat</label>
                                         <div class="controls">
-                                            <textarea class="span4" name="alamat" id="alamat" rows="4"><?php echo getValue("alamat", $_GET['id'],"id_siswa")?></textarea>
+                                            <textarea class="span4" name="alamat" id="alamat" rows="4"><?php echo getValueSiswa("alamat", $_GET['id'],"id_siswa")?></textarea>
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label" for="email">Email</label>
                                         <div class="controls">
-                                            <input type="email" class="input-large" name="email" id="email" value='<?php echo getValue("email", $_GET['id'],"id_siswa")?>' />
+                                            <input type="email" class="input-large" name="email" id="email" value='<?php echo getValueSiswa("email", $_GET['id'],"id_siswa")?>' />
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label" for="telp">No. Telp</label>
                                         <div class="controls">
-                                            <input type="text" class="input-large" name="telp" id="telp" value='<?php echo getValue("alamat", $_GET['id'],"id_siswa")?>' />
+                                            <input type="text" class="input-large" name="telp" id="telp" value='<?php echo getValueSiswa("alamat", $_GET['id'],"id_siswa")?>' />
                                         </div>
                                     </div>
 

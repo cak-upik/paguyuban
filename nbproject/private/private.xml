@@ -10,12 +10,9 @@
         </group>
         <group name="PHP">
             <file>file:/var/www/html/paguyuban/frmSiswa.php</file>
-            <file>file:/var/www/html/paguyuban/index.html</file>
             <file>file:/var/www/html/paguyuban/menu.php</file>
             <file>file:/var/www/html/paguyuban/siswaDao.php</file>
             <file>file:/var/www/html/paguyuban/index.php</file>
-            <file>file:/var/www/html/paguyuban/driver.php</file>
-            <file>file:/var/www/html/paguyuban/validation.html</file>
         </group>
     </open-files>
 </project-private>
