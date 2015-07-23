@@ -67,7 +67,7 @@ if (isset($_GET['page'])) {
                                     </div>
 
                                     <div class="form-actions">
-                                        <button type="submit" class="btn btn-danger btn">Simpan Data</button>&nbsp;&nbsp;
+                                        <button type="submit" class="btn btn-Success btn">Simpan Data</button>&nbsp;&nbsp;
                                         <a href="index.php?pgy=supir&page=view" class="btn">Batal</a>
                                     </div>
                                 </fieldset>
@@ -105,6 +105,7 @@ if (isset($_GET['page'])) {
                                     <a href="index.php?pgy=supir&page=create" class="btn btn-primary btn">Tambah Supir</a>
                                     <a href="index.php?pgy=supir&page=edit" class="btn btn-info btn">Edit Supir</a>
                                     <a href="index.php?pgy=supir&page=delete" class="btn btn-danger btn">Hapus Supir</a>
+                                    
                                     </div>
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>
@@ -246,7 +247,7 @@ if (isset($_GET['page'])) {
                                     <input type="hidden" name="idSupir" id="idSupir" value=<?php echo $_GET['id']?>>
 
                                     <div class="form-actions">
-                                        <button type="submit" class="btn btn-danger btn">Simpan Data</button>&nbsp;&nbsp;
+                                        <button type="submit" class="btn btn-Success btn">Simpan Data</button>&nbsp;&nbsp;
                                         <a href="index.php?pgy=supir&page=view" class="btn">Batal</a>
                                     </div>
                                 </fieldset>

@@ -66,8 +66,8 @@ if (isset($_GET['page'])) {
                                     </div>
 
                                     <div class="form-actions">
-                                        <button type="submit" class="btn btn-danger btn">Simpan Data</button>&nbsp;&nbsp;
-                                        <a href="index.php?pgy=siswa&page=view" class="btn">Batal</a>
+                                        <button type="submit" class="btn btn-success btn">Simpan Data</button>&nbsp;&nbsp;
+                                        <a href="index.php?pgy=siswa&page=view" class="btn btn-danger btn">Batal</a>
                                     </div>
                                 </fieldset>
                                 </form>
@@ -146,9 +146,10 @@ if (isset($_GET['page'])) {
                                 <section id="tables">
                                     <h3>Data Siswa</h3>
                                     <div class="form-actions">
-                                    <a href="index.php?pgy=siswa&page=create" class="btn btn-primary btn">Tambah Siswa</a>
-                                    <a href="index.php?pgy=siswa&page=edit" class="btn btn-info btn">Edit Siswa</a>
-                                    <a href="index.php?pgy=siswa&page=delete" class="btn btn-danger btn">Hapus Siswa</a>
+                                    <a href="#" class="btn btn-inverse btn">Tambah Siswa</a>
+                                    <a href="#" class="btn btn-inverse btn">Edit Siswa</a>
+                                    <a href="#" class="btn btn-inverse btn">Hapus Siswa</a>
+                                    <a href="index.php?pgy=siswa&page=view" class="btn btn-danger btn">Batal</a>
                                     </div>
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>
@@ -234,16 +235,16 @@ if (isset($_GET['page'])) {
                                         <div class="controls">
                                             <select id="status" name="status">
                                                 <option value="" />Select...
-                                                <option value="oneway" <?php echo(getValue("status", $_GET['id'],"id_siswa") == 'oneway')?'selected':''?>>One-Way </option>
-                                                <option value="twoway" <?php echo(getValue("status", $_GET['id'],"id_siswa") == 'twoway')?'selected':''?>>Two-Way </option>
+                                                <option value="oneway" <?php echo(getValueSiswa("status", $_GET['id'],"id_siswa") == 'oneway')?'selected':''?>>One-Way </option>
+                                                <option value="twoway" <?php echo(getValueSiswa("status", $_GET['id'],"id_siswa") == 'twoway')?'selected':''?>>Two-Way </option>
                                             </select>
                                         </div>
                                     </div>
                                     <input type="hidden" name="idSiswa" id="idSiswa" value=<?php echo $_GET['id']?>>
 
                                     <div class="form-actions">
-                                        <button type="submit" class="btn btn-danger btn">Simpan Data</button>&nbsp;&nbsp;
-                                        <a href="index.php?pgy=siswa&page=view" class="btn">Batal</a>
+                                        <button type="submit" class="btn btn-success btn">Simpan Data</button>&nbsp;&nbsp;
+                                        <a href="index.php?pgy=siswa&page=view" class="btn btn-danger btn">Batal</a>
                                     </div>
                                 </fieldset>
                                 </form>
@@ -277,9 +278,10 @@ if (isset($_GET['page'])) {
                                 <section id="tables">
                                     <h3>Data Siswa</h3>
                                     <div class="form-actions">
-                                    <a href="index.php?pgy=siswa&page=create" class="btn btn-primary btn">Tambah Siswa</a>
-                                    <a href="index.php?pgy=siswa&page=edit" class="btn btn-info btn">Edit Siswa</a>
-                                    <a href="index.php?pgy=siswa&page=delete" class="btn btn-danger btn">Hapus Siswa</a>
+                                    <a href="#" class="btn btn-inverse btn">Tambah Siswa</a>
+                                    <a href="#" class="btn btn-inverse btn">Edit Siswa</a>
+                                    <a href="#" class="btn btn-inverse btn">Hapus Siswa</a>
+                                    <a href="index.php?pgy=siswa&page=view" class="btn btn-danger btn">Batal</a>
                                     </div>
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>

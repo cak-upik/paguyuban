@@ -95,10 +95,52 @@
                     default :
                         include 'driver.php';
                 }
-            } else if ($admin == 'pegawai') {
-                include 'employee.php';
+            } else if ($admin == 'karyawan') {
+                switch ($act) {
+                    case "save" :
+                        $namaVal = $_POST['nama'];
+                        $tempat = $_POST['tempat'];
+                        $tanggal = $_POST['tanggal'];
+                        $alamat = $_POST['alamat'];
+                        $email = $_POST['email'];
+                        $telp = $_POST['telp'];
+                        $jabatan = $_POST['jabatan'];
+                        SaveKaryawan($namaVal, $tempat, $tanggal, $alamat, $email, $telp, $jabatan);
+                    case "update" :
+                        $namaVal = $_POST['nama'];
+                        $tempat = $_POST['tempat'];
+                        $tanggal = $_POST['tanggal'];
+                        $alamat = $_POST['alamat'];
+                        $email = $_POST['email'];
+                        $telp = $_POST['telp'];
+                        $jabatan = $_POST['jabatan'];
+                        $id = $_POST['idKaryawan'];
+                        UpdateKaryawan($namaVal, $tempat, $tanggal, $alamat, $email, $telp, $jabatan, $id);
+                    case "delete" :
+                        $idKaryawan = $_GET['id'];
+                        DeleteKaryawan($idKaryawan);
+                    default :
+                        include 'employee.php';
+                }
             } else if ($admin == 'rute') {
-                include 'route.php';
+                switch ($act) {
+                    case "save" :
+                        $namaVal = $_POST['nama'];
+                        $kota = $_POST['kota'];
+                        $tarif = $_POST['tarif'];
+                        SaveRute($namaVal, $kota, $tarif);
+                    case "update" :
+                        $namaVal = $_POST['nama'];
+                        $kota = $_POST['kota'];
+                        $tarif = $_POST['tarif'];
+                        $id = $_POST['idRute'];
+                        UpdateRute($namaVal, $kota, $tarif, $id);
+                    case "delete" :
+                        $idRute = $_GET['id'];
+                        DeleteRute($idRute);
+                    default :
+                        include 'route.php';
+                }
             } else if ($admin == 'pembayaran-siswa') {
                 include 'payment_student.php';
             } else if ($admin == 'pembayaran-sopir') {
