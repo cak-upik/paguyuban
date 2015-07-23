@@ -153,6 +153,8 @@
                 include 'user.php';
             } else if ($admin == 'profile') {
                 include 'profile.php';
+            } else if ($admin == 'transaksi') {
+                include 'transaction.php';
             }
         } else {
             header('location:./index.php?admin=home');

@@ -5,7 +5,7 @@
                 <div class="widget stacked">
                     <div class="widget-header">
                         <i class="icon-star"></i>
-                        <h3>Quick Stats</h3>
+                        <h3>Rating Layanan Antar Jemput</h3>
                     </div> <!-- /widget-header -->
 
                     <div class="widget-content">
@@ -14,17 +14,17 @@
 
                             <div class="stat">
                                 <span class="stat-value">12,386</span>									
-                                Site Visits
+                                Rute Penjemputan
                             </div> <!-- /stat -->
 
                             <div class="stat">
                                 <span class="stat-value">9,249</span>									
-                                Unique Visits
+                                Jumlah Supir Saat Ini 
                             </div> <!-- /stat -->
 
                             <div class="stat">
                                 <span class="stat-value">70%</span>									
-                                New Visits
+                                Profit Paguyuban
                             </div> <!-- /stat -->
 
                         </div> <!-- /stats -->
@@ -37,8 +37,8 @@
                             </div> <!-- /substat -->
 
                             <div class="stat stat-time">									
-                                <span class="stat-value">00:28:13</span>
-                                Average Time on Site
+                                <span class="stat-value">12,501</span>
+                                Jumlah Siswa Terdaftar
                             </div> <!-- /substat -->
 
                         </div> <!-- /substats -->
@@ -55,17 +55,17 @@
                     </div> <!-- /widget-header -->
                     <div class="widget-content">
                         <div class="shortcuts">
-                            <a href="javascript:;" class="shortcut">
+                            <a href="index.php?pgy=siswa&page=view" class="shortcut">
                                 <i class="shortcut-icon icon-list-alt"></i>
-                                <span class="shortcut-label">Apps</span>
+                                <span class="shortcut-label">Data Siswa</span>
                             </a>
-                            <a href="javascript:;" class="shortcut">
+                            <a href="index.php?pgy=supir&page=view" class="shortcut">
                                 <i class="shortcut-icon icon-bookmark"></i>
-                                <span class="shortcut-label">Bookmarks</span>								
+                                <span class="shortcut-label">Data Supir</span>								
                             </a>
                             <a href="javascript:;" class="shortcut">
                                 <i class="shortcut-icon icon-signal"></i>
-                                <span class="shortcut-label">Reports</span>	
+                                <span class="shortcut-label">Laporan</span>	
                             </a>
                             <a href="javascript:;" class="shortcut">
                                 <i class="shortcut-icon icon-comment"></i>
@@ -95,7 +95,7 @@
                 <div class="widget stacked">
                     <div class="widget-header">
                         <i class="icon-signal"></i>
-                        <h3>Chart</h3>
+                        <h3>Grafik Profit Paguyuban</h3>
                     </div> <!-- /widget-header -->
                     <div class="widget-content">					
                         <div id="area-chart" class="chart-holder"></div>					
