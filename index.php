@@ -14,6 +14,8 @@
         <link href="./css/font-awesome.min.css" rel="stylesheet" />        
 
         <link href="./css/ui-lightness/jquery-ui-1.10.0.custom.min.css" rel="stylesheet" />
+        <link href="./css/plugins/jquery-min-ui.css" rel="stylesheet" />
+        <link href="./css/plugins/jquery-ui.css" rel="stylesheet" />
 
         <link href="./css/base-admin-2.css" rel="stylesheet" />
         <link href="./css/base-admin-2-responsive.css" rel="stylesheet" />
@@ -32,6 +34,7 @@
     <body>
 
         <?php
+        
         include './header.php';
         include './menu.php';
         include './connection.php';
@@ -47,21 +50,21 @@
                 switch ($act) {
                     case "save" :
                         $namaVal = $_POST['nama'];
+                        $wali = $_POST['namaortu'];
                         $kelas = $_POST['kelas'];
                         $alamat = $_POST['alamat'];
                         $email = $_POST['email'];
                         $telp = $_POST['telp'];
-                        $status = $_POST['status'];
-                        SaveSiswa($namaVal, $alamat, $kelas, $email, $telp, $status);
+                        SaveSiswa($namaVal, $wali, $alamat, $kelas, $email, $telp);
                     case "update" :
                         $namaVal = $_POST['nama'];
+                        $wali = $_POST['namaortu'];
                         $kelas = $_POST['kelas'];
                         $alamat = $_POST['alamat'];
                         $email = $_POST['email'];
                         $telp = $_POST['telp'];
-                        $status = $_POST['status'];
                         $id = $_POST['idSiswa'];
-                        UpdateSiswa($namaVal, $kelas, $alamat, $email, $telp, $status,$id);
+                        UpdateSiswa($namaVal, $wali, $kelas, $alamat, $email, $telp, $id);
                     case "delete" :
                         $idSiswa = $_GET['id'];
                         DeleteSiswa($idSiswa);
@@ -141,6 +144,28 @@
                     default :
                         include 'route.php';
                 }
+            } else if($admin == 'enroll') {
+                switch ($act) {
+                    case "save" :
+                        $siswa = $_POST['siswa'];
+                        $supir = $_POST['supir'];
+                        $rute = $_POST['rute'];
+                        $layanan = $_POST['layanan'];
+                        $id = $_POST['siswa'];
+                        SaveLayanan($layanan, $supir, $rute, $id);
+                    case "update" :
+                        $siswa = $_POST['siswa'];
+                        $supir = $_POST['supir'];
+                        $rute = $_POST['rute'];
+                        $layanan = $_POST['layanan'];
+                        $id = $_POST['idSiswa'];
+                        SaveLayanan($layanan, $supir, $rute, $id);
+                    case "delete" :
+                        $id = $_GET['id'];
+                        DeleteLayanan($id);
+                    default :
+                        include 'enroll.php';
+                }
             } else if ($admin == 'pembayaran-siswa') {
                 include 'payment_student.php';
             } else if ($admin == 'pembayaran-sopir') {
@@ -157,7 +182,7 @@
                 include 'transaction.php';
             }
         } else {
-            header('location:./index.php?admin=home');
+            echo "<script>javascript:window.location.replace('index.php?pgy=home');</script>";
         }
         ?>
 

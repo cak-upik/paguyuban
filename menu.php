@@ -59,6 +59,7 @@
                             <b class="caret"></b>
                         </a>	    
                         <ul class="dropdown-menu">
+                            <li <?php echo $active ?>><a href="index.php?pgy=enroll&page=view">Pendaftaran</a></li>
                             <li <?php echo $active ?>><a href="index.php?pgy=transaksi&page=view">Pembayaran</a></li>
                         </ul> 				
                     </li>

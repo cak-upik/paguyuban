@@ -4,9 +4,9 @@
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                 <i class="icon-cog"></i>
             </a>
-            <a class="brand" href="./index.html">
+            <a class="brand" href="./index-bak.html">
                 E-Car <br>
-                Antar Jemput Siswa <br>
+                Antar Jemput Siswa
                 Raudhatul Jannah
                 <!--<sup>2.0</sup>-->
             </a>

@@ -7,8 +7,8 @@
  */
 
 /* ------------------------------------------- BEGIN SISWA DAO ------------------------------------------- */
-function SaveSiswa($nama, $alamat, $kelas, $email, $notelp, $layanan) {
-    $qry = "INSERT INTO siswa(nama_siswa, alamat, kelas, email, no_tlp, status) VALUES('" . $nama . "','" . $alamat . "','" . $kelas . "','" . $email . "','" . $notelp . "','" . $layanan . "')";
+function SaveSiswa($nama, $wali, $alamat, $kelas, $email, $notelp) {
+    $qry = "INSERT INTO siswa(nama_siswa, nama_wali, alamat, kelas, email, no_tlp) VALUES('" . $nama . "','" . $wali . "','" . $alamat . "','" . $kelas . "','" . $email . "','" . $notelp . "')";
     $exec = mysql_query($qry);
     if ($exec) {
         echo "<script>javascript:alert('Penyimpanan Data Siswa Berhasil')</script>";
@@ -20,8 +20,8 @@ function SaveSiswa($nama, $alamat, $kelas, $email, $notelp, $layanan) {
     return $exec;
 }
 
-function UpdateSiswa($nama, $kelas, $alamat, $email, $notelp, $layanan, $id) {
-    $qry = "UPDATE siswa SET nama_siswa='" . $nama . "', alamat='" . $alamat . "', kelas='" . $kelas . "', email='" . $email . "', no_tlp='" . $notelp . "', status='" . $layanan . "' WHERE id_siswa=" . $id;
+function UpdateSiswa($nama, $wali, $kelas, $alamat, $email, $notelp, $id) {
+    $qry = "UPDATE siswa SET nama_siswa='" . $nama . "', nama_wali='" . $wali . "', alamat='" . $alamat . "', kelas='" . $kelas . "', email='" . $email . "', no_tlp='" . $notelp . "' WHERE id_siswa=" . $id;
     $exec = mysql_query($qry);
     if ($exec) {
         echo "<script>javascript:alert('Update Data Siswa Berhasil')</script>";
@@ -60,15 +60,28 @@ function LoadSiswa() {
             echo "<tr>
                       <td>".$i."</td>
                       <td>".$data['nama_siswa']."</td>
+                      <td>".$data['nama_wali']."</td>
                       <td>".$data['kelas']."</td>
                       <td>".$data['alamat']."</td>
                       <td>".$data['email']."</td>
                       <td>".$data['no_tlp']."</td>
-                      <td>".$data['status']."</td>
                  </tr>";
             $i++;
         }
-    } 
+    }
+    return $exec;
+}
+
+function autoCompleteSiswa() {
+    $qry = "SELECT * FROM siswa";
+    $exec = mysql_query($qry);
+    if ($exec) {
+        $siswaList = array();
+        while($data=mysql_fetch_array($exec)) {
+            $siswaList[] = $data['nama_siswa'];
+        }
+        echo json_encode($siswaList);
+    }
 }
 
 function EditSiswa() {
@@ -79,11 +92,11 @@ function EditSiswa() {
             echo "<tr>
                       <td><input type=button class='btn btn-danger btn' name=btnId".$data['id_siswa']." value=Ubah onclick=window.location.assign('index.php?pgy=siswa&page=editor&id=$data[id_siswa]')></td>
                       <td>".$data['nama_siswa']."</td>
+                      <td>".$data['nama_wali']."</td>
                       <td>".$data['alamat']."</td>
                       <td>".$data['kelas']."</td>
                       <td>".$data['email']."</td>
                       <td>".$data['no_tlp']."</td>
-                      <td>".$data['status']."</td>
                  </tr>";
         }
     }
@@ -97,11 +110,11 @@ function DeleteSiswaView() {
             echo "<tr>
                       <td><a class='btn btn-danger btn' href=\"index.php?pgy=siswa&do=delete&id=".$data['id_siswa']."\" onclick = \"if (! confirm('Anda Yakin Akan Menghapus?')) return false;\">Hapus</td>
                       <td>".$data['nama_siswa']."</td>
+                      <td>".$data['nama_wali']."</td>
                       <td>".$data['alamat']."</td>
                       <td>".$data['kelas']."</td>
                       <td>".$data['email']."</td>
                       <td>".$data['no_tlp']."</td>
-                      <td>".$data['status']."</td>
                  </tr>";
         }
     }
@@ -446,3 +459,160 @@ function getValueRute($field, $id, $param) {
 }
 
 /* ------------------------------------------- END RUTE DAO ------------------------------------------- */
+
+/* ------------------------------------------- BEGIN LAYANAN DAO ------------------------------------------- */
+function SaveLayanan($layanan, $supir, $rute, $id) {
+    $qry = "UPDATE siswa SET layanan='" . $layanan . "', id_supir='" . $supir . "', id_rute='" . $rute . "' WHERE id_siswa=" . $id;
+    $exec = mysql_query($qry);
+    if ($exec) {
+        echo "<script>javascript:alert('Penyimpanan Data Layanan Berhasil')</script>";
+        echo "<script>javascript:window.location.assign('index.php?pgy=enroll&page=view')</script>";
+    } else {
+        echo "<script>javascript:alert('Penyimpanan Data Layanan Gagal')</script>";
+        echo "<script>javascript:history.go(-1)</script>";
+    }
+    return $exec;
+}
+
+function DeleteLayanan($id) {
+    $qry = "UPDATE siswa SET layanan='', id_supir='', id_rute='' WHERE id_siswa=" . $id;
+    $exec = mysql_query($qry);
+    if ($exec) {
+        echo "<script>javascript:alert('Delete Data Layanan Berhasil')</script>";
+        echo "<script>javascript:window.location.assign('index.php?pgy=enroll&page=view')</script>";
+    } else {
+        echo "<script>javascript:alert('Delete Data Layanan Gagal')</script>";
+        echo "<script>javascript:history.go(-1)</script>";
+    }
+    return $exec;
+}
+
+function LoadLayanan() {
+    $i = 1;
+    $qry = "SELECT siswa.nama_siswa, siswa.layanan, sopir.nama, rute.nama_rute FROM siswa INNER JOIN sopir ON siswa.id_supir=sopir.id_sopir INNER JOIN rute ON siswa.id_rute=rute.id_rute GROUP BY siswa.id_siswa ORDER BY siswa.id_siswa ASC";
+    $exec = mysql_query($qry);
+    if ($exec) {
+        if(mysql_num_rows($exec) == 0) {
+            echo "<tr>
+                    <td colspan=7><center><h4>No Data</h4><center></td>
+                  </tr>";
+        }
+        while ($data = mysql_fetch_array($exec)) {
+            echo "<tr>
+                      <td>".$i."</td>
+                      <td>".$data['nama_siswa']."</td>
+                      <td>".$data['nama']."</td>
+                      <td>".$data['nama_rute']."</td>
+                      <td>".$data['layanan']."</td>
+                 </tr>";
+            $i++;
+        }
+    } 
+}
+
+function EditLayanan() {
+    $qry = "SELECT siswa.id_siswa, siswa.nama_siswa, siswa.layanan, sopir.nama, rute.nama_rute FROM siswa INNER JOIN sopir ON siswa.id_supir=sopir.id_sopir INNER JOIN rute ON siswa.id_rute=rute.id_rute GROUP BY siswa.id_siswa ORDER BY siswa.id_siswa ASC";
+    $exec = mysql_query($qry);
+    if ($exec) {
+        while ($data = mysql_fetch_array($exec)) {
+            echo "<tr>
+                      <td><input type=button class='btn btn-danger btn' name=btnId".$data['id_siswa']." value=Ubah onclick=window.location.assign('index.php?pgy=enroll&page=editor&id=$data[id_siswa]')></td>
+                      <td>".$data['nama_siswa']."</td>
+                      <td>".$data['nama']."</td>
+                      <td>".$data['nama_rute']."</td>
+                      <td>".$data['layanan']."</td>
+                 </tr>";
+        }
+    }
+}
+
+function DeleteLayananView() {
+    $qry = "SELECT siswa.id_siswa, siswa.nama_siswa, siswa.layanan, sopir.nama, rute.nama_rute FROM siswa INNER JOIN sopir ON siswa.id_supir=sopir.id_sopir INNER JOIN rute ON siswa.id_rute=rute.id_rute GROUP BY siswa.id_siswa ORDER BY siswa.id_siswa ASC";
+    $exec = mysql_query($qry);
+    if ($exec) {
+        while ($data = mysql_fetch_array($exec)) {
+            echo "<tr>
+                      <td><a class='btn btn-danger btn' href=\"index.php?pgy=enroll&do=delete&id=".$data['id_siswa']."\" onclick = \"if (! confirm('Anda Yakin Akan Menghapus?')) return false;\">Hapus</td>
+                      <td>".$data['nama_siswa']."</td>
+                      <td>".$data['nama']."</td>
+                      <td>".$data['nama_rute']."</td>
+                      <td>".$data['layanan']."</td>
+                 </tr>";
+        }
+    }
+}
+
+function getValueLayanan($field, $id, $param) {
+    $qry = "SELECT ".$field." FROM siswa WHERE ".$param."='".$id."'";
+    $exec = mysql_query($qry);
+    $data = mysql_fetch_array($exec);
+    $text = $data[$field];
+    return $text;
+}
+
+function getOptionSiswa(){
+    $qry = "SELECT id_siswa, nama_siswa FROM siswa WHERE id_supir=0 OR id_supir IS NULL AND id_rute=0 OR id_rute IS NULL ORDER BY id_siswa";
+    $exec = mysql_query($qry);
+    if(mysql_num_rows($exec) == 0) {
+            echo "<option value=''>Tidak Ada Data</option>";
+    }
+    while($data=  mysql_fetch_array($exec)){
+        echo "<option value=". $data['id_siswa'] .">". $data['nama_siswa'] ."</option>";
+    }
+}
+
+function getOptionSupir(){
+    $qry = "SELECT id_sopir, nama FROM sopir ORDER BY id_sopir";
+    $exec = mysql_query($qry);
+    if(mysql_num_rows($exec) == 0) {
+            echo "<option value=''>Tidak Ada Data</option>";
+    }
+    while($data=  mysql_fetch_array($exec)){
+        echo "<option value=". $data['id_sopir'] .">". $data['nama'] ."</option>";
+    }
+}
+
+function getOptionRute(){
+    $qry = "SELECT id_rute, nama_rute FROM rute ORDER BY id_rute";
+    $exec = mysql_query($qry);
+    if(mysql_num_rows($exec) == 0) {
+            echo "<option value=''>Tidak Ada Data</option>";
+    }
+    while($data=  mysql_fetch_array($exec)){
+        echo "<option value=". $data['id_rute'] .">". $data['nama_rute'] ."</option>";
+    }
+}
+
+function getLayananRute($id) {
+    $qry = "SELECT rute.id_rute, rute.nama_rute FROM siswa INNER JOIN rute ON siswa.id_rute=rute.id_rute WHERE siswa.id_siswa=".$id;
+    $qryRute = "SELECT * FROM rute";
+    $exec = mysql_query($qry);
+    while($data=mysql_fetch_array($exec)){
+        echo "<option value=". $data['id_rute'] .">". $data['nama_rute'] ."</option>"
+           . "<option value=''>-----------------------------------------------------</option>";
+    }
+    $execRute = mysql_query($qryRute);
+    while($rute=mysql_fetch_array($execRute)){
+        echo "<option value=". $rute['id_rute'] .">". $rute['nama_rute'] ."</option>";
+    }
+    $text = $data['nama_rute'];
+    return $text;
+}
+
+function getLayananSupir($id) {
+    $qry = "SELECT sopir.id_sopir, sopir.nama FROM siswa INNER JOIN sopir ON siswa.id_supir=sopir.id_sopir WHERE siswa.id_siswa=".$id;
+    $qrySupir = "SELECT * FROM sopir";
+    $exec = mysql_query($qry);
+    while($data=mysql_fetch_array($exec)){
+        echo "<option value=". $data['id_sopir'] .">". $data['nama'] ."</option>"
+           . "<option value=''>-----------------------------------------------------</option>";
+    }
+    $execSupir = mysql_query($qrySupir);
+    while($supir=mysql_fetch_array($execSupir)) {
+        echo "<option value=". $supir['id_sopir'] .">". $supir['nama'] ."</option>";
+    }
+    $text = $data['nama'];
+    return $text;
+}
+
+/* ------------------------------------------- END LAYANAN DAO ------------------------------------------- */
