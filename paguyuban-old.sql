@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 26, 2015 at 10:17 AM
+-- Generation Time: Jul 23, 2015 at 12:42 PM
 -- Server version: 5.5.43-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.11
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `karyawan` (
   `no_tlp` varchar(100) DEFAULT NULL,
   `jabatan` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_karyawan`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `karyawan`
@@ -75,27 +75,21 @@ INSERT INTO `rute` (`id_rute`, `nama_rute`, `kota`, `tarif`) VALUES
 
 CREATE TABLE IF NOT EXISTS `siswa` (
   `id_siswa` bigint(20) NOT NULL AUTO_INCREMENT,
-  `nama_siswa` varchar(255) NOT NULL,
-  `nama_wali` varchar(255) DEFAULT NULL,
+  `nama_siswa` varchar(255) DEFAULT NULL,
   `alamat` varchar(255) DEFAULT NULL,
   `kelas` varchar(50) DEFAULT NULL,
-  `email` varchar(100) NOT NULL,
-  `layanan` varchar(10) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
   `no_tlp` varchar(20) DEFAULT NULL,
-  `id_supir` bigint(20) DEFAULT NULL,
-  `id_rute` bigint(20) DEFAULT NULL,
+  `status` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id_siswa`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `siswa`
 --
 
-INSERT INTO `siswa` (`id_siswa`, `nama_siswa`, `nama_wali`, `alamat`, `kelas`, `email`, `layanan`, `no_tlp`, `id_supir`, `id_rute`) VALUES
-(1, 'Taufik', 'Bambang Setijanto', 'Tambak Medokan Ayu 8A no 11', '5B', 'muhammadtaufik92@gmail.com', 'twoway', '089636606525', 4, 3),
-(2, 'Wali', 'Hidayah', 'Rungkut', '5A', 'wali@yahoo.com', 'twoway', '089636606525', 4, 3),
-(3, 'Zaidan', 'Nur Hidayati', 'Medokan', '1A', 'muhammadzaidan@gmail.com', 'twoway', '089636606525', 6, 3),
-(4, 'Rizal', 'Rizal', 'Rungkut', '2 SD', 'muhammadrizal@gmail.com', 'oneway', '089636606525', 6, 1);
+INSERT INTO `siswa` (`id_siswa`, `nama_siswa`, `alamat`, `kelas`, `email`, `no_tlp`, `status`) VALUES
+(1, 'Taufik', 'Rungkut Harapan H 22', 'SMP', 'muhammadtaufik92@gmail.com', 'Rungkut Harapan H 22', 'twoway');
 
 -- --------------------------------------------------------
 
@@ -113,16 +107,14 @@ CREATE TABLE IF NOT EXISTS `sopir` (
   `merk_mobil` varchar(50) DEFAULT NULL,
   `no_mobil` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_sopir`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `sopir`
 --
 
 INSERT INTO `sopir` (`id_sopir`, `nama`, `alamat`, `kota`, `no_tlp`, `no_sim`, `merk_mobil`, `no_mobil`) VALUES
-(4, 'Joko', 'Jl. Bulak Banteng Gg VI no 20', 'Surabaya', '923842', '0987654321', 'Toyota Avanza 2012', '987654321'),
-(5, 'Supadi', 'Rusun Pandugo', 'Surabaya', '08963660652', '1234567890', 'Toyota Kijang Innova', '098764321'),
-(6, 'Zaki', 'Medokan Ayu II', 'Surabaya', '08923948728', '0987654321', 'Toyota 86 TRD', '123456789');
+(4, 'Joko', 'Jl. Bulak Banteng Gg VI no 20', 'Surabaya', '923842', '0987654321', 'Toyota Avanza 2012', '987654321');
 
 -- --------------------------------------------------------
 
@@ -132,14 +124,10 @@ INSERT INTO `sopir` (`id_sopir`, `nama`, `alamat`, `kota`, `no_tlp`, `no_sim`, `
 
 CREATE TABLE IF NOT EXISTS `transaksi` (
   `id_transaksi` bigint(20) NOT NULL AUTO_INCREMENT,
-  `kode_bayar` bigint(50) NOT NULL,
   `id_siswa` bigint(20) NOT NULL DEFAULT '0',
   `id_sopir` bigint(20) NOT NULL DEFAULT '0',
   `id_rute` bigint(20) NOT NULL DEFAULT '0',
   `tanggal_bayar` date DEFAULT NULL,
-  `total_bayar` decimal(19,2) NOT NULL,
-  `closing_intern` decimal(19,2) NOT NULL,
-  `closing_supir` decimal(19,2) NOT NULL,
   PRIMARY KEY (`id_transaksi`,`id_siswa`,`id_sopir`,`id_rute`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
