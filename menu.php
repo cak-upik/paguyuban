@@ -83,8 +83,8 @@
                             <b class="caret"></b>
                         </a>	    
                         <ul class="dropdown-menu">
-                            <li <?php echo $active ?>><a href="index.php?pgy=laporan-pembayaran&page=view">User</a></li>
-                            <li <?php echo $active ?>><a href="index.php?pgy=laporan-laba&page=view">Hak Akses</a></li>
+                            <li <?php echo $active ?>><a href="index.php?pgy=user-manage&page=view">User</a></li>
+                            <li <?php echo $active ?>><a href="index.php?pgy=profile&page=view">Hak Akses</a></li>
                             <li <?php echo $active ?>><a href="index.php?pgy=laporan-laba&page=view">Paguyuban</a></li>
                         </ul> 				
                     </li>
