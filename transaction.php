@@ -1,4 +1,13 @@
 <?php
+echo "<script type=\"text/javascript\">
+        function fill(val){
+            if(val==0){
+                alert('Val is 0');
+            }else {
+                alert('Val is 1');
+            }
+        }
+      </script>";
 if (isset($_GET['page'])) {
     if ($_GET['page'] == 'create') {
         ?>
@@ -38,7 +47,17 @@ if (isset($_GET['page'])) {
                                     <div class="control-group">
                                         <label class="control-label" for="kelas">Nama Siswa</label>
                                         <div class="controls">
-                                            <input type="text" class="input-large" name="kelas" id="kelas" />
+                                            <script type="text/javascript">
+                                                $("#test").change(function() {
+                                                     alert($("#test :selected").text())
+                                                });
+                                            </script>
+                                            <select name="test" id="test">
+                                                <option value="">Siswa 1 </option>
+                                                <option value="">Siswa 2 </option>
+                                                <option value="">Siswa 3 </option>
+                                                <option value="">Siswa 4 </option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="control-group">

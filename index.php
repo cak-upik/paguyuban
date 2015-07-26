@@ -179,7 +179,29 @@
             } else if ($admin == 'profile') {
                 include 'profile.php';
             } else if ($admin == 'transaksi') {
-                include 'transaction.php';
+                switch ($act) {
+                    case "autofill":
+                        fillTransaksi(1);
+//                    case "save" :
+//                        $siswa = $_POST['siswa'];
+//                        $supir = $_POST['supir'];
+//                        $rute = $_POST['rute'];
+//                        $layanan = $_POST['layanan'];
+//                        $id = $_POST['siswa'];
+//                        SaveLayanan($layanan, $supir, $rute, $id);
+//                    case "update" :
+//                        $siswa = $_POST['siswa'];
+//                        $supir = $_POST['supir'];
+//                        $rute = $_POST['rute'];
+//                        $layanan = $_POST['layanan'];
+//                        $id = $_POST['idSiswa'];
+//                        SaveLayanan($layanan, $supir, $rute, $id);
+//                    case "delete" :
+//                        $id = $_GET['id'];
+//                        DeleteLayanan($id);
+                    default :
+                        include 'transaction.php';
+                }
             }
         } else {
             echo "<script>javascript:window.location.replace('index.php?pgy=home');</script>";
