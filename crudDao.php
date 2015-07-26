@@ -7,6 +7,7 @@
  */
 
 /* ------------------------------------------- BEGIN SISWA DAO ------------------------------------------- */
+
 function SaveSiswa($nama, $wali, $alamat, $kelas, $email, $notelp) {
     $qry = "INSERT INTO siswa(nama_siswa, nama_wali, alamat, kelas, email, no_tlp) VALUES('" . $nama . "','" . $wali . "','" . $alamat . "','" . $kelas . "','" . $email . "','" . $notelp . "')";
     $exec = mysql_query($qry);
@@ -34,7 +35,7 @@ function UpdateSiswa($nama, $wali, $kelas, $alamat, $email, $notelp, $id) {
 }
 
 function DeleteSiswa($id) {
-    $qry = "DELETE FROM siswa WHERE id_siswa=". $id;
+    $qry = "DELETE FROM siswa WHERE id_siswa=" . $id;
     $exec = mysql_query($qry);
     if ($exec) {
         echo "<script>javascript:alert('Delete Data Siswa Berhasil')</script>";
@@ -51,20 +52,20 @@ function LoadSiswa() {
     $qry = "SELECT * FROM siswa";
     $exec = mysql_query($qry);
     if ($exec) {
-        if(mysql_num_rows($exec) == 0) {
+        if (mysql_num_rows($exec) == 0) {
             echo "<tr>
                     <td colspan=7><center><h4>No Data</h4><center></td>
                   </tr>";
         }
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td>".$i."</td>
-                      <td>".$data['nama_siswa']."</td>
-                      <td>".$data['nama_wali']."</td>
-                      <td>".$data['kelas']."</td>
-                      <td>".$data['alamat']."</td>
-                      <td>".$data['email']."</td>
-                      <td>".$data['no_tlp']."</td>
+                      <td>" . $i . "</td>
+                      <td>" . $data['nama_siswa'] . "</td>
+                      <td>" . $data['nama_wali'] . "</td>
+                      <td>" . $data['kelas'] . "</td>
+                      <td>" . $data['alamat'] . "</td>
+                      <td>" . $data['email'] . "</td>
+                      <td>" . $data['no_tlp'] . "</td>
                  </tr>";
             $i++;
         }
@@ -77,7 +78,7 @@ function autoCompleteSiswa() {
     $exec = mysql_query($qry);
     if ($exec) {
         $siswaList = array();
-        while($data=mysql_fetch_array($exec)) {
+        while ($data = mysql_fetch_array($exec)) {
             $siswaList[] = $data['nama_siswa'];
         }
         echo json_encode($siswaList);
@@ -90,13 +91,13 @@ function EditSiswa() {
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td><input type=button class='btn btn-danger btn' name=btnId".$data['id_siswa']." value=Ubah onclick=window.location.assign('index.php?pgy=siswa&page=editor&id=$data[id_siswa]')></td>
-                      <td>".$data['nama_siswa']."</td>
-                      <td>".$data['nama_wali']."</td>
-                      <td>".$data['alamat']."</td>
-                      <td>".$data['kelas']."</td>
-                      <td>".$data['email']."</td>
-                      <td>".$data['no_tlp']."</td>
+                      <td><input type=button class='btn btn-danger btn' name=btnId" . $data['id_siswa'] . " value=Ubah onclick=window.location.assign('index.php?pgy=siswa&page=editor&id=$data[id_siswa]')></td>
+                      <td>" . $data['nama_siswa'] . "</td>
+                      <td>" . $data['nama_wali'] . "</td>
+                      <td>" . $data['alamat'] . "</td>
+                      <td>" . $data['kelas'] . "</td>
+                      <td>" . $data['email'] . "</td>
+                      <td>" . $data['no_tlp'] . "</td>
                  </tr>";
         }
     }
@@ -108,20 +109,20 @@ function DeleteSiswaView() {
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td><a class='btn btn-danger btn' href=\"index.php?pgy=siswa&do=delete&id=".$data['id_siswa']."\" onclick = \"if (! confirm('Anda Yakin Akan Menghapus?')) return false;\">Hapus</td>
-                      <td>".$data['nama_siswa']."</td>
-                      <td>".$data['nama_wali']."</td>
-                      <td>".$data['alamat']."</td>
-                      <td>".$data['kelas']."</td>
-                      <td>".$data['email']."</td>
-                      <td>".$data['no_tlp']."</td>
+                      <td><a class='btn btn-danger btn' href=\"index.php?pgy=siswa&do=delete&id=" . $data['id_siswa'] . "\" onclick = \"if (! confirm('Anda Yakin Akan Menghapus?')) return false;\">Hapus</td>
+                      <td>" . $data['nama_siswa'] . "</td>
+                      <td>" . $data['nama_wali'] . "</td>
+                      <td>" . $data['alamat'] . "</td>
+                      <td>" . $data['kelas'] . "</td>
+                      <td>" . $data['email'] . "</td>
+                      <td>" . $data['no_tlp'] . "</td>
                  </tr>";
         }
     }
 }
 
 function getValueSiswa($field, $id, $param) {
-    $qry = "SELECT ".$field." FROM siswa WHERE ".$param."='".$id."'";
+    $qry = "SELECT " . $field . " FROM siswa WHERE " . $param . "='" . $id . "'";
     $exec = mysql_query($qry);
     $data = mysql_fetch_array($exec);
     $text = $data[$field];
@@ -131,6 +132,7 @@ function getValueSiswa($field, $id, $param) {
 /* ------------------------------------------- END SISWA DAO ------------------------------------------- */
 
 /* ------------------------------------------- BEGIN SUPIR DAO ------------------------------------------- */
+
 function SaveSupir($nama, $alamat, $kota, $telp, $sim, $nomobil, $merk) {
     $qry = "INSERT INTO sopir(nama, alamat, kota, no_tlp, no_sim, no_mobil, merk_mobil) VALUES('" . $nama . "','" . $alamat . "','" . $kota . "','" . $telp . "','" . $sim . "','" . $nomobil . "','" . $merk . "')";
     $exec = mysql_query($qry);
@@ -158,7 +160,7 @@ function UpdateSupir($nama, $alamat, $kota, $telp, $sim, $nomobil, $merk, $id) {
 }
 
 function DeleteSupir($id) {
-    $qry = "DELETE FROM sopir WHERE id_sopir=". $id;
+    $qry = "DELETE FROM sopir WHERE id_sopir=" . $id;
     $exec = mysql_query($qry);
     if ($exec) {
         echo "<script>javascript:alert('Delete Data Sopir Berhasil')</script>";
@@ -175,25 +177,25 @@ function LoadSupir() {
     $qry = "SELECT * FROM sopir";
     $exec = mysql_query($qry);
     if ($exec) {
-        if(mysql_num_rows($exec) == 0) {
+        if (mysql_num_rows($exec) == 0) {
             echo "<tr>
                     <td colspan=7><center><h4>No Data</h4><center></td>
                   </tr>";
         }
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td>".$i."</td>
-                      <td>".$data['nama']."</td>
-                      <td>".$data['alamat']."</td>
-                      <td>".$data['kota']."</td>
-                      <td>".$data['no_tlp']."</td>
-                      <td>".$data['no_sim']."</td>
-                      <td>".$data['no_mobil']."</td>
-                      <td>".$data['merk_mobil']."</td>
+                      <td>" . $i . "</td>
+                      <td>" . $data['nama'] . "</td>
+                      <td>" . $data['alamat'] . "</td>
+                      <td>" . $data['kota'] . "</td>
+                      <td>" . $data['no_tlp'] . "</td>
+                      <td>" . $data['no_sim'] . "</td>
+                      <td>" . $data['no_mobil'] . "</td>
+                      <td>" . $data['merk_mobil'] . "</td>
                  </tr>";
             $i++;
         }
-    } 
+    }
 }
 
 function EditSupir() {
@@ -202,14 +204,14 @@ function EditSupir() {
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td><input type=button class='btn btn-danger btn' name=btnId".$data['id_sopir']." value=Ubah onclick=window.location.assign('index.php?pgy=supir&page=editor&id=$data[id_sopir]')></td>
-                      <td>".$data['nama']."</td>
-                      <td>".$data['alamat']."</td>
-                      <td>".$data['kota']."</td>
-                      <td>".$data['no_tlp']."</td>
-                      <td>".$data['no_sim']."</td>
-                      <td>".$data['no_mobil']."</td>
-                      <td>".$data['merk_mobil']."</td>
+                      <td><input type=button class='btn btn-danger btn' name=btnId" . $data['id_sopir'] . " value=Ubah onclick=window.location.assign('index.php?pgy=supir&page=editor&id=$data[id_sopir]')></td>
+                      <td>" . $data['nama'] . "</td>
+                      <td>" . $data['alamat'] . "</td>
+                      <td>" . $data['kota'] . "</td>
+                      <td>" . $data['no_tlp'] . "</td>
+                      <td>" . $data['no_sim'] . "</td>
+                      <td>" . $data['no_mobil'] . "</td>
+                      <td>" . $data['merk_mobil'] . "</td>
                  </tr>";
         }
     }
@@ -221,21 +223,21 @@ function DeleteSupirView() {
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td><a class='btn btn-danger btn' href=\"index.php?pgy=supir&do=delete&id=".$data['id_sopir']."\" onclick = \"if (! confirm('Anda Yakin Akan Menghapus?')) return false;\">Hapus</td>
-                      <td>".$data['nama']."</td>
-                      <td>".$data['alamat']."</td>
-                      <td>".$data['kota']."</td>
-                      <td>".$data['no_tlp']."</td>
-                      <td>".$data['no_sim']."</td>
-                      <td>".$data['no_mobil']."</td>
-                      <td>".$data['merk_mobil']."</td>
+                      <td><a class='btn btn-danger btn' href=\"index.php?pgy=supir&do=delete&id=" . $data['id_sopir'] . "\" onclick = \"if (! confirm('Anda Yakin Akan Menghapus?')) return false;\">Hapus</td>
+                      <td>" . $data['nama'] . "</td>
+                      <td>" . $data['alamat'] . "</td>
+                      <td>" . $data['kota'] . "</td>
+                      <td>" . $data['no_tlp'] . "</td>
+                      <td>" . $data['no_sim'] . "</td>
+                      <td>" . $data['no_mobil'] . "</td>
+                      <td>" . $data['merk_mobil'] . "</td>
                  </tr>";
         }
     }
 }
 
 function getValueSupir($field, $id, $param) {
-    $qry = "SELECT ".$field." FROM sopir WHERE ".$param."='".$id."'";
+    $qry = "SELECT " . $field . " FROM sopir WHERE " . $param . "='" . $id . "'";
     $exec = mysql_query($qry);
     $data = mysql_fetch_array($exec);
     $text = $data[$field];
@@ -245,6 +247,7 @@ function getValueSupir($field, $id, $param) {
 /* ------------------------------------------- END SUPIR DAO ------------------------------------------- */
 
 /* ------------------------------------------- BEGIN KARYAWAN DAO ------------------------------------------- */
+
 function SaveKaryawan($nama, $tempat, $tanggal, $alamat, $email, $telp, $jabatan) {
     $qry = "INSERT INTO karyawan(nama_karyawan, tempat_lahir, tanggal_lahir, alamat, email, no_tlp, jabatan) VALUES('" . $nama . "','" . $tempat . "','" . $tanggal . "','" . $alamat . "','" . $email . "','" . $telp . "','" . $jabatan . "')";
     $exec = mysql_query($qry);
@@ -272,7 +275,7 @@ function UpdateKaryawan($nama, $tempat, $tanggal, $alamat, $email, $telp, $jabat
 }
 
 function DeleteKaryawan($id) {
-    $qry = "DELETE FROM karyawan WHERE id_karyawan=". $id;
+    $qry = "DELETE FROM karyawan WHERE id_karyawan=" . $id;
     $exec = mysql_query($qry);
     if ($exec) {
         echo "<script>javascript:alert('Delete Data Karyawan Berhasil')</script>";
@@ -289,25 +292,25 @@ function LoadKaryawan() {
     $qry = "SELECT * FROM karyawan";
     $exec = mysql_query($qry);
     if ($exec) {
-        if(mysql_num_rows($exec) == 0) {
+        if (mysql_num_rows($exec) == 0) {
             echo "<tr>
                     <td colspan=7><center><h4>No Data</h4><center></td>
                   </tr>";
         }
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td>".$i."</td>
-                      <td>".$data['nama_karyawan']."</td>
-                      <td>".$data['tempat_lahir']."</td>
-                      <td>".$data['tanggal_lahir']."</td>
-                      <td>".$data['alamat']."</td>
-                      <td>".$data['email']."</td>
-                      <td>".$data['no_tlp']."</td>
-                      <td>".$data['jabatan']."</td>
+                      <td>" . $i . "</td>
+                      <td>" . $data['nama_karyawan'] . "</td>
+                      <td>" . $data['tempat_lahir'] . "</td>
+                      <td>" . $data['tanggal_lahir'] . "</td>
+                      <td>" . $data['alamat'] . "</td>
+                      <td>" . $data['email'] . "</td>
+                      <td>" . $data['no_tlp'] . "</td>
+                      <td>" . $data['jabatan'] . "</td>
                  </tr>";
             $i++;
         }
-    } 
+    }
 }
 
 function EditKaryawan() {
@@ -316,14 +319,14 @@ function EditKaryawan() {
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td><input type=button class='btn btn-danger btn' name=btnId".$data['id_karyawan']." value=Ubah onclick=window.location.assign('index.php?pgy=karyawan&page=editor&id=$data[id_karyawan]')></td>
-                      <td>".$data['nama_karyawan']."</td>
-                      <td>".$data['tempat_lahir']."</td>
-                      <td>".$data['tanggal_lahir']."</td>
-                      <td>".$data['alamat']."</td>
-                      <td>".$data['email']."</td>
-                      <td>".$data['no_tlp']."</td>
-                      <td>".$data['jabatan']."</td>
+                      <td><input type=button class='btn btn-danger btn' name=btnId" . $data['id_karyawan'] . " value=Ubah onclick=window.location.assign('index.php?pgy=karyawan&page=editor&id=$data[id_karyawan]')></td>
+                      <td>" . $data['nama_karyawan'] . "</td>
+                      <td>" . $data['tempat_lahir'] . "</td>
+                      <td>" . $data['tanggal_lahir'] . "</td>
+                      <td>" . $data['alamat'] . "</td>
+                      <td>" . $data['email'] . "</td>
+                      <td>" . $data['no_tlp'] . "</td>
+                      <td>" . $data['jabatan'] . "</td>
                  </tr>";
         }
     }
@@ -335,21 +338,21 @@ function DeleteKaryawanView() {
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td><a class='btn btn-danger btn' href=\"index.php?pgy=karyawan&do=delete&id=".$data['id_karyawan']."\" onclick = \"if (! confirm('Anda Yakin Akan Menghapus?')) return false;\">Hapus</td>
-                      <td>".$data['nama_karyawan']."</td>
-                      <td>".$data['tempat_lahir']."</td>
-                      <td>".$data['tanggal_lahir']."</td>
-                      <td>".$data['alamat']."</td>
-                      <td>".$data['email']."</td>
-                      <td>".$data['no_tlp']."</td>
-                      <td>".$data['jabatan']."</td>
+                      <td><a class='btn btn-danger btn' href=\"index.php?pgy=karyawan&do=delete&id=" . $data['id_karyawan'] . "\" onclick = \"if (! confirm('Anda Yakin Akan Menghapus?')) return false;\">Hapus</td>
+                      <td>" . $data['nama_karyawan'] . "</td>
+                      <td>" . $data['tempat_lahir'] . "</td>
+                      <td>" . $data['tanggal_lahir'] . "</td>
+                      <td>" . $data['alamat'] . "</td>
+                      <td>" . $data['email'] . "</td>
+                      <td>" . $data['no_tlp'] . "</td>
+                      <td>" . $data['jabatan'] . "</td>
                  </tr>";
         }
     }
 }
 
 function getValueKaryawan($field, $id, $param) {
-    $qry = "SELECT ".$field." FROM karyawan WHERE ".$param."='".$id."'";
+    $qry = "SELECT " . $field . " FROM karyawan WHERE " . $param . "='" . $id . "'";
     $exec = mysql_query($qry);
     $data = mysql_fetch_array($exec);
     $text = $data[$field];
@@ -359,6 +362,7 @@ function getValueKaryawan($field, $id, $param) {
 /* ------------------------------------------- END KARYAWAN DAO ------------------------------------------- */
 
 /* ------------------------------------------- BEGIN RUTE DAO ------------------------------------------- */
+
 function SaveRute($nama, $kota, $tarif) {
     $qry = "INSERT INTO rute(nama_rute, kota, tarif) VALUES('" . $nama . "','" . $kota . "','" . $tarif . "')";
     $exec = mysql_query($qry);
@@ -386,7 +390,7 @@ function UpdateRute($nama, $kota, $tarif, $id) {
 }
 
 function DeleteRute($id) {
-    $qry = "DELETE FROM rute WHERE id_rute=". $id;
+    $qry = "DELETE FROM rute WHERE id_rute=" . $id;
     $exec = mysql_query($qry);
     if ($exec) {
         echo "<script>javascript:alert('Delete Data Rute Berhasil')</script>";
@@ -403,21 +407,21 @@ function LoadRute() {
     $qry = "SELECT * FROM rute";
     $exec = mysql_query($qry);
     if ($exec) {
-        if(mysql_num_rows($exec) == 0) {
+        if (mysql_num_rows($exec) == 0) {
             echo "<tr>
                     <td colspan=7><center><h4>No Data</h4><center></td>
                   </tr>";
         }
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td>".$i."</td>
-                      <td>".$data['nama_rute']."</td>
-                      <td>".$data['kota']."</td>
-                      <td>".$data['tarif']."</td>
+                      <td>" . $i . "</td>
+                      <td>" . $data['nama_rute'] . "</td>
+                      <td>" . $data['kota'] . "</td>
+                      <td>" . $data['tarif'] . "</td>
                  </tr>";
             $i++;
         }
-    } 
+    }
 }
 
 function EditRute() {
@@ -426,10 +430,10 @@ function EditRute() {
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td><input type=button class='btn btn-danger btn' name=btnId".$data['id_rute']." value=Ubah onclick=window.location.assign('index.php?pgy=rute&page=editor&id=$data[id_rute]')></td>
-                      <td>".$data['nama_rute']."</td>
-                      <td>".$data['kota']."</td>
-                      <td>".$data['tarif']."</td>
+                      <td><input type=button class='btn btn-danger btn' name=btnId" . $data['id_rute'] . " value=Ubah onclick=window.location.assign('index.php?pgy=rute&page=editor&id=$data[id_rute]')></td>
+                      <td>" . $data['nama_rute'] . "</td>
+                      <td>" . $data['kota'] . "</td>
+                      <td>" . $data['tarif'] . "</td>
                  </tr>";
         }
     }
@@ -441,17 +445,17 @@ function DeleteRuteView() {
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td><a class='btn btn-danger btn' href=\"index.php?pgy=rute&do=delete&id=".$data['id_rute']."\" onclick = \"if (! confirm('Anda Yakin Akan Menghapus?')) return false;\">Hapus</td>
-                      <td>".$data['nama_rute']."</td>
-                      <td>".$data['kota']."</td>
-                      <td>".$data['tarif']."</td>
+                      <td><a class='btn btn-danger btn' href=\"index.php?pgy=rute&do=delete&id=" . $data['id_rute'] . "\" onclick = \"if (! confirm('Anda Yakin Akan Menghapus?')) return false;\">Hapus</td>
+                      <td>" . $data['nama_rute'] . "</td>
+                      <td>" . $data['kota'] . "</td>
+                      <td>" . $data['tarif'] . "</td>
                  </tr>";
         }
     }
 }
 
 function getValueRute($field, $id, $param) {
-    $qry = "SELECT ".$field." FROM rute WHERE ".$param."='".$id."'";
+    $qry = "SELECT " . $field . " FROM rute WHERE " . $param . "='" . $id . "'";
     $exec = mysql_query($qry);
     $data = mysql_fetch_array($exec);
     $text = $data[$field];
@@ -461,6 +465,7 @@ function getValueRute($field, $id, $param) {
 /* ------------------------------------------- END RUTE DAO ------------------------------------------- */
 
 /* ------------------------------------------- BEGIN LAYANAN DAO ------------------------------------------- */
+
 function SaveLayanan($layanan, $supir, $rute, $id) {
     $qry = "UPDATE siswa SET layanan='" . $layanan . "', id_supir='" . $supir . "', id_rute='" . $rute . "' WHERE id_siswa=" . $id;
     $exec = mysql_query($qry);
@@ -492,22 +497,22 @@ function LoadLayanan() {
     $qry = "SELECT siswa.nama_siswa, siswa.layanan, sopir.nama, rute.nama_rute FROM siswa INNER JOIN sopir ON siswa.id_supir=sopir.id_sopir INNER JOIN rute ON siswa.id_rute=rute.id_rute GROUP BY siswa.id_siswa ORDER BY siswa.id_siswa ASC";
     $exec = mysql_query($qry);
     if ($exec) {
-        if(mysql_num_rows($exec) == 0) {
+        if (mysql_num_rows($exec) == 0) {
             echo "<tr>
                     <td colspan=7><center><h4>No Data</h4><center></td>
                   </tr>";
         }
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td>".$i."</td>
-                      <td>".$data['nama_siswa']."</td>
-                      <td>".$data['nama']."</td>
-                      <td>".$data['nama_rute']."</td>
-                      <td>".$data['layanan']."</td>
+                      <td>" . $i . "</td>
+                      <td>" . $data['nama_siswa'] . "</td>
+                      <td>" . $data['nama'] . "</td>
+                      <td>" . $data['nama_rute'] . "</td>
+                      <td>" . $data['layanan'] . "</td>
                  </tr>";
             $i++;
         }
-    } 
+    }
 }
 
 function EditLayanan() {
@@ -516,11 +521,11 @@ function EditLayanan() {
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td><input type=button class='btn btn-danger btn' name=btnId".$data['id_siswa']." value=Ubah onclick=window.location.assign('index.php?pgy=enroll&page=editor&id=$data[id_siswa]')></td>
-                      <td>".$data['nama_siswa']."</td>
-                      <td>".$data['nama']."</td>
-                      <td>".$data['nama_rute']."</td>
-                      <td>".$data['layanan']."</td>
+                      <td><input type=button class='btn btn-danger btn' name=btnId" . $data['id_siswa'] . " value=Ubah onclick=window.location.assign('index.php?pgy=enroll&page=editor&id=$data[id_siswa]')></td>
+                      <td>" . $data['nama_siswa'] . "</td>
+                      <td>" . $data['nama'] . "</td>
+                      <td>" . $data['nama_rute'] . "</td>
+                      <td>" . $data['layanan'] . "</td>
                  </tr>";
         }
     }
@@ -532,84 +537,84 @@ function DeleteLayananView() {
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td><a class='btn btn-danger btn' href=\"index.php?pgy=enroll&do=delete&id=".$data['id_siswa']."\" onclick = \"if (! confirm('Anda Yakin Akan Menghapus?')) return false;\">Hapus</td>
-                      <td>".$data['nama_siswa']."</td>
-                      <td>".$data['nama']."</td>
-                      <td>".$data['nama_rute']."</td>
-                      <td>".$data['layanan']."</td>
+                      <td><a class='btn btn-danger btn' href=\"index.php?pgy=enroll&do=delete&id=" . $data['id_siswa'] . "\" onclick = \"if (! confirm('Anda Yakin Akan Menghapus?')) return false;\">Hapus</td>
+                      <td>" . $data['nama_siswa'] . "</td>
+                      <td>" . $data['nama'] . "</td>
+                      <td>" . $data['nama_rute'] . "</td>
+                      <td>" . $data['layanan'] . "</td>
                  </tr>";
         }
     }
 }
 
 function getValueLayanan($field, $id, $param) {
-    $qry = "SELECT ".$field." FROM siswa WHERE ".$param."='".$id."'";
+    $qry = "SELECT " . $field . " FROM siswa WHERE " . $param . "='" . $id . "'";
     $exec = mysql_query($qry);
     $data = mysql_fetch_array($exec);
     $text = $data[$field];
     return $text;
 }
 
-function getOptionSiswa(){
+function getOptionSiswa() {
     $qry = "SELECT id_siswa, nama_siswa FROM siswa WHERE id_supir=0 OR id_supir IS NULL AND id_rute=0 OR id_rute IS NULL ORDER BY id_siswa";
     $exec = mysql_query($qry);
-    if(mysql_num_rows($exec) == 0) {
-            echo "<option value=''>Tidak Ada Data</option>";
+    if (mysql_num_rows($exec) == 0) {
+        echo "<option value=''>Tidak Ada Data</option>";
     }
-    while($data=  mysql_fetch_array($exec)){
-        echo "<option value=". $data['id_siswa'] .">". $data['nama_siswa'] ."</option>";
+    while ($data = mysql_fetch_array($exec)) {
+        echo "<option value=" . $data['id_siswa'] . ">" . $data['nama_siswa'] . "</option>";
     }
 }
 
-function getOptionSupir(){
+function getOptionSupir() {
     $qry = "SELECT id_sopir, nama FROM sopir ORDER BY id_sopir";
     $exec = mysql_query($qry);
-    if(mysql_num_rows($exec) == 0) {
-            echo "<option value=''>Tidak Ada Data</option>";
+    if (mysql_num_rows($exec) == 0) {
+        echo "<option value=''>Tidak Ada Data</option>";
     }
-    while($data=  mysql_fetch_array($exec)){
-        echo "<option value=". $data['id_sopir'] .">". $data['nama'] ."</option>";
+    while ($data = mysql_fetch_array($exec)) {
+        echo "<option value=" . $data['id_sopir'] . ">" . $data['nama'] . "</option>";
     }
 }
 
-function getOptionRute(){
+function getOptionRute() {
     $qry = "SELECT id_rute, nama_rute FROM rute ORDER BY id_rute";
     $exec = mysql_query($qry);
-    if(mysql_num_rows($exec) == 0) {
-            echo "<option value=''>Tidak Ada Data</option>";
+    if (mysql_num_rows($exec) == 0) {
+        echo "<option value=''>Tidak Ada Data</option>";
     }
-    while($data=  mysql_fetch_array($exec)){
-        echo "<option value=". $data['id_rute'] .">". $data['nama_rute'] ."</option>";
+    while ($data = mysql_fetch_array($exec)) {
+        echo "<option value=" . $data['id_rute'] . ">" . $data['nama_rute'] . "</option>";
     }
 }
 
 function getLayananRute($id) {
-    $qry = "SELECT rute.id_rute, rute.nama_rute FROM siswa INNER JOIN rute ON siswa.id_rute=rute.id_rute WHERE siswa.id_siswa=".$id;
+    $qry = "SELECT rute.id_rute, rute.nama_rute FROM siswa INNER JOIN rute ON siswa.id_rute=rute.id_rute WHERE siswa.id_siswa=" . $id;
     $qryRute = "SELECT * FROM rute";
     $exec = mysql_query($qry);
-    while($data=mysql_fetch_array($exec)){
-        echo "<option value=". $data['id_rute'] .">". $data['nama_rute'] ."</option>"
-           . "<option value=''>-----------------------------------------------------</option>";
+    while ($data = mysql_fetch_array($exec)) {
+        echo "<option value=" . $data['id_rute'] . ">" . $data['nama_rute'] . "</option>"
+        . "<option value=''>-----------------------------------------------------</option>";
     }
     $execRute = mysql_query($qryRute);
-    while($rute=mysql_fetch_array($execRute)){
-        echo "<option value=". $rute['id_rute'] .">". $rute['nama_rute'] ."</option>";
+    while ($rute = mysql_fetch_array($execRute)) {
+        echo "<option value=" . $rute['id_rute'] . ">" . $rute['nama_rute'] . "</option>";
     }
     $text = $data['nama_rute'];
     return $text;
 }
 
 function getLayananSupir($id) {
-    $qry = "SELECT sopir.id_sopir, sopir.nama FROM siswa INNER JOIN sopir ON siswa.id_supir=sopir.id_sopir WHERE siswa.id_siswa=".$id;
+    $qry = "SELECT sopir.id_sopir, sopir.nama FROM siswa INNER JOIN sopir ON siswa.id_supir=sopir.id_sopir WHERE siswa.id_siswa=" . $id;
     $qrySupir = "SELECT * FROM sopir";
     $exec = mysql_query($qry);
-    while($data=mysql_fetch_array($exec)){
-        echo "<option value=". $data['id_sopir'] .">". $data['nama'] ."</option>"
-           . "<option value=''>-----------------------------------------------------</option>";
+    while ($data = mysql_fetch_array($exec)) {
+        echo "<option value=" . $data['id_sopir'] . ">" . $data['nama'] . "</option>"
+        . "<option value=''>-----------------------------------------------------</option>";
     }
     $execSupir = mysql_query($qrySupir);
-    while($supir=mysql_fetch_array($execSupir)) {
-        echo "<option value=". $supir['id_sopir'] .">". $supir['nama'] ."</option>";
+    while ($supir = mysql_fetch_array($execSupir)) {
+        echo "<option value=" . $supir['id_sopir'] . ">" . $supir['nama'] . "</option>";
     }
     $text = $data['nama'];
     return $text;
@@ -618,17 +623,18 @@ function getLayananSupir($id) {
 /* ------------------------------------------- END LAYANAN DAO ------------------------------------------- */
 
 /* ------------------------------------------- BEGIN TRANSAKSI DAO ------------------------------------------- */
-function fillTransaksi($state){
+
+function fillTransaksi($state) {
     $qry = "SELECT siswa.nama_siswa, siswa.layanan, sopir.nama, rute.nama_rute, rute.tarif FROM siswa INNER JOIN sopir ON siswa.id_supir=sopir.id_sopir INNER JOIN rute ON siswa.id_rute=rute.id_rute GROUP BY siswa.id_siswa ORDER BY siswa.id_siswa ASC";
     $exec = mysql_query($qry);
-    if($exec){
-        if($state == 0){
+    if ($exec) {
+        if ($state == 0) {
             echo "<script>javascript:alert('State 0')</script>";
         } else {
             echo "<script>javascript:alert('State !0')</script>";
         }
     }
-    
+
 //    echo "<div class=\"control-group\">
 //                                        <label class=\"control-label\" for=\"name\">Kode Pembayaran</label>
 //                                        <div class=\"controls\">
@@ -676,6 +682,7 @@ function fillTransaksi($state){
 //                                        </div>
 //                                    </div>";
 }
+
 function SaveTransaksi($layanan, $supir, $rute, $id) {
     $qry = "UPDATE siswa SET layanan='" . $layanan . "', id_supir='" . $supir . "', id_rute='" . $rute . "' WHERE id_siswa=" . $id;
     $exec = mysql_query($qry);
@@ -707,22 +714,22 @@ function LoadTransaksi() {
     $qry = "SELECT siswa.nama_siswa, siswa.layanan, sopir.nama, rute.nama_rute FROM siswa INNER JOIN sopir ON siswa.id_supir=sopir.id_sopir INNER JOIN rute ON siswa.id_rute=rute.id_rute GROUP BY siswa.id_siswa ORDER BY siswa.id_siswa ASC";
     $exec = mysql_query($qry);
     if ($exec) {
-        if(mysql_num_rows($exec) == 0) {
+        if (mysql_num_rows($exec) == 0) {
             echo "<tr>
                     <td colspan=7><center><h4>No Data</h4><center></td>
                   </tr>";
         }
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td>".$i."</td>
-                      <td>".$data['nama_siswa']."</td>
-                      <td>".$data['nama']."</td>
-                      <td>".$data['nama_rute']."</td>
-                      <td>".$data['layanan']."</td>
+                      <td>" . $i . "</td>
+                      <td>" . $data['nama_siswa'] . "</td>
+                      <td>" . $data['nama'] . "</td>
+                      <td>" . $data['nama_rute'] . "</td>
+                      <td>" . $data['layanan'] . "</td>
                  </tr>";
             $i++;
         }
-    } 
+    }
 }
 
 function EditTransaksi() {
@@ -731,11 +738,11 @@ function EditTransaksi() {
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td><input type=button class='btn btn-danger btn' name=btnId".$data['id_siswa']." value=Ubah onclick=window.location.assign('index.php?pgy=enroll&page=editor&id=$data[id_siswa]')></td>
-                      <td>".$data['nama_siswa']."</td>
-                      <td>".$data['nama']."</td>
-                      <td>".$data['nama_rute']."</td>
-                      <td>".$data['layanan']."</td>
+                      <td><input type=button class='btn btn-danger btn' name=btnId" . $data['id_siswa'] . " value=Ubah onclick=window.location.assign('index.php?pgy=enroll&page=editor&id=$data[id_siswa]')></td>
+                      <td>" . $data['nama_siswa'] . "</td>
+                      <td>" . $data['nama'] . "</td>
+                      <td>" . $data['nama_rute'] . "</td>
+                      <td>" . $data['layanan'] . "</td>
                  </tr>";
         }
     }
@@ -747,87 +754,111 @@ function DeleteTransaksiView() {
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td><a class='btn btn-danger btn' href=\"index.php?pgy=enroll&do=delete&id=".$data['id_siswa']."\" onclick = \"if (! confirm('Anda Yakin Akan Menghapus?')) return false;\">Hapus</td>
-                      <td>".$data['nama_siswa']."</td>
-                      <td>".$data['nama']."</td>
-                      <td>".$data['nama_rute']."</td>
-                      <td>".$data['layanan']."</td>
+                      <td><a class='btn btn-danger btn' href=\"index.php?pgy=enroll&do=delete&id=" . $data['id_siswa'] . "\" onclick = \"if (! confirm('Anda Yakin Akan Menghapus?')) return false;\">Hapus</td>
+                      <td>" . $data['nama_siswa'] . "</td>
+                      <td>" . $data['nama'] . "</td>
+                      <td>" . $data['nama_rute'] . "</td>
+                      <td>" . $data['layanan'] . "</td>
                  </tr>";
         }
     }
 }
 
 function getValueTransaksi($field, $id, $param) {
-    $qry = "SELECT ".$field." FROM siswa WHERE ".$param."='".$id."'";
+    $qry = "SELECT " . $field . " FROM siswa WHERE " . $param . "='" . $id . "'";
     $exec = mysql_query($qry);
     $data = mysql_fetch_array($exec);
     $text = $data[$field];
     return $text;
 }
 
-function getOptionSiswaTransaksi(){
+function getOptionSiswaTransaksi() {
     $qry = "SELECT id_siswa, nama_siswa FROM siswa WHERE id_supir=0 OR id_supir IS NULL AND id_rute=0 OR id_rute IS NULL ORDER BY id_siswa";
     $exec = mysql_query($qry);
-    if(mysql_num_rows($exec) == 0) {
-            echo "<option value=''>Tidak Ada Data</option>";
+    if (mysql_num_rows($exec) == 0) {
+        echo "<option value=''>Tidak Ada Data</option>";
     }
-    while($data=  mysql_fetch_array($exec)){
-        echo "<option value=". $data['id_siswa'] .">". $data['nama_siswa'] ."</option>";
+    while ($data = mysql_fetch_array($exec)) {
+        echo "<option value=" . $data['id_siswa'] . ">" . $data['nama_siswa'] . "</option>";
     }
 }
 
-function getOptionSupirTransaksi(){
+function getOptionSupirTransaksi() {
     $qry = "SELECT id_sopir, nama FROM sopir ORDER BY id_sopir";
     $exec = mysql_query($qry);
-    if(mysql_num_rows($exec) == 0) {
-            echo "<option value=''>Tidak Ada Data</option>";
+    if (mysql_num_rows($exec) == 0) {
+        echo "<option value=''>Tidak Ada Data</option>";
     }
-    while($data=  mysql_fetch_array($exec)){
-        echo "<option value=". $data['id_sopir'] .">". $data['nama'] ."</option>";
+    while ($data = mysql_fetch_array($exec)) {
+        echo "<option value=" . $data['id_sopir'] . ">" . $data['nama'] . "</option>";
     }
 }
 
-function getOptionTransaksi(){
+function getOptionTransaksi() {
     $qry = "SELECT id_rute, nama_rute FROM rute ORDER BY id_rute";
     $exec = mysql_query($qry);
-    if(mysql_num_rows($exec) == 0) {
-            echo "<option value=''>Tidak Ada Data</option>";
+    if (mysql_num_rows($exec) == 0) {
+        echo "<option value=''>Tidak Ada Data</option>";
     }
-    while($data=  mysql_fetch_array($exec)){
-        echo "<option value=". $data['id_rute'] .">". $data['nama_rute'] ."</option>";
+    while ($data = mysql_fetch_array($exec)) {
+        echo "<option value=" . $data['id_rute'] . ">" . $data['nama_rute'] . "</option>";
     }
 }
 
 function getRuteTransaksi($id) {
-    $qry = "SELECT rute.id_rute, rute.nama_rute FROM siswa INNER JOIN rute ON siswa.id_rute=rute.id_rute WHERE siswa.id_siswa=".$id;
+    $qry = "SELECT rute.id_rute, rute.nama_rute FROM siswa INNER JOIN rute ON siswa.id_rute=rute.id_rute WHERE siswa.id_siswa=" . $id;
     $qryRute = "SELECT * FROM rute";
     $exec = mysql_query($qry);
-    while($data=mysql_fetch_array($exec)){
-        echo "<option value=". $data['id_rute'] .">". $data['nama_rute'] ."</option>"
-           . "<option value=''>-----------------------------------------------------</option>";
+    while ($data = mysql_fetch_array($exec)) {
+        echo "<option value=" . $data['id_rute'] . ">" . $data['nama_rute'] . "</option>"
+        . "<option value=''>-----------------------------------------------------</option>";
     }
     $execRute = mysql_query($qryRute);
-    while($rute=mysql_fetch_array($execRute)){
-        echo "<option value=". $rute['id_rute'] .">". $rute['nama_rute'] ."</option>";
+    while ($rute = mysql_fetch_array($execRute)) {
+        echo "<option value=" . $rute['id_rute'] . ">" . $rute['nama_rute'] . "</option>";
     }
     $text = $data['nama_rute'];
     return $text;
 }
 
 function getSupirTransaksi($id) {
-    $qry = "SELECT sopir.id_sopir, sopir.nama FROM siswa INNER JOIN sopir ON siswa.id_supir=sopir.id_sopir WHERE siswa.id_siswa=".$id;
+    $qry = "SELECT sopir.id_sopir, sopir.nama FROM siswa INNER JOIN sopir ON siswa.id_supir=sopir.id_sopir WHERE siswa.id_siswa=" . $id;
     $qrySupir = "SELECT * FROM sopir";
     $exec = mysql_query($qry);
-    while($data=mysql_fetch_array($exec)){
-        echo "<option value=". $data['id_sopir'] .">". $data['nama'] ."</option>"
-           . "<option value=''>-----------------------------------------------------</option>";
+    while ($data = mysql_fetch_array($exec)) {
+        echo "<option value=" . $data['id_sopir'] . ">" . $data['nama'] . "</option>"
+        . "<option value=''>-----------------------------------------------------</option>";
     }
     $execSupir = mysql_query($qrySupir);
-    while($supir=mysql_fetch_array($execSupir)) {
-        echo "<option value=". $supir['id_sopir'] .">". $supir['nama'] ."</option>";
+    while ($supir = mysql_fetch_array($execSupir)) {
+        echo "<option value=" . $supir['id_sopir'] . ">" . $supir['nama'] . "</option>";
     }
     $text = $data['nama'];
     return $text;
 }
 
 /* ------------------------------------------- END TRANSAKSI DAO ------------------------------------------- */
+
+/* ------------------------------------------- START USER DAO ------------------------------------------- */
+
+function SaveUser($usernames, $password, $nama, $role, $email, $checked) {
+//    $checked = $_POST['checkbox'];
+
+    echo $checked;
+//    die();
+    foreach ($checked as $idChecbox) {
+        $qry = "INSERT INTO user(username, password, role, id_hak_akses, email, nama)"
+                . " VALUES('" . $usernames . "','" . $password . "','" . $role . "','" . $idChecbox . "','" . $email . "','" . $nama . "')";
+        $exec = mysql_query($qry);
+    }
+    if ($exec) {
+        echo "<script>javascript:alert('Penyimpanan Data User Berhasil')</script>";
+        echo "<script>javascript:window.location.assign('index.php?pgy=user&page=view')</script>";
+    } else {
+        echo "<script>javascript:alert('Penyimpanan Data User Gagal')</script>";
+        echo "<script>javascript:history.go(-1)</script>";
+    }
+    return $exec;
+}
+
+/* ------------------------------------------- END USER DAO ------------------------------------------- */

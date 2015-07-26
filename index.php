@@ -174,9 +174,23 @@
             } else if ($admin == 'laporan-laba') {
                 include 'provit.php';
             } else if ($admin == 'user-manage') {
-                include 'user.php';
+                switch ($act) {                    
+                    case "save" :
+                        $usernames = $_POST['username'];
+                        $password = $_POST['password'];
+                        $nama = $_POST['name'];
+                        $email = $_POST['email'];
+                        $role = $_POST['user_role'];
+                        $checked = $_POST['checkbox'];
+                        SaveUser($usernames, $password, $nama, $role, $email, $checked);
+                    
+                    default :
+                        include 'user.php';
+                }
             } else if ($admin == 'profile') {
                 include 'profile.php';
+            } else if ($admin == 'layout') {
+                include 'layout.php';
             } else if ($admin == 'transaksi') {
                 switch ($act) {
                     case "autofill":
@@ -201,6 +215,8 @@
                     default :
                         include 'transaction.php';
                 }
+            } else if ($admin == 'logout') {
+                include 'logout.php';
             }
         } else {
             echo "<script>javascript:window.location.replace('index.php?pgy=home');</script>";

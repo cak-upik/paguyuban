@@ -5,31 +5,7 @@
                 <i class="icon-reorder"></i>
             </a>
             <?php
-            $getPage = $_GET['pgy'];
-            $active = "";
-//            if ($getPage == "home") {
-//                $active = "class=\"active\"";
-//            } else if ($getPage == 'siswa') {
-//                $active = "class=\"active\"";
-//            } else if ($getPage == 'sopir') {
-//                $active = "class=\"active\"";
-//            } else if ($getPage == 'pegawai') {
-//                $active = "class=\"active\"";
-//            } else if ($getPage == 'rute') {
-//                $active = "class=\"active\"";
-//            } else if ($getPage == 'pembayaran-siswa') {
-//                $active = "class=\"active\"";
-//            } else if ($getPage == 'pembayaran-sopir') {
-//                $active = "class=\"active\"";
-//            } else if ($getPage == 'laporan-pembayaran') {
-//                $active = "class=\"active\"";
-//            } else if ($getPage == 'laporan-laba') {
-//                $active = "class=\"active\"";
-//            } else if ($getPage == 'user-manage') {
-//                $active = "class=\"active\"";
-//            } else if ($getPage == 'profile') {
-//                $active = "class=\"active\"";
-//            }
+            
             ?>
             <div class="subnav-collapse collapse">
                 <ul class="mainnav">
@@ -85,7 +61,7 @@
                         <ul class="dropdown-menu">
                             <li <?php echo $active ?>><a href="index.php?pgy=user-manage&page=view">User</a></li>
                             <li <?php echo $active ?>><a href="index.php?pgy=profile&page=view">Hak Akses</a></li>
-                            <li <?php echo $active ?>><a href="index.php?pgy=laporan-laba&page=view">Paguyuban</a></li>
+                            <li <?php echo $active ?>><a href="index.php?pgy=layout&page=view">Paguyuban</a></li>
                         </ul> 				
                     </li>
                     <!--                    <li class="dropdown">					
