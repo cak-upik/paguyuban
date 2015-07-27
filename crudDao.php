@@ -842,13 +842,10 @@ function getSupirTransaksi($id) {
 /* ------------------------------------------- START USER DAO ------------------------------------------- */
 
 function SaveUser($usernames, $password, $nama, $role, $email, $checked) {
-//    $checked = $_POST['checkbox'];
-
-    echo $checked;
-//    die();
-    foreach ($checked as $idChecbox) {
+    $checked = $_POST['checkboxs'];
+    foreach ($checked as $idCheckbox) {
         $qry = "INSERT INTO user(username, password, role, id_hak_akses, email, nama)"
-                . " VALUES('" . $usernames . "','" . $password . "','" . $role . "','" . $idChecbox . "','" . $email . "','" . $nama . "')";
+                . " VALUES('" . $usernames . "','" . $password . "','" . $role . "','" . $idCheckbox . "','" . $email . "','" . $nama . "')";
         $exec = mysql_query($qry);
     }
     if ($exec) {

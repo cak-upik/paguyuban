@@ -180,8 +180,8 @@
                         $password = $_POST['password'];
                         $nama = $_POST['name'];
                         $email = $_POST['email'];
-                        $role = $_POST['user_role'];
-                        $checked = $_POST['checkbox'];
+                        $role = $_POST['role'];
+                        $checked = $_POST['checkboxs'];
                         SaveUser($usernames, $password, $nama, $role, $email, $checked);
                     
                     default :

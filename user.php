@@ -86,35 +86,35 @@ if (isset($_GET['page'])) {
                                                 <div class="control-group">											
                                                     <label class="control-label" for="username">Username</label>
                                                     <div class="controls">
-                                                        <input type="text" class="input-large disabled" id="username" name="username" value="" disabled="" />
+                                                        <input type="text" class="input-large disabled" id="username" name="username"/>
                                                         <p class="help-block">Your username is for logging in and cannot be changed.</p>
                                                     </div> <!-- /controls -->				
                                                 </div> <!-- /control-group -->
                                                 <div class="control-group">											
                                                     <label class="control-label" for="firstname">Name</label>
                                                     <div class="controls">
-                                                        <input type="text" class="input-large" id="name" name="name" value="" />
+                                                        <input type="text" class="input-large" id="name" name="name"/>
                                                     </div> <!-- /controls -->				
                                                 </div> <!-- /control-group -->
                                                 <div class="control-group">											
                                                     <label class="control-label" for="email">Email Address</label>
                                                     <div class="controls">
-                                                        <input type="text" class="input-large" name="email" id="email" value="" />
+                                                        <input type="text" class="input-large" name="email" id="email"/>
                                                     </div> <!-- /controls -->				
                                                 </div> <!-- /control-group -->
                                                 <div class="control-group">											
                                                     <label class="control-label" for="password1">Password</label>
                                                     <div class="controls">
-                                                        <input type="password" class="input-large" name="password" id="password1" value="" />
+                                                        <input type="password" class="input-large" name="password" id="password1"/>
                                                     </div> <!-- /controls -->				
                                                 </div> <!-- /control-group -->
                                                 <div class="control-group">											
                                                     <label class="control-label" for="user_role">User Role</label>
                                                     <div class="controls">
                                                         <select name="role">
-                                                            <option value="1">Superadmin</option>
-                                                            <option value="2">Admin</option>
-                                                            <option value="3">User</option>
+                                                            <option value="superadmin">Superadmin</option>
+                                                            <option value="admin">Admin</option>
+                                                            <option value="user">User</option>
                                                         </select>                                                            
                                                     </div> <!-- /controls -->				
                                                 </div> <!-- /control-group -->
@@ -133,7 +133,7 @@ if (isset($_GET['page'])) {
                                                                 $q = mysql_query("select * from hak_akses");
                                                                 while ($row = mysql_fetch_array($q)) {
                                                                     ?>
-                                                                    <label class="checkbox"><input type="checkbox" name="checkbox" value="<?php echo $row['id_hak_akses'] ?>"> <?php echo $row['nama_hak_akses'] ?></label>
+                                                                    <label class="checkbox"><input type="checkbox" name="checkboxs[]" value="<?php echo $row['id_hak_akses'] ?>"> <?php echo $row['nama_hak_akses'] ?></label>
                                                                 <?php } ?>
                                                             </div> <!-- /controls -->				
                                                         </div> <!-- /control-group -->
