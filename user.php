@@ -74,119 +74,75 @@ if (isset($_GET['page'])) {
                         <div class="widget stacked ">
                             <div class="widget-header">
                                 <i class="icon-user"></i>
-                                <h3>Your Account</h3>
+                                <h3>User </h3>
                             </div> <!-- /widget-header -->
                             <div class="widget-content">
                                 <div class="tabbable">
-                                    <ul class="nav nav-tabs">
-                                        <li class="active">
-                                            <a href="#profile" data-toggle="tab">Profile</a>
-                                        </li>
-                                        <li><a href="#settings" data-toggle="tab">Settings</a></li>
-                                    </ul>
                                     <br />
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="profile">
-                                            <form id="edit-profile" class="form-horizontal" />
+                                            <form id="edit-profile" class="form-horizontal" method="post" action="index.php?pgy=user-manage&do=save"  />
                                             <fieldset>
                                                 <div class="control-group">											
                                                     <label class="control-label" for="username">Username</label>
                                                     <div class="controls">
-                                                        <input type="text" class="input-medium disabled" id="username" value="jumpstartui" disabled="" />
+                                                        <input type="text" class="input-large disabled" id="username" name="username" value="" disabled="" />
                                                         <p class="help-block">Your username is for logging in and cannot be changed.</p>
                                                     </div> <!-- /controls -->				
                                                 </div> <!-- /control-group -->
                                                 <div class="control-group">											
-                                                    <label class="control-label" for="firstname">First Name</label>
+                                                    <label class="control-label" for="firstname">Name</label>
                                                     <div class="controls">
-                                                        <input type="text" class="input-medium" id="firstname" value="Rod" />
-                                                    </div> <!-- /controls -->				
-                                                </div> <!-- /control-group -->
-                                                <div class="control-group">											
-                                                    <label class="control-label" for="lastname">Last Name</label>
-                                                    <div class="controls">
-                                                        <input type="text" class="input-medium" id="lastname" value="Howard" />
+                                                        <input type="text" class="input-large" id="name" name="name" value="" />
                                                     </div> <!-- /controls -->				
                                                 </div> <!-- /control-group -->
                                                 <div class="control-group">											
                                                     <label class="control-label" for="email">Email Address</label>
                                                     <div class="controls">
-                                                        <input type="text" class="input-large" id="email" value="rod.howard@example.com" />
+                                                        <input type="text" class="input-large" name="email" id="email" value="" />
                                                     </div> <!-- /controls -->				
                                                 </div> <!-- /control-group -->
-                                                <br /><br />
                                                 <div class="control-group">											
                                                     <label class="control-label" for="password1">Password</label>
                                                     <div class="controls">
-                                                        <input type="password" class="input-medium" id="password1" value="password" />
+                                                        <input type="password" class="input-large" name="password" id="password1" value="" />
                                                     </div> <!-- /controls -->				
                                                 </div> <!-- /control-group -->
                                                 <div class="control-group">											
-                                                    <label class="control-label" for="password2">Confirm</label>
+                                                    <label class="control-label" for="user_role">User Role</label>
                                                     <div class="controls">
-                                                        <input type="password" class="input-medium" id="password2" value="password" />
+                                                        <select name="role">
+                                                            <option value="1">Superadmin</option>
+                                                            <option value="2">Admin</option>
+                                                            <option value="3">User</option>
+                                                        </select>                                                            
                                                     </div> <!-- /controls -->				
                                                 </div> <!-- /control-group -->
                                                 <br />
+
+                                                <div class="widget stacked ">
+                                                    <div class="widget-header">
+                                                        <i class="icon-user"></i>
+                                                        <h3>User Permission </h3>
+                                                    </div> 
+                                                    <div class="widget-content">
+                                                        <div class="control-group">						
+                                                            <!--<label class="checkbox">Master</label>-->					
+                                                            <div class="checkbox">
+                                                                <?php
+                                                                $q = mysql_query("select * from hak_akses");
+                                                                while ($row = mysql_fetch_array($q)) {
+                                                                    ?>
+                                                                    <label class="checkbox"><input type="checkbox" name="checkbox" value="<?php echo $row['id_hak_akses'] ?>"> <?php echo $row['nama_hak_akses'] ?></label>
+                                                                <?php } ?>
+                                                            </div> <!-- /controls -->				
+                                                        </div> <!-- /control-group -->
+                                                    </div>
+                                                </div>                                            
                                                 <div class="form-actions">
                                                     <button type="submit" class="btn btn-primary">Save</button> 
                                                     <button class="btn">Cancel</button>
                                                 </div> <!-- /form-actions -->
-                                            </fieldset>
-                                            </form>
-                                        </div>
-                                        <div class="tab-pane" id="settings">
-                                            <form id="edit-profile2" class="form-horizontal" />
-                                            <fieldset>
-                                                <div class="control-group">
-                                                    <label class="control-label" for="accounttype">Account Type</label>
-                                                    <div class="controls">
-                                                        <label class="radio">
-                                                            <input type="radio" name="accounttype" value="option1" checked="checked" id="accounttype" />
-                                                            POP3
-                                                        </label>
-                                                        <label class="radio">
-                                                            <input type="radio" name="accounttype" value="option2" />
-                                                            IMAP
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="control-group">
-                                                    <label class="control-label" for="accountusername">Account Username</label>
-                                                    <div class="controls">
-                                                        <input type="text" class="input-large" id="accountusername" value="rod.howard@example.com" />
-                                                        <p class="help-block">Leave blank to use your profile email address.</p>
-                                                    </div>
-                                                </div>
-                                                <div class="control-group">
-                                                    <label class="control-label" for="emailserver">Email Server</label>
-                                                    <div class="controls">
-                                                        <input type="text" class="input-large" id="emailserver" value="mail.example.com" />
-                                                    </div>
-                                                </div>
-                                                <div class="control-group">
-                                                    <label class="control-label" for="accountpassword">Password</label>
-                                                    <div class="controls">
-                                                        <input type="text" class="input-large" id="accountpassword" value="password" />
-                                                    </div>
-                                                </div>
-                                                <div class="control-group">
-                                                    <label class="control-label" for="accountadvanced">Advanced Settings</label>
-                                                    <div class="controls">
-                                                        <label class="checkbox">
-                                                            <input type="checkbox" name="accountadvanced" value="option1" checked="checked" id="accountadvanced" />
-                                                            User encrypted connection when accessing this server
-                                                        </label>
-                                                        <label class="checkbox">
-                                                            <input type="checkbox" name="accounttype" value="option2" />
-                                                            Download all message on connection
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <br />
-                                                <div class="form-actions">
-                                                    <button type="submit" class="btn btn-primary">Save</button> <button class="btn">Cancel</button>
-                                                </div>
                                             </fieldset>
                                             </form>
                                         </div>

@@ -4,7 +4,7 @@
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                 <i class="icon-cog"></i>
             </a>
-            <a class="brand" href="./index-bak.html">
+            <a class="brand" href="index.php?pgy=home">
                 E-Car <br>
                 Antar Jemput Siswa
                 Raudhatul Jannah
@@ -12,19 +12,19 @@
             </a>
             <div class="nav-collapse collapse">
                 <ul class="nav pull-right">
-                    <li class="dropdown">
+<!--                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="icon-cog"></i>
                             Settings
                             <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
+                        </a>-->
+<!--                        <ul class="dropdown-menu">
                             <li><a href="javascript:;">Account Settings</a></li>
                             <li><a href="javascript:;">Privacy Settings</a></li>
                             <li class="divider"></li>
                             <li><a href="javascript:;">Help</a></li>
-                        </ul>
-                    </li>
+                        </ul>-->
+                    <!--</li>-->
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="icon-user"></i> 
@@ -33,10 +33,10 @@
                         </a>
 
                         <ul class="dropdown-menu">
-                            <li><a href="javascript:;">My Profile</a></li>
-                            <li><a href="javascript:;">My Groups</a></li>
+                            <li><a href="">My Profile</a></li>
+                            <!--<li><a href="javascript:;">My Groups</a></li>-->
                             <li class="divider"></li>
-                            <li><a href="javascript:;">Logout</a></li>
+                            <li><a href="index.php?pgy=logout">Logout</a></li>
                         </ul>
                     </li>
                 </ul>

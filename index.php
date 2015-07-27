@@ -10,12 +10,12 @@
         <link href="./css/bootstrap.min.css" rel="stylesheet" />
         <link href="./css/bootstrap-responsive.min.css" rel="stylesheet" />
 
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet" />
+        <!--<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet" />-->
         <link href="./css/font-awesome.min.css" rel="stylesheet" />        
 
         <link href="./css/ui-lightness/jquery-ui-1.10.0.custom.min.css" rel="stylesheet" />
-        <link href="./css/plugins/jquery-min-ui.css" rel="stylesheet" />
-        <link href="./css/plugins/jquery-ui.css" rel="stylesheet" />
+        <!--        <link href="./css/plugins/jquery-min-ui.css" rel="stylesheet" />
+                <link href="./css/plugins/jquery-ui.css" rel="stylesheet" />-->
 
         <link href="./css/base-admin-2.css" rel="stylesheet" />
         <link href="./css/base-admin-2-responsive.css" rel="stylesheet" />
@@ -34,12 +34,11 @@
     <body>
 
         <?php
-        
         include './header.php';
         include './menu.php';
         include './connection.php';
         include './crudDao.php';
-        
+
         session_start();
         $admin = $_GET['pgy'];
         $act = $_GET['do'];
@@ -91,7 +90,7 @@
                         $nomobil = $_POST['nomobil'];
                         $merk = $_POST['merk'];
                         $id = $_POST['idSupir'];
-                        UpdateSupir($namaVal, $alamat, $kota, $telp, $sim, $nomobil, $merk,$id);
+                        UpdateSupir($namaVal, $alamat, $kota, $telp, $sim, $nomobil, $merk, $id);
                     case "delete" :
                         $idSupir = $_GET['id'];
                         DeleteSupir($idSupir);
@@ -144,7 +143,7 @@
                     default :
                         include 'route.php';
                 }
-            } else if($admin == 'enroll') {
+            } else if ($admin == 'enroll') {
                 switch ($act) {
                     case "save" :
                         $siswa = $_POST['siswa'];
@@ -175,9 +174,23 @@
             } else if ($admin == 'laporan-laba') {
                 include 'provit.php';
             } else if ($admin == 'user-manage') {
-                include 'user.php';
+                switch ($act) {                    
+                    case "save" :
+                        $usernames = $_POST['username'];
+                        $password = $_POST['password'];
+                        $nama = $_POST['name'];
+                        $email = $_POST['email'];
+                        $role = $_POST['user_role'];
+                        $checked = $_POST['checkbox'];
+                        SaveUser($usernames, $password, $nama, $role, $email, $checked);
+                    
+                    default :
+                        include 'user.php';
+                }
             } else if ($admin == 'profile') {
                 include 'profile.php';
+            } else if ($admin == 'layout') {
+                include 'layout.php';
             } else if ($admin == 'transaksi') {
                 switch ($act) {
                     case "autofill":
@@ -202,6 +215,8 @@
                     default :
                         include 'transaction.php';
                 }
+            } else if ($admin == 'logout') {
+                include 'logout.php';
             }
         } else {
             echo "<script>javascript:window.location.replace('index.php?pgy=home');</script>";
