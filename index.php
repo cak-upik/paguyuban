@@ -171,7 +171,7 @@
             } else if ($admin == 'pembayaran-sopir') {
                 include 'payment_driver.php';
             } else if ($admin == 'laporan-pembayaran') {
-                include 'report_payment.php';
+                include 'laporanPembayaran.php';
             } else if ($admin == 'laporan-laba') {
                 include 'provit.php';
             } else if ($admin == 'user-manage') {
