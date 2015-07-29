@@ -624,94 +624,35 @@ function getLayananSupir($id) {
 
 /* ------------------------------------------- BEGIN TRANSAKSI DAO ------------------------------------------- */
 
-function fillTransaksi($state) {
-    $qry = "SELECT siswa.nama_siswa, siswa.layanan, sopir.nama, rute.nama_rute, rute.tarif FROM siswa INNER JOIN sopir ON siswa.id_supir=sopir.id_sopir INNER JOIN rute ON siswa.id_rute=rute.id_rute GROUP BY siswa.id_siswa ORDER BY siswa.id_siswa ASC";
-    $exec = mysql_query($qry);
-    if ($exec) {
-        if ($state == 0) {
-            echo "<script>javascript:alert('State 0')</script>";
-        } else {
-            echo "<script>javascript:alert('State !0')</script>";
-        }
-    }
-
-//    echo "<div class=\"control-group\">
-//                                        <label class=\"control-label\" for=\"name\">Kode Pembayaran</label>
-//                                        <div class=\"controls\">
-//                                            <input type=\"text\" class=\"input-xxlarge\" name=\"nama\" id=\"nama\" value=\"trx-00001\" disabled/>
-//                                        </div>
-//                                    </div>
-//                                    <div class=\"control-group\">
-//                                        <label class=\"control-label\" for=\"kelas\">Nama Supir</label>
-//                                        <div class=\"controls\">
-//                                            <input type=\"text\" class=\"input-large\" name=\"kelas\" id=\"kelas\" />
-//                                        </div>
-//                                    </div>
-//                                    <div class=\"control-group\">
-//                                        <label class=\"control-label\" for=\"kelas\">Nama Siswa</label>
-//                                        <div class=\"controls\">
-//                                            <input type=\"text\" class=\"input-large\" name=\"kelas\" id=\"kelas\" />
-//                                        </div>
-//                                    </div>
-//                                    <div class=\"control-group\">
-//                                        <label class=\"control-label\" for=\"kelas\">Rute</label>
-//                                        <div class=\"controls\">
-//                                            <input type=\"text\" class=\"input-large\" name=\"kelas\" id=\"kelas\" />
-//                                        </div>
-//                                    </div>
-//                                    <div class=\"control-group\">
-//                                        <label class=\"control-label\" for=\"status\">Jenis Layanan</label>
-//                                        <div class=\"controls\">
-//                                            <select id=\"status\" name=\"status\">
-//                                                <option value=\"\" />Select...
-//                                                <option value=\"oneway\" />One-Way
-//                                                <option value=\"twoway\" />Two-Way
-//                                            </select>
-//                                        </div>
-//                                    </div>
-//                                    <div class=\"control-group\">
-//                                        <label class=\"control-label\" for=\"kelas\">Tarif Layanan</label>
-//                                        <div class=\"controls\">
-//                                            <input type=\"text\" class=\"input-large\" name=\"kelas\" id=\"kelas\" value=\"Rp 100.000,00\" disabled/>
-//                                        </div>
-//                                    </div>
-//                                    <div class=\"control-group\">
-//                                        <label class=\"control-label\" for=\"kelas\">Pembayaran</label>
-//                                        <div class=\"controls\">
-//                                            <input type=\"text\" class=\"input-large\" name=\"kelas\" id=\"kelas\" />
-//                                        </div>
-//                                    </div>";
-}
-
-function SaveTransaksi($layanan, $supir, $rute, $id) {
-    $qry = "UPDATE siswa SET layanan='" . $layanan . "', id_supir='" . $supir . "', id_rute='" . $rute . "' WHERE id_siswa=" . $id;
-    $exec = mysql_query($qry);
-    if ($exec) {
-        echo "<script>javascript:alert('Penyimpanan Data Layanan Berhasil')</script>";
-        echo "<script>javascript:window.location.assign('index.php?pgy=enroll&page=view')</script>";
-    } else {
-        echo "<script>javascript:alert('Penyimpanan Data Layanan Gagal')</script>";
-        echo "<script>javascript:history.go(-1)</script>";
-    }
+function SaveTransaksi($kode, $siswa, $supir, $rute, $tgl, $total, $cli, $cls) {
+    $qry = "INSERT INTO transaksi(kode_bayar, id_siswa, id_sopir, id_rute, tanggal_bayar, total_bayar, closing_intern, closing_supir) VALUES('" . $kode . "', '" . $siswa . "', '" . $supir . "', '" . $rute . "', '" . $tgl . "', '" . $total . "', '" . $cli . "', '" . $cls . "')";
+    echo $qry;
+//    $exec = mysql_query($qry);
+//    if ($exec) {
+//        echo "<script>javascript:alert('Penyimpanan Data Transaksi Berhasil')</script>";
+//        echo "<script>javascript:window.location.assign('index.php?pgy=transaksi&page=view')</script>";
+//    } else {
+//        echo "<script>javascript:alert('Penyimpanan Data Transaksi Gagal')</script>";
+//        echo "<script>javascript:history.go(-1)</script>";
+//    }
     return $exec;
 }
 
 function DeleteTransaksi($id) {
-    $qry = "UPDATE siswa SET layanan='', id_supir='', id_rute='' WHERE id_siswa=" . $id;
+    $qry = "DELETE FROM transaksi WHERE id_transaksi=" . $id;
     $exec = mysql_query($qry);
     if ($exec) {
-        echo "<script>javascript:alert('Delete Data Layanan Berhasil')</script>";
-        echo "<script>javascript:window.location.assign('index.php?pgy=enroll&page=view')</script>";
+        echo "<script>javascript:alert('Delete Data Transaksi Berhasil')</script>";
+        echo "<script>javascript:window.location.assign('index.php?pgy=transaksi&page=view')</script>";
     } else {
-        echo "<script>javascript:alert('Delete Data Layanan Gagal')</script>";
+        echo "<script>javascript:alert('Delete Data Transaksi Gagal')</script>";
         echo "<script>javascript:history.go(-1)</script>";
     }
     return $exec;
 }
 
 function LoadTransaksi() {
-    $i = 1;
-    $qry = "SELECT siswa.nama_siswa, siswa.layanan, sopir.nama, rute.nama_rute FROM siswa INNER JOIN sopir ON siswa.id_supir=sopir.id_sopir INNER JOIN rute ON siswa.id_rute=rute.id_rute GROUP BY siswa.id_siswa ORDER BY siswa.id_siswa ASC";
+    $qry = "SELECT siswa.nama_siswa, siswa.layanan, sopir.nama, rute.nama_rute, transaksi.kode_bayar, transaksi.tanggal_bayar, transaksi.total_bayar FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa INNER JOIN rute ON transaksi.id_rute=rute.id_rute GROUP BY transaksi.kode_bayar ORDER BY transaksi.kode_bayar ASC";
     $exec = mysql_query($qry);
     if ($exec) {
         if (mysql_num_rows($exec) == 0) {
@@ -721,51 +662,58 @@ function LoadTransaksi() {
         }
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td>" . $i . "</td>
-                      <td>" . $data['nama_siswa'] . "</td>
+                      <td>" . $data['kode_bayar'] . "</td>
                       <td>" . $data['nama'] . "</td>
+                      <td>" . $data['nama_siswa'] . "</td>
                       <td>" . $data['nama_rute'] . "</td>
+                      <td>" . $data['tanggal_bayar'] . "</td>
                       <td>" . $data['layanan'] . "</td>
+                      <td>" . $data['total_bayar'] . "</td>
                  </tr>";
-            $i++;
         }
     }
 }
 
 function EditTransaksi() {
-    $qry = "SELECT siswa.id_siswa, siswa.nama_siswa, siswa.layanan, sopir.nama, rute.nama_rute FROM siswa INNER JOIN sopir ON siswa.id_supir=sopir.id_sopir INNER JOIN rute ON siswa.id_rute=rute.id_rute GROUP BY siswa.id_siswa ORDER BY siswa.id_siswa ASC";
+    $qry = "SELECT siswa.nama_siswa, siswa.layanan, sopir.nama, rute.nama_rute, transaksi.kode_bayar, transaksi.tanggal_bayar, transaksi.total_bayar FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa INNER JOIN rute ON transaksi.id_rute=rute.id_rute GROUP BY transaksi.kode_bayar ORDER BY transaksi.kode_bayar ASC";
     $exec = mysql_query($qry);
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td><input type=button class='btn btn-danger btn' name=btnId" . $data['id_siswa'] . " value=Ubah onclick=window.location.assign('index.php?pgy=enroll&page=editor&id=$data[id_siswa]')></td>
-                      <td>" . $data['nama_siswa'] . "</td>
+                      <td><input type=button class='btn btn-danger btn' name=btnId" . $data['id_transaksi'] . " value=Ubah onclick=window.location.assign('index.php?pgy=transaksi&page=editor&id=$data[id_transaksi]')></td>
+                      <td>" . $data['kode_bayar'] . "</td>
                       <td>" . $data['nama'] . "</td>
+                      <td>" . $data['nama_siswa'] . "</td>
                       <td>" . $data['nama_rute'] . "</td>
+                      <td>" . $data['tanggal_bayar'] . "</td>
                       <td>" . $data['layanan'] . "</td>
+                      <td>" . $data['total_bayar'] . "</td>
                  </tr>";
         }
     }
 }
 
 function DeleteTransaksiView() {
-    $qry = "SELECT siswa.id_siswa, siswa.nama_siswa, siswa.layanan, sopir.nama, rute.nama_rute FROM siswa INNER JOIN sopir ON siswa.id_supir=sopir.id_sopir INNER JOIN rute ON siswa.id_rute=rute.id_rute GROUP BY siswa.id_siswa ORDER BY siswa.id_siswa ASC";
+    $qry = "SELECT siswa.nama_siswa, siswa.layanan, sopir.nama, rute.nama_rute, transaksi.kode_bayar, transaksi.tanggal_bayar, transaksi.total_bayar FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa INNER JOIN rute ON transaksi.id_rute=rute.id_rute GROUP BY transaksi.kode_bayar ORDER BY transaksi.kode_bayar ASC";
     $exec = mysql_query($qry);
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td><a class='btn btn-danger btn' href=\"index.php?pgy=enroll&do=delete&id=" . $data['id_siswa'] . "\" onclick = \"if (! confirm('Anda Yakin Akan Menghapus?')) return false;\">Hapus</td>
-                      <td>" . $data['nama_siswa'] . "</td>
+                      <td><a class='btn btn-danger btn' href=\"index.php?pgy=transaksi&do=delete&id=" . $data['id_transaksi'] . "\" onclick = \"if (! confirm('Anda Yakin Akan Menghapus?')) return false;\">Hapus</td>
+                      <td>" . $data['kode_bayar'] . "</td>
                       <td>" . $data['nama'] . "</td>
+                      <td>" . $data['nama_siswa'] . "</td>
                       <td>" . $data['nama_rute'] . "</td>
+                      <td>" . $data['tanggal_bayar'] . "</td>
                       <td>" . $data['layanan'] . "</td>
+                      <td>" . $data['total_bayar'] . "</td>
                  </tr>";
         }
     }
 }
 
-function getValueTransaksi($field, $id, $param) {
-    $qry = "SELECT " . $field . " FROM siswa WHERE " . $param . "='" . $id . "'";
+function getValueTransaksi($field, $id) {
+    $qry = "SELECT siswa.nama_siswa, siswa.layanan, sopir.nama, rute.nama_rute, transaksi.kode_bayar, transaksi.tanggal_bayar, transaksi.total_bayar FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa INNER JOIN rute ON transaksi.id_rute=rute.id_rute GROUP BY transaksi.kode_bayar WHERE id_transaksi=" . $id . " ORDER BY transaksi.kode_bayar ASC";
     $exec = mysql_query($qry);
     $data = mysql_fetch_array($exec);
     $text = $data[$field];

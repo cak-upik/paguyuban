@@ -140,8 +140,8 @@ if (isset($_GET['page'])) {
                                                     </div>
                                                 </div>                                            
                                                 <div class="form-actions">
-                                                    <button type="submit" class="btn btn-primary">Save</button> 
-                                                    <button class="btn">Cancel</button>
+                                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                                    <input type=button class='btn btn-danger btn' value=Batal onclick=window.location.assign('index.php?pgy=user-manage&page=view')>                                                
                                                 </div> <!-- /form-actions -->
                                             </fieldset>
                                             </form>

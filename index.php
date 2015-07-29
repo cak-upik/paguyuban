@@ -193,15 +193,16 @@
                 include 'layout.php';
             } else if ($admin == 'transaksi') {
                 switch ($act) {
-                    case "autofill":
-                        fillTransaksi(1);
-//                    case "save" :
-//                        $siswa = $_POST['siswa'];
-//                        $supir = $_POST['supir'];
-//                        $rute = $_POST['rute'];
-//                        $layanan = $_POST['layanan'];
-//                        $id = $_POST['siswa'];
-//                        SaveLayanan($layanan, $supir, $rute, $id);
+                    case "save" :
+                        $kode = $_POST['kode'];
+                        $siswa = $_POST['student'];
+                        $supir = $_POST['sopir'];
+                        $rute = $_POST['rute'];
+                        $tgl = $_POST['tanggal'];
+                        $id = $_POST['siswa'];
+                        $cli = $_POST['closingInt'];
+                        echo $cli;
+                        SaveTransaksi($kode, $siswa, $supir, $rute, $tgl, $total, $cli, $cls);
 //                    case "update" :
 //                        $siswa = $_POST['siswa'];
 //                        $supir = $_POST['supir'];
