@@ -16,7 +16,10 @@
         <link href="./css/ui-lightness/jquery-ui-1.10.0.custom.min.css" rel="stylesheet" />
         <!--        <link href="./css/plugins/jquery-min-ui.css" rel="stylesheet" />
                 <link href="./css/plugins/jquery-ui.css" rel="stylesheet" />-->
-
+        <link href="./js/plugins/msgGrowl/css/msgGrowl.css" rel="stylesheet" />
+        <link href="./js/plugins/lightbox/themes/evolution-dark/jquery.lightbox.css" rel="stylesheet" />	
+        <link href="./js/plugins/msgbox/jquery.msgbox.css" rel="stylesheet" />
+        
         <link href="./css/base-admin-2.css" rel="stylesheet" />
         <link href="./css/base-admin-2-responsive.css" rel="stylesheet" />
 
@@ -174,7 +177,7 @@
             } else if ($admin == 'laporan-laba') {
                 include 'provit.php';
             } else if ($admin == 'user-manage') {
-                switch ($act) {                    
+                switch ($act) {
                     case "save" :
                         $usernames = $_POST['username'];
                         $password = $_POST['password'];
@@ -183,7 +186,7 @@
                         $role = $_POST['role'];
                         $checked = $_POST['checkboxs'];
                         SaveUser($usernames, $password, $nama, $role, $email, $checked);
-                    
+
                     default :
                         include 'user.php';
                 }
@@ -247,9 +250,11 @@
 
         <script src="./js/plugins/flot/jquery.flot.js"></script>
         <script src="./js/plugins/flot/jquery.flot.pie.js"></script>
-        <script src="./js/plugins/flot/jquery.flot.resize.js"></script>
-
-        <script src="./js/Application.js"></script>
+        <script src="./js/plugins/flot/jquery.flot.resize.js"></script>      
+        
+        <script src="./js/Application.js"></script>        
+        
+        <!--<script src="./js/demo/notifications.js"></script>-->
 
         <script src="./js/charts/area.js"></script>
         <script src="./js/charts/donut.js"></script>
