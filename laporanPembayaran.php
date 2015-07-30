@@ -325,7 +325,7 @@ if (isset($_GET['page'])) {
                                         <label class="control-label" for="name">Nama Siswa</label>
                                         <label class="control-label" for="name">Nama Orang Tua</label>
                                         <label class="control-label" for="name">Alamat</label>
-                                        <label class="control-label" for="name">Telp. / Hp</label>
+                                        <label class="control-label" for="name">Telp / Hp</label>
                                         <label class="control-label" for="name">Kelas</label>
                                         <label class="control-label" for="name">Tarif</label>
                                         <label class="control-label" for="name">Sopir</label>
