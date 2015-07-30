@@ -197,25 +197,26 @@
             } else if ($admin == 'transaksi') {
                 switch ($act) {
                     case "save" :
-                        $kode = $_POST['kode'];
+                        $code = $_POST['kodeTrans'];
                         $siswa = $_POST['student'];
-                        $supir = $_POST['sopir'];
-                        $rute = $_POST['rute'];
-                        $tgl = $_POST['tanggal'];
+                        $supir = $_POST['id_supir'];
+                        $rute = $_POST['id_rute'];
+                        $tgl = date('Y-m-d', strtotime($_POST['tanggal']));
                         $id = $_POST['siswa'];
                         $cli = $_POST['closingInt'];
-                        echo $cli;
-                        SaveTransaksi($kode, $siswa, $supir, $rute, $tgl, $total, $cli, $cls);
-//                    case "update" :
-//                        $siswa = $_POST['siswa'];
-//                        $supir = $_POST['supir'];
-//                        $rute = $_POST['rute'];
-//                        $layanan = $_POST['layanan'];
-//                        $id = $_POST['idSiswa'];
-//                        SaveLayanan($layanan, $supir, $rute, $id);
-//                    case "delete" :
-//                        $id = $_GET['id'];
-//                        DeleteLayanan($id);
+                        $cls = $_POST['closingSupir'];
+                        $total = $_POST['payment'];
+                        SaveTransaksi($code, $siswa, $supir, $rute, $tgl, $total, $cli, $cls);
+                    case "update" :
+                        $siswa = $_POST['siswa'];
+                        $supir = $_POST['supir'];
+                        $rute = $_POST['rute'];
+                        $layanan = $_POST['layanan'];
+                        $id = $_POST['idSiswa'];
+                        SaveLayanan($layanan, $supir, $rute, $id);
+                    case "delete" :
+                        $id = $_GET['id'];
+                        DeleteLayanan($id);
                     default :
                         include 'transaction.php';
                 }

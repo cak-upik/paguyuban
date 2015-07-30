@@ -67,8 +67,8 @@ if (isset($_GET['page'])) {
                                     </div>
 
                                     <div class="form-actions">
-                                        <button type="submit" class="btn btn-Success btn">Simpan Data</button>&nbsp;&nbsp;
-                                        <a href="index.php?pgy=supir&page=view" class="btn">Batal</a>
+                                        <button type="submit" class="btn btn-success btn">Simpan Data</button>&nbsp;&nbsp;
+                                        <a href="index.php?pgy=supir&page=view" class="btn btn-danger btn">Batal</a>
                                     </div>
                                 </fieldset>
                                 </form>
@@ -102,10 +102,10 @@ if (isset($_GET['page'])) {
                                 <section id="tables">
                                     <h3>Data Supir</h3>
                                     <div class="form-actions">
-                                    <a href="index.php?pgy=supir&page=create" class="btn btn-primary btn">Tambah Supir</a>
-                                    <a href="index.php?pgy=supir&page=edit" class="btn btn-info btn">Edit Supir</a>
-                                    <a href="index.php?pgy=supir&page=delete" class="btn btn-danger btn">Hapus Supir</a>
-                                    
+                                        <a href="index.php?pgy=supir&page=create" class="btn btn-primary btn">Tambah Supir</a>
+                                        <a href="index.php?pgy=supir&page=edit" class="btn btn-info btn">Edit Supir</a>
+                                        <a href="index.php?pgy=supir&page=delete" class="btn btn-danger btn">Hapus Supir</a>
+
                                     </div>
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>
@@ -121,7 +121,7 @@ if (isset($_GET['page'])) {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php LoadSupir();?>
+                                            <?php LoadSupir(); ?>
                                         </tbody>
                                     </table>
                                     <br />
@@ -149,9 +149,9 @@ if (isset($_GET['page'])) {
                                 <section id="tables">
                                     <h3>Data Supir</h3>
                                     <div class="form-actions">
-                                    <a href="index.php?pgy=supir&page=create" class="btn btn-primary btn">Tambah Supir</a>
-                                    <a href="index.php?pgy=supir&page=edit" class="btn btn-info btn">Edit Supir</a>
-                                    <a href="index.php?pgy=supir&page=delete" class="btn btn-danger btn">Hapus Supir</a>
+                                        <a href="index.php?pgy=supir&page=create" class="btn btn-primary btn">Tambah Supir</a>
+                                        <a href="index.php?pgy=supir&page=edit" class="btn btn-info btn">Edit Supir</a>
+                                        <a href="index.php?pgy=supir&page=delete" class="btn btn-danger btn">Hapus Supir</a>
                                     </div>
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>
@@ -167,7 +167,7 @@ if (isset($_GET['page'])) {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php EditSupir();?>
+                                            <?php EditSupir(); ?>
                                         </tbody>
                                     </table>
                                     <br />
@@ -179,7 +179,7 @@ if (isset($_GET['page'])) {
             </div>
         </div>
         <?php
-    } else if($_GET['page'] == 'editor') {
+    } else if ($_GET['page'] == 'editor') {
         ?>
         <div class="main">
 
@@ -205,50 +205,50 @@ if (isset($_GET['page'])) {
                                     <div class="control-group">
                                         <label class="control-label" for="nama">Nama Supir</label>
                                         <div class="controls">
-                                            <input type="text" class="input-xxlarge" name="nama" id="nama" value='<?php echo getValueSupir("nama", $_GET['id'],"id_sopir")?>'/>
+                                            <input type="text" class="input-xxlarge" name="nama" id="nama" value='<?php echo getValueSupir("nama", $_GET['id'], "id_sopir") ?>'/>
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label" for="alamat">Alamat</label>
                                         <div class="controls">
-                                            <input type="text" class="input-large" name="alamat" id="alamat" value='<?php echo getValueSupir("alamat", $_GET['id'],"id_sopir")?>'/>
+                                            <input type="text" class="input-large" name="alamat" id="alamat" value='<?php echo getValueSupir("alamat", $_GET['id'], "id_sopir") ?>'/>
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label" for="kota">Kota</label>
                                         <div class="controls">
-                                            <input type="text" class="input-large" name="kota" id="kota" value='<?php echo getValueSupir("kota", $_GET['id'],"id_sopir")?>'/>
+                                            <input type="text" class="input-large" name="kota" id="kota" value='<?php echo getValueSupir("kota", $_GET['id'], "id_sopir") ?>'/>
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label" for="telp">No. Telp</label>
                                         <div class="controls">
-                                            <input type="text" class="input-large" name="telp" id="telp" value='<?php echo getValueSupir("no_tlp", $_GET['id'],"id_sopir")?>'/>
+                                            <input type="text" class="input-large" name="telp" id="telp" value='<?php echo getValueSupir("no_tlp", $_GET['id'], "id_sopir") ?>'/>
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label" for="sim">No. SIM</label>
                                         <div class="controls">
-                                            <textarea class="span4" name="sim" id="sim" rows="4"><?php echo getValueSupir("no_sim", $_GET['id'],"id_sopir")?></textarea>
+                                            <textarea class="span4" name="sim" id="sim" rows="4"><?php echo getValueSupir("no_sim", $_GET['id'], "id_sopir") ?></textarea>
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label" for="nomobil">No. Mobil</label>
                                         <div class="controls">
-                                            <input type="text" class="input-large" name="nomobil" id="nomobil" value='<?php echo getValueSupir("no_mobil", $_GET['id'],"id_sopir")?>' />
+                                            <input type="text" class="input-large" name="nomobil" id="nomobil" value='<?php echo getValueSupir("no_mobil", $_GET['id'], "id_sopir") ?>' />
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label" for="merk">Merk Mobil</label>
                                         <div class="controls">
-                                            <input type="text" class="input-large" name="merk" id="merk" value='<?php echo getValueSupir("merk_mobil", $_GET['id'],"id_sopir")?>' />
+                                            <input type="text" class="input-large" name="merk" id="merk" value='<?php echo getValueSupir("merk_mobil", $_GET['id'], "id_sopir") ?>' />
                                         </div>
                                     </div>
-                                    <input type="hidden" name="idSupir" id="idSupir" value=<?php echo $_GET['id']?>>
+                                    <input type="hidden" name="idSupir" id="idSupir" value=<?php echo $_GET['id'] ?>>
 
                                     <div class="form-actions">
-                                        <button type="submit" class="btn btn-Success btn">Simpan Data</button>&nbsp;&nbsp;
-                                        <a href="index.php?pgy=supir&page=view" class="btn">Batal</a>
+                                        <button type="submit" class="btn btn-success btn">Simpan Data</button>&nbsp;&nbsp;
+                                        <a href="index.php?pgy=supir&page=view" class="btn btn-danger btn">Batal</a>
                                     </div>
                                 </fieldset>
                                 </form>
@@ -282,9 +282,9 @@ if (isset($_GET['page'])) {
                                 <section id="tables">
                                     <h3>Data Supir</h3>
                                     <div class="form-actions">
-                                    <a href="index.php?pgy=supir&page=create" class="btn btn-primary btn">Tambah Supir</a>
-                                    <a href="index.php?pgy=supir&page=edit" class="btn btn-info btn">Edit Supir</a>
-                                    <a href="index.php?pgy=supir&page=delete" class="btn btn-danger btn">Hapus Supir</a>
+                                        <a href="index.php?pgy=supir&page=create" class="btn btn-primary btn">Tambah Supir</a>
+                                        <a href="index.php?pgy=supir&page=edit" class="btn btn-info btn">Edit Supir</a>
+                                        <a href="index.php?pgy=supir&page=delete" class="btn btn-danger btn">Hapus Supir</a>
                                     </div>
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>
@@ -300,7 +300,7 @@ if (isset($_GET['page'])) {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php DeleteSupirView();?>
+                                            <?php DeleteSupirView(); ?>
                                         </tbody>
                                     </table>
                                     <br />

@@ -189,7 +189,6 @@ if (isset($_GET['page'])) {
                             </div> <!-- /widget-header -->
 
                             <div class="widget-content">
-
                                 <br />
 
                                 <form action="index.php?pgy=siswa&do=update" method="post" class="form-horizontal" />

@@ -73,17 +73,6 @@ function LoadSiswa() {
     return $exec;
 }
 
-function autoCompleteSiswa() {
-    $qry = "SELECT * FROM siswa";
-    $exec = mysql_query($qry);
-    if ($exec) {
-        $siswaList = array();
-        while ($data = mysql_fetch_array($exec)) {
-            $siswaList[] = $data['nama_siswa'];
-        }
-        echo json_encode($siswaList);
-    }
-}
 
 function EditSiswa() {
     $qry = "SELECT * FROM siswa";
@@ -626,15 +615,14 @@ function getLayananSupir($id) {
 
 function SaveTransaksi($kode, $siswa, $supir, $rute, $tgl, $total, $cli, $cls) {
     $qry = "INSERT INTO transaksi(kode_bayar, id_siswa, id_sopir, id_rute, tanggal_bayar, total_bayar, closing_intern, closing_supir) VALUES('" . $kode . "', '" . $siswa . "', '" . $supir . "', '" . $rute . "', '" . $tgl . "', '" . $total . "', '" . $cli . "', '" . $cls . "')";
-    echo $qry;
-//    $exec = mysql_query($qry);
-//    if ($exec) {
-//        echo "<script>javascript:alert('Penyimpanan Data Transaksi Berhasil')</script>";
-//        echo "<script>javascript:window.location.assign('index.php?pgy=transaksi&page=view')</script>";
-//    } else {
-//        echo "<script>javascript:alert('Penyimpanan Data Transaksi Gagal')</script>";
-//        echo "<script>javascript:history.go(-1)</script>";
-//    }
+    $exec = mysql_query($qry);
+    if ($exec) {
+        echo "<script>javascript:alert('Penyimpanan Data Transaksi Berhasil')</script>";
+        echo "<script>javascript:window.location.assign('index.php?pgy=transaksi&page=view')</script>";
+    } else {
+        echo "<script>javascript:alert('Penyimpanan Data Transaksi Gagal')</script>";
+        echo "<script>javascript:history.go(-1)</script>";
+    }
     return $exec;
 }
 

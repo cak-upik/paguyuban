@@ -89,30 +89,32 @@ if (isset($_GET['page'])) {
                         <div class="widget stacked ">
                             <div class="widget-header">
                                 <i class="icon-pencil"></i>
-                                <h3>Form Laporan Pembayaran</h3>
+                                <h3>Form Kartu Pembayaran</h3>
                             </div> <!-- /widget-header -->
 
                             <div class="widget-content">
                                 <section id="tables">
-                                    <h3>Laporan Pembayaran</h3>
+                                    <h3>Kartu Pembayaran</h3>
                                     <div class="form-actions">
-                                    <a href="#" class="btn btn-primary btn">Cetak</a>
-                                    <!--<a href="#" class="btn btn-info btn">Save</a>-->
+                                        <a href="index.php?pgy=laporan-pembayaran&page=cetak#" class="btn btn-info btn">Detail</a>
+                                        <a href="index.php?pgy=laporan-pembayaran&page=cetak#" class="btn btn-success btn">Cetak</a>
+                                        <!--<a href="#" class="btn btn-info btn">Save</a>-->
                                     </div>
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>
                                             <tr>
-                                                <th class="span1">No</th>
-                                                <th>Nama Siswa</th>
-                                                <th>Nama OrangTua/Wali</th>
-                                                <th>Kelas</th>
-                                                <th>Alamat</th>
-                                                <th>Email</th>
-                                                <th>No.Telp</th>
+                                                <th class="span0">No</th>
+                                                <th class="span3">Nama Siswa</th>
+                                                <th class="span3">Nama OrangTua/Wali</th>
+                                                <th class="span3">Nama Sopir</th>
+                                                <th class="span3">Alamat</th>
+                                                <th class="span2">No.Telp</th>
+                                                <th class="span1">Kelas</th>
+                                                <th class="span2">Tarif</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php LoadSiswa();?>
+                                            <?php LoadSiswa(); ?>
                                         </tbody>
                                     </table>
                                     <br />
@@ -140,25 +142,26 @@ if (isset($_GET['page'])) {
                                 <section id="tables">
                                     <h3>Data Siswa</h3>
                                     <div class="form-actions">
-                                    <a href="#" class="btn btn-inverse btn">Tambah Siswa</a>
-                                    <a href="#" class="btn btn-inverse btn">Edit Siswa</a>
-                                    <a href="#" class="btn btn-inverse btn">Hapus Siswa</a>
-                                    <a href="index.php?pgy=siswa&page=view" class="btn btn-danger btn">Batal</a>
+                                        <a href="#" class="btn btn-inverse btn">Tambah Siswa</a>
+                                        <a href="#" class="btn btn-inverse btn">Edit Siswa</a>
+                                        <a href="#" class="btn btn-inverse btn">Hapus Siswa</a>
+                                        <a href="index.php?pgy=siswa&page=view" class="btn btn-danger btn">Batal</a>
                                     </div>
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>
                                             <tr>
-                                                <th class="span1">#</th>
-                                                <th>Nama Siswa</th>
-                                                <th>Nama OrangTua/Wali</th>
-                                                <th>Kelas</th>
-                                                <th>Alamat</th>
-                                                <th>Email</th>
-                                                <th>No.Telp</th>
+                                                <th class="span0">No</th>
+                                                <th class="span3">Nama Siswa</th>
+                                                <th class="span3">Nama OrangTua/Wali</th>
+                                                <th class="span3">Nama Sopir</th>
+                                                <th class="span3">Alamat</th>
+                                                <th class="span2">No.Telp</th>
+                                                <th class="span1">Kelas</th>
+                                                <th class="span2">Tarif</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php EditSiswa();?>
+                                            <?php EditSiswa(); ?>
                                         </tbody>
                                     </table>
                                     <br />
@@ -170,7 +173,7 @@ if (isset($_GET['page'])) {
             </div>
         </div>
         <?php
-    } else if($_GET['page'] == 'editor') {
+    } else if ($_GET['page'] == 'editor') {
         ?>
         <div class="main">
 
@@ -196,40 +199,40 @@ if (isset($_GET['page'])) {
                                     <div class="control-group">
                                         <label class="control-label" for="name">Nama Siswa</label>
                                         <div class="controls">
-                                            <input type="text" class="input-xxlarge" name="nama" id="nama" value='<?php echo getValueSiswa("nama_siswa", $_GET['id'],"id_siswa")?>'/>
+                                            <input type="text" class="input-xxlarge" name="nama" id="nama" value='<?php echo getValueSiswa("nama_siswa", $_GET['id'], "id_siswa") ?>'/>
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label" for="name">Nama OrangTua/Wali</label>
                                         <div class="controls">
-                                            <input type="text" class="input-xxlarge" name="namaortu" id="namaortu" value='<?php echo getValueSiswa("nama_wali", $_GET['id'],"id_siswa")?>'/>
+                                            <input type="text" class="input-xxlarge" name="namaortu" id="namaortu" value='<?php echo getValueSiswa("nama_wali", $_GET['id'], "id_siswa") ?>'/>
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label" for="kelas">Kelas</label>
                                         <div class="controls">
-                                            <input type="text" class="input-large" name="kelas" id="kelas" value='<?php echo getValueSiswa("kelas", $_GET['id'],"id_siswa")?>'/>
+                                            <input type="text" class="input-large" name="kelas" id="kelas" value='<?php echo getValueSiswa("kelas", $_GET['id'], "id_siswa") ?>'/>
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label" for="alamat">Alamat</label>
                                         <div class="controls">
-                                            <textarea class="span4" name="alamat" id="alamat" rows="4"><?php echo getValueSiswa("alamat", $_GET['id'],"id_siswa")?></textarea>
+                                            <textarea class="span4" name="alamat" id="alamat" rows="4"><?php echo getValueSiswa("alamat", $_GET['id'], "id_siswa") ?></textarea>
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label" for="email">Email</label>
                                         <div class="controls">
-                                            <input type="email" class="input-large" name="email" id="email" value='<?php echo getValueSiswa("email", $_GET['id'],"id_siswa")?>' />
+                                            <input type="email" class="input-large" name="email" id="email" value='<?php echo getValueSiswa("email", $_GET['id'], "id_siswa") ?>' />
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label" for="telp">No. Telp</label>
                                         <div class="controls">
-                                            <input type="text" class="input-large" name="telp" id="telp" value='<?php echo getValueSiswa("alamat", $_GET['id'],"id_siswa")?>' />
+                                            <input type="text" class="input-large" name="telp" id="telp" value='<?php echo getValueSiswa("alamat", $_GET['id'], "id_siswa") ?>' />
                                         </div>
                                     </div>
-                                    <input type="hidden" name="idSiswa" id="idSiswa" value=<?php echo $_GET['id']?>>
+                                    <input type="hidden" name="idSiswa" id="idSiswa" value=<?php echo $_GET['id'] ?>>
 
                                     <div class="form-actions">
                                         <button type="submit" class="btn btn-success btn">Simpan Data</button>&nbsp;&nbsp;
@@ -267,25 +270,26 @@ if (isset($_GET['page'])) {
                                 <section id="tables">
                                     <h3>Data Siswa</h3>
                                     <div class="form-actions">
-                                    <a href="#" class="btn btn-inverse btn">Tambah Siswa</a>
-                                    <a href="#" class="btn btn-inverse btn">Edit Siswa</a>
-                                    <a href="#" class="btn btn-inverse btn">Hapus Siswa</a>
-                                    <a href="index.php?pgy=siswa&page=view" class="btn btn-danger btn">Batal</a>
+                                        <a href="#" class="btn btn-inverse btn">Tambah Siswa</a>
+                                        <a href="#" class="btn btn-inverse btn">Edit Siswa</a>
+                                        <a href="#" class="btn btn-inverse btn">Hapus Siswa</a>
+                                        <a href="index.php?pgy=siswa&page=view" class="btn btn-danger btn">Batal</a>
                                     </div>
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>
                                             <tr>
-                                                <th class="span1">#</th>
-                                                <th>Nama Siswa</th>
-                                                <th>Nama OrangTua/Wali</th>
-                                                <th>Kelas</th>
-                                                <th>Alamat</th>
-                                                <th>Email</th>
-                                                <th>No.Telp</th>
+                                                <th class="span0">No</th>
+                                                <th class="span3">Nama Siswa</th>
+                                                <th class="span3">Nama OrangTua/Wali</th>
+                                                <th class="span3">Nama Sopir</th>
+                                                <th class="span3">Alamat</th>
+                                                <th class="span2">No.Telp</th>
+                                                <th class="span1">Kelas</th>
+                                                <th class="span2">Tarif</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php DeleteSiswaView();?>
+                                            <?php DeleteSiswaView(); ?>
                                         </tbody>
                                     </table>
                                     <br />
@@ -296,6 +300,82 @@ if (isset($_GET['page'])) {
                 </div>
             </div>
         </div>
+        <?php
+    } else if ($_GET['page'] == 'cetak') {
+        ?>
+        <div class="main">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="span12">
+
+                        <div class="widget stacked">
+
+                            <div class="widget-header">
+                                <i class="icon-file"></i>
+                                <h3>Cetak Kartu</h3>
+                            </div> <!-- /widget-header -->
+
+                            <div class="widget-content">
+
+                                <div class="row-fluid">
+                                    <div class="span2">
+                                        <label class="control-label" for="name">Nama Siswa</label>
+                                        <label class="control-label" for="name">Nama Orang Tua</label>
+                                        <label class="control-label" for="name">Alamat</label>
+                                        <label class="control-label" for="name">Telp. / Hp</label>
+                                        <label class="control-label" for="name">Kelas</label>
+                                        <label class="control-label" for="name">Tarif</label>
+                                        <label class="control-label" for="name">Sopir</label>
+                                        <label class="control-label" for="name">Pilihan</label>
+                                    </div>                                    
+                                    <div class="span10">
+                                        <label class="control-label" for="name">: <?php echo "abcd"; ?></label>
+                                        <label class="control-label" for="name">: <?php echo "abcd"; ?></label>
+                                        <label class="control-label" for="name">: <?php echo "abcd"; ?></label>
+                                        <label class="control-label" for="name">: <?php echo "abcd"; ?></label>
+                                        <label class="control-label" for="name">: <?php echo "abcd"; ?></label>
+                                        <label class="control-label" for="name">: <?php echo "abcd"; ?></label>
+                                        <label class="control-label" for="name">: <?php echo "abcd"; ?></label>
+                                    </div>
+                                </div>
+                                <!--<div class="control-group">-->
+
+                                <!--</div>-->
+                                <br />
+
+                                <table class="table table-bordered table-striped table-highlight">
+                                    <thead>
+                                        <tr>
+                                            <th class="span0">No</th>
+                                            <th class="span3">Nama Siswa</th>
+                                            <th class="span3">Nama OrangTua/Wali</th>
+                                            <th class="span3">Nama Sopir</th>
+                                            <th class="span3">Alamat</th>
+                                            <th class="span2">No.Telp</th>
+                                            <th class="span1">Kelas</th>
+                                            <th class="span2">Tarif</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php DeleteSiswaView(); ?>
+                                    </tbody>
+                                </table>
+
+                            </div> <!-- /widget-content -->
+
+                        </div> <!-- /widget -->					
+
+                    </div> <!-- /span12 -->     	
+
+
+                </div> <!-- /row -->
+
+            </div> <!-- /container -->
+
+        </div> <!-- /main -->
         <?php
     }
 }

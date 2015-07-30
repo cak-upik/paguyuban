@@ -1,48 +1,15 @@
 <?php
 include './helper.php';
 if (isset($_GET['page'])) {
+    ?>
+    <script src="./js/jquery-1-11-1.min.js"></script>
+    <script src="./js/jquery-ui.js"></script>
+    <script src="./js/jquery-1.10.2.js"></script>
+    <script src="./js/calculate.js"></script>            
+
+    <?php
     if ($_GET['page'] == 'create') {
         ?>
-        <!--<script src=""></script>-->
-        <!--<script language="JavaScript" type="text/javascript" script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>-->
-        <script src="./js/jquery-1-11-1.min.js"></script>
-        <script src="./js/jquery-ui.js"></script>
-        <script src="./js/jquery-1.10.2.js"></script>
-        <script src="./js/calculateClosing.js"></script>
-        <script type = "text/javascript" >
-            $(document).ready(function() {
-                //datepicker
-                $("#datepicker").datepicker();
-                $("#datepicker").change(function() {
-                    $("#datepicker").datepicker("option", "dateFormat", 'dd MM yy');
-                });
-
-                //fill text field when change select option
-                $('#student').change(function() {
-                    var val = $(this).val();
-                    $.ajax({
-                        url: "helper.php",
-                        data: "getValStd=" + val,
-                        dataType: 'json',
-                        cache: false,
-                        success: function(data) {
-                            $("#rute").val(data.nama_rute);
-                            $("#service").val(data.layanan);
-                            $("#layanan").val(data.tarif);
-                            $("#sopir").val(data.nama);
-                        }
-                    });
-                });
-
-                //calculate provit
-                $('#payment').change(function(ev) {
-                    var supir = $('#payment').val() * (95 / 100);
-                    var intern = $('#payment').val() * (5 / 100);
-                    $('#closingSupir').val((supir).toFixed());
-                    $('#closingInt').val((intern).toFixed());
-                });
-            });
-        </script>
         <div class="main">
 
             <div class="container">
@@ -60,83 +27,86 @@ if (isset($_GET['page'])) {
 
                             <div class="widget-content">
                                 <br />
-                                <form action="index.php?pgy=transaksi&do=save" method="post" class="form-horizontal" />
-                                <!--<fieldset>-->
-                                <div class="row-fluid">
-                                    <div class="span6">
-                                        <div class="control-group">
-                                            <label class="control-label" for="kode">Kode Pembayaran</label>
-                                            <div class="controls">
-                                                <input type="text" class="input-large" name="kode" id="kode" value="<?php echo codeTrx(); ?>" disabled/>
+                                <form action="index.php?pgy=transaksi&do=save" method="post" class="form-horizontal">
+                                    <!--<fieldset>-->
+                                    <div class="row-fluid">
+                                        <div class="span6">
+                                            <div class="control-group">
+                                                <label class="control-label" for="kodeTrx">Kode Pembayaran</label>
+                                                <div class="controls">
+                                                    <input type="text" class="input-large" name="kodeTrx" id="kodeTrx" value='<?php echo codeTrx(); ?>' disabled/>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="control-group">
-                                            <label class="control-label" for="siswa">Nama Siswa</label>
-                                            <div class="controls">
-                                                <!--<select name="student" id="student"></select>-->
-                                                <select name="student" id="student">
-                                                    <option name="0">-Pilih-</option>
-                                                    <?php
-                                                    $query = mysql_query("SELECT id_siswa, nama_siswa FROM siswa");
-                                                    while ($a = mysql_fetch_array($query)) {
-                                                        echo"<option value='$a[id_siswa]'>$a[nama_siswa]</option>";
-                                                    }
-                                                    ?>
-                                                </select>
+                                            <div class="control-group">
+                                                <label class="control-label" for="siswa">Nama Siswa</label>
+                                                <div class="controls">
+                                                    <!--<select name="student" id="student"></select>-->
+                                                    <select name="student" id="student">
+                                                        <option name="0">-Pilih-</option>
+                                                        <?php
+                                                        $query = mysql_query("SELECT id_siswa, nama_siswa FROM siswa");
+                                                        while ($a = mysql_fetch_array($query)) {
+                                                            echo"<option value='$a[id_siswa]'>$a[nama_siswa]</option>";
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="control-group">
-                                            <label class="control-label" for="sopir">Nama Supir</label>
-                                            <div class="controls">
-                                                <input type="text" class="input-large" name="sopir" id="sopir" readonly=""/>
+                                            <div class="control-group">
+                                                <label class="control-label" for="sopir">Nama Supir</label>
+                                                <div class="controls">
+                                                    <input type="text" class="input-large" name="sopir" id="sopir" readonly=""/>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="control-group">
-                                            <label class="control-label" for="rute">Rute</label>
-                                            <div class="controls">
-                                                <input type="text" name="rute" id="rute" class="input-large" readonly=""/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="span6">                                        
-                                        <div class="control-group">
-                                            <label class="control-label" for="tanggal">Tanggal Pembayaran</label>
-                                            <div class="controls">
-                                                <input type="text" name="tanggal" id="datepicker" class="input-large"/>
-                                            </div>
-                                        </div>
-                                        <div class="control-group">
-                                            <label class="control-label" for="service">Jenis Layanan</label>
-                                            <div class="controls">
-                                                <input type="text" name="service" id="service" class="input-large" readonly=""/>
-                                            </div>
-                                        </div>
-                                        <div class="control-group">
-                                            <label class="control-label" for="tarif">Tarif Layanan</label>
-                                            <div class="controls">
-                                                <div class="input-prepend">
-                                                    <span class="add-on">Rp</span>                     
-                                                    <input type="text" class="span9 " name="layanan" id="layanan" style="text-align: left;" readonly=""/>
+                                            <div class="control-group">
+                                                <label class="control-label" for="rute">Rute</label>
+                                                <div class="controls">
+                                                    <input type="text" name="rute" id="rute" class="input-large" readonly=""/>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="control-group">
-                                            <label class="control-label" for="bayar">Pembayaran</label>
-                                            <div class="controls">
-                                                <div class="input-prepend">
-                                                    <span class="add-on">Rp</span>
-                                                    <input type="text" class="span9" name="payment" id="payment"/>
+                                        <div class="span6">                                        
+                                            <div class="control-group">
+                                                <label class="control-label" for="tanggal">Tanggal Pembayaran</label>
+                                                <div class="controls">
+                                                    <input type="text" name="tanggal" id="datepicker" class="input-large"/>
                                                 </div>
                                             </div>
+                                            <div class="control-group">
+                                                <label class="control-label" for="service">Jenis Layanan</label>
+                                                <div class="controls">
+                                                    <input type="text" name="service" id="service" class="input-large" readonly=""/>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label" for="tarif">Tarif Layanan</label>
+                                                <div class="controls">
+                                                    <div class="input-prepend">
+                                                        <span class="add-on">Rp</span>                     
+                                                        <input type="text" class="span9 " name="layanan" id="layanan" style="text-align: left;" readonly=""/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label" for="bayar">Pembayaran</label>
+                                                <div class="controls">
+                                                    <div class="input-prepend">
+                                                        <span class="add-on">Rp</span>
+                                                        <input type="text" class="span9" name="payment" id="payment"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="kodeTrans" id="kodeTrans" value="<?php echo codeTrx(); ?>">
+                                            <input type="hidden" name="id_supir" id="id_supir">
+                                            <input type="hidden" name="id_rute" id="id_rute">
+                                            <input type="hidden" name="closingInt" id="closingInt"/>
+                                            <input type="hidden" name="closingSupir" id="closingSupir"/>
                                         </div>
-                                        <input type="hidden" name="closingInt" id="closingInt"/>
-                                        <input type="hidden" name="closingSupir" id="closingSupir"/>
+                                    </div>    
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-success btn">Simpan Data</button>&nbsp;&nbsp;
+                                        <a href="index.php?pgy=transaksi&page=view" class="btn btn-danger btn">Batal</a>
                                     </div>
-                                </div>    
-                                <div class="form-actions">
-                                    <button type="submit" class="btn btn-success btn">Simpan Data</button>&nbsp;&nbsp;
-                                    <a href="index.php?pgy=transaksi&page=view" class="btn btn-danger btn">Batal</a>
-                                </div>
                                 </form>
                             </div> <!-- /widget-content -->
                         </div> <!-- /widget -->		
@@ -258,61 +228,66 @@ if (isset($_GET['page'])) {
                                 <br />
                                 <form action="index.php?pgy=transaksi&do=update" method="post" class="form-horizontal" />
                                 <!--<fieldset>-->
-                                <div class="control-group">
-                                    <label class="control-label" for="kode">Kode Pembayaran</label>
-                                    <div class="controls">
-                                        <input type="text" class="input-large" name="kode" id="kode" value=<?php getValueTransaksi("kode_bayar", $_GET['id']) ?> readonly/>
+                                <div class="row-fluid">
+                                    <div class="span6">
+                                        <div class="control-group">
+                                            <label class="control-label" for="kode">Kode Pembayaran</label>
+                                            <div class="controls">
+                                                <input type="text" class="input-large" name="kode" id="kode" value="<?php getValueTransaksi("kode_bayar", $_GET['id']) ?>" disabled=""/>
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label" for="siswa">Nama Siswa</label>
+                                            <div class="controls">
+                                                <input type="text" class="input-large" name="siswa" id="siswa" value="<?php getValueTransaksi("nama_siswa", $_GET['id']) ?>" disabled=""/>
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label" for="supir">Nama Supir</label>
+                                            <div class="controls">
+                                                <input type="text" class="input-large" name="supir" id="supir" value="<?php getValueTransaksi("nama", $_GET['id']) ?>" disabled=""/>
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label" for="rute">Rute</label>
+                                            <div class="controls">
+                                                <input type="text" class="input-large" name="rute" id="rute" value="<?php getValueTransaksi("nama_rute", $_GET['id']) ?>" disabled=""/>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="siswa">Nama Siswa</label>
-                                    <div class="controls">
-                                        <input type="text" class="input-large" name="siswa" id="siswa" value=<?php getValueTransaksi("nama_siswa", $_GET['id']) ?> readonly/>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="supir">Nama Supir</label>
-                                    <div class="controls">
-                                        <input type="text" class="input-large" name="supir" id="supir" value=<?php getValueTransaksi("nama", $_GET['id']) ?> readonly/>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="rute">Rute</label>
-                                    <div class="controls">
-                                        <input type="text" class="input-large" name="rute" id="rute" value=<?php getValueTransaksi("nama_rute", $_GET['id']) ?> readonly/>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="layanan">Jenis Layanan</label>
-                                    <div class="controls">
-                                        <input type="text" class="input-large" name="layanan" id="layanan" value=<?php getValueTransaksi("layanan", $_GET['id']) ?> readonly/>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="tanggal">Tanggal Pembayaran</label>
-                                    <div class="controls">
-                                        <input type="text" class="input-large" name="tanggal" id="datepicker" value=<?php getValueTransaksi("tanggal_bayar", $_GET['id']) ?> />
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="tarif">Tarif Layanan</label>
-                                    <div class="controls">
-                                        <div class="input-prepend">
-                                            <span class="add-on">Rp</span>                     
-                                            <input type="text" class="input-large" name="tarif" id="tarif" value=<?php getValueTransaksi("tarif", $_GET['id']) ?> readonly/>
+                                    <div class="span6">                                        
+                                        <div class="control-group">
+                                            <label class="control-label" for="tanggal">Tanggal Pembayaran</label>
+                                            <div class="controls">
+                                                <input type="text" class="input-large" name="tanggal" id="datepicker" value="<?php getValueTransaksi("tanggal_bayar", $_GET['id']) ?>" />
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label" for="layanan">Jenis Layanan</label>
+                                            <div class="controls">
+                                                <input type="text" class="input-large" name="layanan" id="layanan" value="<?php getValueTransaksi("layanan", $_GET['id']) ?>" disabled=""/>
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label" for="tarif">Tarif Layanan</label>
+                                            <div class="controls">
+                                                <div class="input-prepend">
+                                                    <span class="add-on">Rp</span>                     
+                                                    <input type="text" class="input-large" name="tarif" id="tarif" value="<?php getValueTransaksi("tarif", $_GET['id']) ?>" disabled=""/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label" for="bayar">Pembayaran</label>
+                                            <div class="controls">
+                                                <div class="input-prepend">
+                                                    <span class="add-on">Rp</span>
+                                                    <input type="text" class="input-large" name="bayar" id="bayar" value="<?php getValueTransaksi('total_bayar', $_GET['id']) ?>" />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="bayar">Pembayaran</label>
-                                    <div class="controls">
-                                        <div class="input-prepend">
-                                            <span class="add-on">Rp</span>
-                                            <input type="text" class="input-large" name="bayar" id="bayar" value=<?php getValueTransaksi("total_bayar", $_GET['id']) ?> />
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <div class="form-actions">
                                     <button type="submit" class="btn btn-success btn">Simpan Data</button>&nbsp;&nbsp;
                                     <a href="index.php?pgy=transaksi&page=view" class="btn btn-danger btn">Batal</a>

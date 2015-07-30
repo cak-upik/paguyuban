@@ -9,16 +9,17 @@
             <file>file:/var/www/paguyuban/report_payment.php</file>
         </group>
         <group name="PHP">
-            <file>file:/var/www/html/paguyuban/index.php</file>
             <file>file:/var/www/html/paguyuban/frmSiswa.php</file>
+            <file>file:/var/www/html/paguyuban/helper.php</file>
             <file>file:/var/www/html/paguyuban/crudDao.php</file>
+            <file>file:/var/www/html/paguyuban/menu.php</file>
+            <file>file:/var/www/html/paguyuban/laporanPembayaran.php</file>
+            <file>file:/var/www/html/paguyuban/index.php</file>
+            <file>file:/var/www/html/paguyuban/enroll.php</file>
+            <file>file:/var/www/html/paguyuban/user.php</file>
+            <file>file:/var/www/html/paguyuban/transaction.php</file>
             <file>file:/var/www/html/paguyuban/driver.php</file>
             <file>file:/var/www/html/paguyuban/route.php</file>
-            <file>file:/var/www/html/paguyuban/transaction.php</file>
-            <file>file:/var/www/html/paguyuban/laporanPembayaran.php</file>
-            <file>file:/var/www/html/paguyuban/user.php</file>
-            <file>file:/var/www/html/paguyuban/helper.php</file>
-            <file>file:/var/www/html/paguyuban/js/calculateClosing.js</file>
         </group>
     </open-files>
 </project-private>
