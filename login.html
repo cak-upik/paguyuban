@@ -11,7 +11,7 @@
         <link href="./css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
 
         <link href="./css/font-awesome.min.css" rel="stylesheet" />
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet" />
+        <!--<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet" />-->
 
         <link href="./css/ui-lightness/jquery-ui-1.10.0.custom.min.css" rel="stylesheet" />    
 
@@ -45,17 +45,17 @@
                         <ul class="nav pull-right">
 
                             <li class="">						
-<!--                                <a href="./signup.html" class="">
-                                    Create an Account
-                                </a>-->
+                                <!--                                <a href="./signup.html" class="">
+                                                                    Create an Account
+                                                                </a>-->
 
                             </li>
 
                             <li class="">						
-<!--                                <a href="./" class="">
-                                    <i class="icon-chevron-left"></i>
-                                    Back to Homepage
-                                </a>-->
+                                <!--                                <a href="./" class="">
+                                                                    <i class="icon-chevron-left"></i>
+                                                                    Back to Homepage
+                                                                </a>-->
 
                             </li>
                         </ul>
@@ -76,46 +76,50 @@
 
                 <form action="process.php" method="post" name="login">
 
-                <h1>Sign In</h1>		
+                    <h1>Sign In</h1>		
 
-                <div class="login-fields">
+                    <div class="login-fields">
 
-                    <p>Sign in using your registered account:</p>
+                        <p>Sign in using your registered account:</p>
 
-                    <div class="field">
-                        <label for="username">Username:</label>
-                        <input type="text" id="username" name="username" value="" placeholder="Username" class="login username-field" />
-                    </div> <!-- /field -->
+                        <div class="field">
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="username" value="" placeholder="Username" class="login username-field" />
+                        </div> <!-- /field -->
 
-                    <div class="field">
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" value="" placeholder="Password" class="login password-field" />
-                    </div> <!-- /password -->
+                        <div class="field">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" value="" placeholder="Password" class="login password-field" />
+                        </div> <!-- /password -->
 
-                </div> <!-- /login-fields -->
+                    </div> <!-- /login-fields -->
 
-                <div class="login-actions">
+                    <div class="login-actions">
 
-<!--                    <span class="login-checkbox">
-                        <input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
-                        <label class="choice" for="Field">Keep me signed in</label>
-                    </span>-->
+                        <!--                    <span class="login-checkbox">
+                                                <input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
+                                                <label class="choice" for="Field">Keep me signed in</label>
+                                            </span>-->
 
-                    <button class="button btn btn-warning btn-large">Sign In</button>
+                        <button class="button btn btn-warning btn-large" id="login">Sign In</button>
 
-                </div> <!-- .actions -->
+                    </div> 
+                    <div id="error">
 
-<!--                <div class="login-social">
-                    <p>Sign in using social network:</p>
-
-                    <div class="twitter">
-                        <a href="#" class="btn_1">Login with Twitter</a>				
                     </div>
+                    <!-- .actions -->
 
-                    <div class="fb">
-                        <a href="#" class="btn_2">Login with Facebook</a>				
-                    </div>
-                </div>-->
+                    <!--                <div class="login-social">
+                                        <p>Sign in using social network:</p>
+                    
+                                        <div class="twitter">
+                                            <a href="#" class="btn_1">Login with Twitter</a>				
+                                        </div>
+                    
+                                        <div class="fb">
+                                            <a href="#" class="btn_2">Login with Facebook</a>				
+                                        </div>
+                                    </div>-->
 
                 </form>
 
@@ -138,10 +142,51 @@
         <script src="./js/libs/jquery-1.8.3.min.js"></script>
         <script src="./js/libs/jquery-ui-1.10.0.custom.min.js"></script>
         <script src="./js/libs/bootstrap.min.js"></script>
-
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.ui.shake.js"></script>
         <script src="./js/Application.js"></script>
 
         <script src="./js/signin.js"></script>
+        <script>
+            $(document).ready(function()
+            {
+                $('#login').click(function()
+                {
+                    var username = $("#username").val();
+                    var password = $("#password").val();
+                    var dataString = 'username=' + username + '&password=' + password;
+                    if ($.trim(username).length > 0 && $.trim(password).length > 0)
+                    {
+                        $.ajax({
+                            type: "POST",
+                            url: "ajaxLogin.php",
+                            data: dataString,
+                            cache: false,
+                            beforeSend: function() {
+                                $("#login").val('Connecting...');
+                            },
+                            success: function(data) {
+                                if (data)
+                                {
+                                    $("body").load("home.php").hide().fadeIn(1500).delay(6000);
+                                    //or
+                                    window.location.href = "home.php";
+                                }
+                                else
+                                {
+                                    //Shake animation effect.
+                                    $('#box').shake();
+                                    $("#login").val('Login')
+                                    $("#error").html("<span style='color:#cc0000'>Error:</span> Invalid username and password. ");
+                                }
+                            }
+                        });
 
+                    }
+                    return false;
+                });
+
+            });
+        </script>
     </body>
 </html>
