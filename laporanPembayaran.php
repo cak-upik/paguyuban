@@ -96,9 +96,8 @@ if (isset($_GET['page'])) {
                                 <section id="tables">
                                     <h3>Kartu Pembayaran</h3>
                                     <div class="form-actions">
-                                        <a href="index.php?pgy=laporan-pembayaran&page=cetak#" class="btn btn-info btn">Detail</a>
-                                        <a href="index.php?pgy=laporan-pembayaran&page=cetak#" class="btn btn-success btn">Cetak</a>
-                                        <!--<a href="#" class="btn btn-info btn">Save</a>-->
+                                        <a href="index.php?pgy=laporan-pembayaran&page=detail" class="btn btn-info btn">Detail</a>
+                                        <a href="index.php?pgy=laporan-pembayaran&page=cetak" class="btn btn-success btn">Cetak</a>
                                     </div>
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>
@@ -126,7 +125,7 @@ if (isset($_GET['page'])) {
             </div>
         </div>
         <?php
-    } else if ($_GET['page'] == 'edit') {
+    } else if ($_GET['page'] == 'detail') {
         ?>
         <div class="main">
             <div class="container">
@@ -135,17 +134,16 @@ if (isset($_GET['page'])) {
                         <div class="widget stacked ">
                             <div class="widget-header">
                                 <i class="icon-pencil"></i>
-                                <h3>Form Data Siswa</h3>
+                                <h3>Form Kartu Pembayaran</h3>
                             </div> <!-- /widget-header -->
 
                             <div class="widget-content">
                                 <section id="tables">
-                                    <h3>Data Siswa</h3>
+                                    <h3>Kartu Pembayaran</h3>
                                     <div class="form-actions">
-                                        <a href="#" class="btn btn-inverse btn">Tambah Siswa</a>
-                                        <a href="#" class="btn btn-inverse btn">Edit Siswa</a>
-                                        <a href="#" class="btn btn-inverse btn">Hapus Siswa</a>
-                                        <a href="index.php?pgy=siswa&page=view" class="btn btn-danger btn">Batal</a>
+                                        <a href="#" class="btn btn-inverse btn">Detail</a>
+                                        <a href="#" class="btn btn-inverse btn">Cetak</a>
+                                        <a href="index.php?pgy=laporan-pembayaran&page=view" class="btn btn-danger btn">Batal</a>
                                     </div>
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>
@@ -161,7 +159,7 @@ if (isset($_GET['page'])) {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php EditSiswa(); ?>
+                                            <?php LoadSiswa(); ?>
                                         </tbody>
                                     </table>
                                     <br />
@@ -301,7 +299,7 @@ if (isset($_GET['page'])) {
             </div>
         </div>
         <?php
-    } else if ($_GET['page'] == 'cetak') {
+    } else if ($_GET['page'] == 'detailer') {
         ?>
         <div class="main">
 
