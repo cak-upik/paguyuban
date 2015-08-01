@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!empty($_SESSION['login_user'])) {
+    header('Location: index.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -84,7 +90,7 @@
             Don't have an account? <a href="./signup.html">Sign Up</a><br />
             Remind <a href="#">Password</a>
         </div> <!-- /login-extra -->
-  
+
 
         <!-- Le javascript
         ================================================== -->
@@ -119,9 +125,9 @@
                             success: function(data) {
                                 if (data)
                                 {
-                                    $("body").load("home.php").hide().fadeIn(1500).delay(6000);
+                                    $("body").load("index.php").hide().fadeIn(1500).delay(6000);
                                     //or
-                                    window.location.href = "home.php";
+                                    window.location.href = "index.php";
                                 }
                                 else
                                 {

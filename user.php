@@ -9,51 +9,33 @@ if (isset($_GET['page'])) {
                         <div class="widget stacked ">
                             <div class="widget-header">
                                 <i class="icon-pencil"></i>
-                                <h3>User Management</h3>
+                                <h3>Form Data User</h3>
                             </div> <!-- /widget-header -->
+
                             <div class="widget-content">
                                 <section id="tables">
-                                    <h3>Tables</h3>
+                                    <h3>Data User</h3>
+                                    <div class="form-actions">
+                                        <a href="index.php?pgy=supir&page=create" class="btn btn-primary btn">Tambah Supir</a>
+                                        <a href="index.php?pgy=supir&page=edit" class="btn btn-info btn">Edit Supir</a>
+                                        <a href="index.php?pgy=supir&page=delete" class="btn btn-danger btn">Hapus Supir</a>
+
+                                    </div>
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>
                                             <tr>
-                                                <th>#</th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Username</th>
+                                                <th class="span1">No</th>
+                                                <th>Nama Supir</th>
+                                                <th>Alamat</th>
+                                                <th>Kota</th>
+                                                <th>No. Telp</th>
+                                                <th>No. SIM</th>
+                                                <th>No. Mobil</th>
+                                                <th>Merk Mobil</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Michael</td>
-                                                <td>Jordan</td>
-                                                <td>@mjordan</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Magic</td>
-                                                <td>Johnson</td>
-                                                <td>@mjohnson</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Larry</td>
-                                                <td>the Bird</td>
-                                                <td>@twitter</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Charles</td>
-                                                <td>Barkley</td>
-                                                <td>@cbark</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Karl</td>
-                                                <td>Malone</td>
-                                                <td>@kmalone</td>
-                                            </tr>
+                                            <?php LoadSupir(); ?>
                                         </tbody>
                                     </table>
                                     <br />
@@ -86,8 +68,13 @@ if (isset($_GET['page'])) {
                                                 <div class="control-group">											
                                                     <label class="control-label" for="username">Username</label>
                                                     <div class="controls">
-                                                        <input type="text" class="input-large disabled" id="username" name="username"/>
-                                                        <p class="help-block">Your username is for logging in and cannot be changed.</p>
+                                                        <input type="text" class="input-large" id="username" name="username"/>
+                                                    </div> <!-- /controls -->				
+                                                </div> <!-- /control-group -->
+                                                <div class="control-group">											
+                                                    <label class="control-label" for="password1">Password</label>
+                                                    <div class="controls">
+                                                        <input type="password" class="input-large" name="password" id="password1"/>
                                                     </div> <!-- /controls -->				
                                                 </div> <!-- /control-group -->
                                                 <div class="control-group">											
@@ -100,12 +87,6 @@ if (isset($_GET['page'])) {
                                                     <label class="control-label" for="email">Email Address</label>
                                                     <div class="controls">
                                                         <input type="text" class="input-large" name="email" id="email"/>
-                                                    </div> <!-- /controls -->				
-                                                </div> <!-- /control-group -->
-                                                <div class="control-group">											
-                                                    <label class="control-label" for="password1">Password</label>
-                                                    <div class="controls">
-                                                        <input type="password" class="input-large" name="password" id="password1"/>
                                                     </div> <!-- /controls -->				
                                                 </div> <!-- /control-group -->
                                                 <div class="control-group">											

@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (empty($_SESSION['login_user'])) {
+    header('Location: login.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -19,7 +25,7 @@
         <link href="./js/plugins/msgGrowl/css/msgGrowl.css" rel="stylesheet" />
         <link href="./js/plugins/lightbox/themes/evolution-dark/jquery.lightbox.css" rel="stylesheet" />	
         <link href="./js/plugins/msgbox/jquery.msgbox.css" rel="stylesheet" />
-        
+
         <link href="./css/base-admin-2.css" rel="stylesheet" />
         <link href="./css/base-admin-2-responsive.css" rel="stylesheet" />
 
@@ -220,9 +226,10 @@
                     default :
                         include 'transaction.php';
                 }
-            } else if ($admin == 'logout') {
-                include 'logout.php';
-            }
+            } 
+//            else if ($admin == 'logout') {
+//                include 'logout.php';
+//            }
         } else {
             echo "<script>javascript:window.location.replace('index.php?pgy=home');</script>";
         }
@@ -252,10 +259,10 @@
         <script src="./js/plugins/flot/jquery.flot.js"></script>
         <script src="./js/plugins/flot/jquery.flot.pie.js"></script>
         <script src="./js/plugins/flot/jquery.flot.resize.js"></script>      
-        
+
         <script src="./js/Application.js"></script>        
-        
-        <!--<script src="./js/demo/notifications.js"></script>-->
+
+<!--<script src="./js/demo/notifications.js"></script>-->
 
         <script src="./js/charts/area.js"></script>
         <script src="./js/charts/donut.js"></script>
