@@ -235,7 +235,7 @@
                 <div class="row">
 
                     <div id="footer-copyright" class="span6">
-                        &copy; 2015 Paguyuban.
+                        &copy; 2015 - E-Car | Fritiyana Kusuma [77877777] .
                     </div> 
                 </div> <!-- /row -->
             </div> <!-- /container -->

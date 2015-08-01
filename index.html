@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Login :: Paguyuban</title>
+        <title>Login :: E-Car </title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="apple-mobile-web-app-capable" content="yes" /> 
@@ -37,94 +37,45 @@
                     </a>
 
                     <a class="brand" href="./index-bak.html">
-                        Paguyuban 
+                        E-Car <br>
+                        Antar Jemput Siswa
+                        Raudhatul Jannah
                         <!--<sup>2.0</sup>-->				
                     </a>		
-
-                    <div class="nav-collapse">
-                        <ul class="nav pull-right">
-
-                            <li class="">						
-                                <!--                                <a href="./signup.html" class="">
-                                                                    Create an Account
-                                                                </a>-->
-
-                            </li>
-
-                            <li class="">						
-                                <!--                                <a href="./" class="">
-                                                                    <i class="icon-chevron-left"></i>
-                                                                    Back to Homepage
-                                                                </a>-->
-
-                            </li>
-                        </ul>
-
-                    </div><!--/.nav-collapse -->	
-
                 </div> <!-- /container -->
 
             </div> <!-- /navbar-inner -->
 
         </div> <!-- /navbar -->
 
-
-
         <div class="account-container stacked">
 
-            <div class="content clearfix">
+            <div class="content clearfix" id="box">
 
-                <form action="process.php" method="post" name="login">
-
+                <form action="" method="post" name="login" id="validation-form">                    
                     <h1>Sign In</h1>		
 
                     <div class="login-fields">
 
-                        <p>Sign in using your registered account:</p>
+                        <p id="error"></p>
 
                         <div class="field">
                             <label for="username">Username:</label>
-                            <input type="text" id="username" name="username" value="" placeholder="Username" class="login username-field" />
+                            <input type="text" id="username" name="username" value="" placeholder="Username" class="login username-field" required=""/>
                         </div> <!-- /field -->
 
                         <div class="field">
                             <label for="password">Password:</label>
-                            <input type="password" id="password" name="password" value="" placeholder="Password" class="login password-field" />
+                            <input type="password" id="password" name="password" value="" placeholder="Password" class="login password-field" required=""/>
                         </div> <!-- /password -->
 
                     </div> <!-- /login-fields -->
 
                     <div class="login-actions">
-
-                        <!--                    <span class="login-checkbox">
-                                                <input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
-                                                <label class="choice" for="Field">Keep me signed in</label>
-                                            </span>-->
-
-                        <button class="button btn btn-warning btn-large" id="login">Sign In</button>
-
+                        <input type="submit" class="button btn btn-inverse btn-large" value="Login" id="login"/>
                     </div> 
-                    <div id="error">
-
-                    </div>
-                    <!-- .actions -->
-
-                    <!--                <div class="login-social">
-                                        <p>Sign in using social network:</p>
-                    
-                                        <div class="twitter">
-                                            <a href="#" class="btn_1">Login with Twitter</a>				
-                                        </div>
-                    
-                                        <div class="fb">
-                                            <a href="#" class="btn_2">Login with Facebook</a>				
-                                        </div>
-                                    </div>-->
-
                 </form>
-
             </div> <!-- /content -->
-
         </div> <!-- /account-container -->
 
 
@@ -133,8 +84,7 @@
             Don't have an account? <a href="./signup.html">Sign Up</a><br />
             Remind <a href="#">Password</a>
         </div> <!-- /login-extra -->
-
-
+  
 
         <!-- Le javascript
         ================================================== -->
@@ -142,11 +92,12 @@
         <script src="./js/libs/jquery-1.8.3.min.js"></script>
         <script src="./js/libs/jquery-ui-1.10.0.custom.min.js"></script>
         <script src="./js/libs/bootstrap.min.js"></script>
-        <script src="js/jquery.min.js"></script>
-        <script src="js/jquery.ui.shake.js"></script>
+        <script src="./js/jquery.min.js"></script>
+        <script src="./js/jquery.ui.shake.js"></script>
         <script src="./js/Application.js"></script>
+        <script src="./js/validation.js"></script>
+        <script src="./js/plugins/validate/jquery.validate.js"></script>
 
-        <script src="./js/signin.js"></script>
         <script>
             $(document).ready(function()
             {
@@ -159,7 +110,7 @@
                     {
                         $.ajax({
                             type: "POST",
-                            url: "ajaxLogin.php",
+                            url: "process.php",
                             data: dataString,
                             cache: false,
                             beforeSend: function() {
@@ -176,7 +127,7 @@
                                 {
                                     //Shake animation effect.
                                     $('#box').shake();
-                                    $("#login").val('Login')
+                                    $("#login").val('Login');
                                     $("#error").html("<span style='color:#cc0000'>Error:</span> Invalid username and password. ");
                                 }
                             }
