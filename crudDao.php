@@ -796,22 +796,71 @@ function SaveUser($usernames, $password, $nama, $role, $email, $checked) {
 
 /* ------------------------------------------- END USER DAO ------------------------------------------- */
 
-/* ------------------------------------------- LAPORAN KARTU PEMVAYARAN DAO ------------------------------------------- */
+/* ------------------------------------------- LAPORAN KARTU PEMBAYARAN DAO ------------------------------------------- */
 
-function SaveSiswa($nama, $wali, $alamat, $kelas, $email, $notelp) {
-    $qry = "INSERT INTO siswa(nama_siswa, nama_wali, alamat, kelas, email, no_tlp) VALUES('" . $nama . "','" . $wali . "','" . $alamat . "','" . $kelas . "','" . $email . "','" . $notelp . "')";
+function LoadLaporanKartu() {
+    $i=1;
+    $qry = "SELECT siswa.nama_siswa, siswa.nama_wali, siswa.layanan, siswa.alamat, siswa.no_tlp, siswa.kelas, sopir.nama, rute.nama_rute, rute.tarif, transaksi.kode_bayar, transaksi.tanggal_bayar, transaksi.total_bayar FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa INNER JOIN rute ON transaksi.id_rute=rute.id_rute GROUP BY siswa.id_siswa ORDER BY siswa.nama_siswa ASC";
     $exec = mysql_query($qry);
     if ($exec) {
-        echo "<script>javascript:alert('Penyimpanan Data Siswa Berhasil')</script>";
-        echo "<script>javascript:window.location.assign('index.php?pgy=siswa&page=view')</script>";
-    } else {
-        echo "<script>javascript:alert('Penyimpanan Data Siswa Gagal')</script>";
-        echo "<script>javascript:history.go(-1)</script>";
+        while ($data = mysql_fetch_array($exec)) {
+            echo "<tr>
+                      <td>$i</td>
+                      <td>" . $data['nama_siswa'] . "</td>
+                      <td>" . $data['nama_wali'] . "</td>
+                      <td>" . $data['kelas'] . "</td>
+                      <td>" . $data['nama'] . "</td>
+                      <td>" . $data['tanggal_bayar'] . "</td>
+                      <td>" . $data['tarif'] . "</td>
+                      <td>" . $data['total_bayar'] . "</td>
+                 </tr>";
+            $i++;
+        }
     }
     return $exec;
 }
 
-function UpdateSiswa($nama, $wali, $kelas, $alamat, $email, $notelp, $id) {
+function ShowDetail($id) {
+    $qry = "SELECT siswa.nama_siswa, siswa.nama_wali, siswa.layanan, siswa.alamat, siswa.no_tlp, siswa.kelas, sopir.nama, rute.nama_rute, rute.tarif, transaksi.kode_bayar, transaksi.tanggal_bayar, transaksi.total_bayar FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa INNER JOIN rute ON transaksi.id_rute=rute.id_rute GROUP BY siswa.id_siswa ORDER BY siswa.nama_siswa ASC";
+    $exec = mysql_query($qry);
+    if ($exec) {
+        while ($data = mysql_fetch_array($exec)) {
+            echo "<tr>
+                      <td><input type=button class='btn btn-info btn' name=btnDetail" . $data['id_transaksi'] . " value=Detail onclick=window.location.assign('index.php?pgy=transaksi&page=detail&id=$data[id_siswa]')></td>
+                      <td>" . $data['nama_siswa'] . "</td>
+                      <td>" . $data['nama_wali'] . "</td>
+                      <td>" . $data['kelas'] . "</td>
+                      <td>" . $data['nama'] . "</td>
+                      <td>" . $data['tanggal_bayar'] . "</td>
+                      <td>" . $data['tarif'] . "</td>
+                      <td>" . $data['total_bayar'] . "</td>
+                 </tr>";
+        }
+    }
+    return $exec;
+}
+
+function DetailView(){
+    $qry = "SELECT siswa.nama_siswa, siswa.nama_wali, siswa.layanan, siswa.alamat, siswa.no_tlp, siswa.kelas, sopir.nama, rute.nama_rute, rute.tarif, transaksi.kode_bayar, transaksi.tanggal_bayar, transaksi.total_bayar FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa INNER JOIN rute ON transaksi.id_rute=rute.id_rute GROUP BY siswa.id_siswa ORDER BY siswa.nama_siswa ASC";
+    $exec = mysql_query($qry);
+    if ($exec) {
+        while ($data = mysql_fetch_array($exec)) {
+            echo "<tr>
+                      <td><input type=button class='btn btn-info btn' name=btnDetail" . $data['id_transaksi'] . " value=Detail onclick=window.location.assign('index.php?pgy=transaksi&page=detail&id=$data[id_siswa]')></td>
+                      <td>" . $data['nama_siswa'] . "</td>
+                      <td>" . $data['nama_wali'] . "</td>
+                      <td>" . $data['kelas'] . "</td>
+                      <td>" . $data['nama'] . "</td>
+                      <td>" . $data['tanggal_bayar'] . "</td>
+                      <td>" . $data['tarif'] . "</td>
+                      <td>" . $data['total_bayar'] . "</td>
+                 </tr>";
+        }
+    }
+    return $exec;
+}
+
+function GoPrint($nama, $wali, $kelas, $alamat, $email, $notelp, $id) {
     $qry = "UPDATE siswa SET nama_siswa='" . $nama . "', nama_wali='" . $wali . "', alamat='" . $alamat . "', kelas='" . $kelas . "', email='" . $email . "', no_tlp='" . $notelp . "' WHERE id_siswa=" . $id;
     $exec = mysql_query($qry);
     if ($exec) {
@@ -824,7 +873,7 @@ function UpdateSiswa($nama, $wali, $kelas, $alamat, $email, $notelp, $id) {
     return $exec;
 }
 
-function DeleteSiswa($id) {
+function PreviewMe($id) {
     $qry = "DELETE FROM siswa WHERE id_siswa=" . $id;
     $exec = mysql_query($qry);
     if ($exec) {
@@ -837,75 +886,4 @@ function DeleteSiswa($id) {
     return $exec;
 }
 
-function LoadSiswa() {
-    $i = 1;
-    $qry = "SELECT * FROM siswa";
-    $exec = mysql_query($qry);
-    if ($exec) {
-        if (mysql_num_rows($exec) == 0) {
-            echo "<tr>
-                    <td colspan=7><center><h4>No Data</h4><center></td>
-                  </tr>";
-        }
-        while ($data = mysql_fetch_array($exec)) {
-            echo "<tr>
-                      <td>" . $i . "</td>
-                      <td>" . $data['nama_siswa'] . "</td>
-                      <td>" . $data['nama_wali'] . "</td>
-                      <td>" . $data['kelas'] . "</td>
-                      <td>" . $data['alamat'] . "</td>
-                      <td>" . $data['email'] . "</td>
-                      <td>" . $data['no_tlp'] . "</td>
-                 </tr>";
-            $i++;
-        }
-    }
-    return $exec;
-}
-
-
-function EditSiswa() {
-    $qry = "SELECT * FROM siswa";
-    $exec = mysql_query($qry);
-    if ($exec) {
-        while ($data = mysql_fetch_array($exec)) {
-            echo "<tr>
-                      <td><input type=button class='btn btn-danger btn' name=btnId" . $data['id_siswa'] . " value=Ubah onclick=window.location.assign('index.php?pgy=siswa&page=editor&id=$data[id_siswa]')></td>
-                      <td>" . $data['nama_siswa'] . "</td>
-                      <td>" . $data['nama_wali'] . "</td>
-                      <td>" . $data['alamat'] . "</td>
-                      <td>" . $data['kelas'] . "</td>
-                      <td>" . $data['email'] . "</td>
-                      <td>" . $data['no_tlp'] . "</td>
-                 </tr>";
-        }
-    }
-}
-
-function DeleteSiswaView() {
-    $qry = "SELECT * FROM siswa";
-    $exec = mysql_query($qry);
-    if ($exec) {
-        while ($data = mysql_fetch_array($exec)) {
-            echo "<tr>
-                      <td><a class='btn btn-danger btn' href=\"index.php?pgy=siswa&do=delete&id=" . $data['id_siswa'] . "\" onclick = \"if (! confirm('Anda Yakin Akan Menghapus?')) return false;\">Hapus</td>
-                      <td>" . $data['nama_siswa'] . "</td>
-                      <td>" . $data['nama_wali'] . "</td>
-                      <td>" . $data['alamat'] . "</td>
-                      <td>" . $data['kelas'] . "</td>
-                      <td>" . $data['email'] . "</td>
-                      <td>" . $data['no_tlp'] . "</td>
-                 </tr>";
-        }
-    }
-}
-
-function getValueSiswa($field, $id, $param) {
-    $qry = "SELECT " . $field . " FROM siswa WHERE " . $param . "='" . $id . "'";
-    $exec = mysql_query($qry);
-    $data = mysql_fetch_array($exec);
-    $text = $data[$field];
-    return $text;
-}
-
-/* ------------------------------------------- LAPORAN KARTU PEMVAYARAN DAO ------------------------------------------- */
+/* ------------------------------------------- LAPORAN KARTU PEMBAYARAN DAO ------------------------------------------- */

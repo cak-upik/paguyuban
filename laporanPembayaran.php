@@ -104,16 +104,16 @@ if (isset($_GET['page'])) {
                                             <tr>
                                                 <th class="span0">No</th>
                                                 <th class="span3">Nama Siswa</th>
-                                                <th class="span3">Nama OrangTua/Wali</th>
-                                                <th class="span3">Nama Sopir</th>
-                                                <th class="span3">Alamat</th>
-                                                <th class="span2">No.Telp</th>
+                                                <th class="span3">Nama Ortu/Wali</th>
                                                 <th class="span1">Kelas</th>
+                                                <th class="span3">Nama Sopir</th>
+                                                <th class="span2">Tgl.Pembayaran</th>
                                                 <th class="span2">Tarif</th>
+                                                <th class="span3">Total</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php LoadSiswa(); ?>
+                                            <?php LoadLaporanKartu(); ?>
                                         </tbody>
                                     </table>
                                     <br />
@@ -148,18 +148,18 @@ if (isset($_GET['page'])) {
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>
                                             <tr>
-                                                <th class="span0">No</th>
+                                                <th class="span0">#</th>
                                                 <th class="span3">Nama Siswa</th>
-                                                <th class="span3">Nama OrangTua/Wali</th>
+                                                <th class="span3">Nama Ortu/Wali</th>
+                                                <th class="span3">Kelas</th>
                                                 <th class="span3">Nama Sopir</th>
-                                                <th class="span3">Alamat</th>
-                                                <th class="span2">No.Telp</th>
-                                                <th class="span1">Kelas</th>
+                                                <th class="span3">Tgl.Pembayaran</th>
                                                 <th class="span2">Tarif</th>
+                                                <th class="span2">Total</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php LoadSiswa(); ?>
+                                            <?php DetailView(); ?>
                                         </tbody>
                                     </table>
                                     <br />
@@ -313,7 +313,7 @@ if (isset($_GET['page'])) {
 
                             <div class="widget-header">
                                 <i class="icon-file"></i>
-                                <h3>Cetak Kartu</h3>
+                                <h3>Detail Kartu Pembayaran</h3>
                             </div> <!-- /widget-header -->
 
                             <div class="widget-content">
