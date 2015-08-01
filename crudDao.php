@@ -1,10 +1,5 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+session_start();
 
 /* ------------------------------------------- BEGIN SISWA DAO ------------------------------------------- */
 
@@ -72,7 +67,6 @@ function LoadSiswa() {
     }
     return $exec;
 }
-
 
 function EditSiswa() {
     $qry = "SELECT * FROM siswa";
@@ -795,3 +789,15 @@ function SaveUser($usernames, $password, $nama, $role, $email, $checked) {
 }
 
 /* ------------------------------------------- END USER DAO ------------------------------------------- */
+
+/* ------------------------------------------- START PROFILE DAO ------------------------------------------- */
+
+function getValueProfile($field, $id) {
+    $qry = "select nama, username, `password`, jabatan, role, email from user where id_user=" . $id;
+    $exec = mysql_query($qry);
+    $data = mysql_fetch_array($exec);
+    $text = $data[$field];
+    return $text;
+}
+
+/* ------------------------------------------- END PROFILE DAO ------------------------------------------- */

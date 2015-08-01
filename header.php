@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
@@ -8,41 +11,28 @@
                 E-Car <br>
                 Antar Jemput Siswa
                 Raudhatul Jannah
-                <!--<sup>2.0</sup>-->
             </a>
             <div class="nav-collapse collapse">
                 <ul class="nav pull-right">
-<!--                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="icon-cog"></i>
-                            Settings
-                            <b class="caret"></b>
-                        </a>-->
-<!--                        <ul class="dropdown-menu">
-                            <li><a href="javascript:;">Account Settings</a></li>
-                            <li><a href="javascript:;">Privacy Settings</a></li>
-                            <li class="divider"></li>
-                            <li><a href="javascript:;">Help</a></li>
-                        </ul>-->
-                    <!--</li>-->
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="icon-user"></i> 
-                            Rod Howard
+                            <?php
+                            include './connection.php';
+                            $user_login =  $_SESSION['login_user'];                            
+                            $query = mysql_query("select * from user where id_user='$user_login'");
+                            $result = mysql_fetch_array($query);
+                            echo $result['nama']; ?>
                             <b class="caret"></b>
                         </a>
 
                         <ul class="dropdown-menu">
-                            <li><a href="">My Profile</a></li>
-                            <!--<li><a href="javascript:;">My Groups</a></li>-->
+                            <li><a href="index.php?pgy=profile&page=view">My Profile</a></li>
                             <li class="divider"></li>
-                            <li><a href="index.php?pgy=logout">Logout</a></li>
+                            <li><a href="logout.php">Logout</a></li>
                         </ul>
                     </li>
                 </ul>
-                <!--                        <form class="navbar-search pull-right" >
-                                        <input type="text" class="search-query" placeholder="Search" />
-                                        </form>-->
             </div><!--/.nav-collapse -->	
         </div> <!-- /container -->
     </div> <!-- /navbar-inner -->
