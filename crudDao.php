@@ -881,3 +881,16 @@ function PreviewMe($id) {
 }
 
 /* ------------------------------------------- LAPORAN KARTU PEMBAYARAN DAO ------------------------------------------- */
+
+/* ------------------------------------------- START PROFILE DAO ------------------------------------------- */
+
+function getValueProfile($field, $id) {
+    $qry = "select nama, username, `password`, jabatan, role, email from user where id_user=" . $id;
+    $exec = mysql_query($qry);
+    $data = mysql_fetch_array($exec);
+    $text = $data[$field];
+    return $text;
+}
+
+/* ------------------------------------------- END PROFILE DAO ------------------------------------------- */
+
