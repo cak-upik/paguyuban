@@ -17,7 +17,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     if ($count == 1) {
         $_SESSION['login_user'] = $row['id_user'];
         $_SESSION['user_agent'] = $row['username'];
-//        echo $row['id_user'];
+        echo $row['id_user'];
 //        echo $row['username'];
     }
 }
