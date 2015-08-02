@@ -893,7 +893,7 @@ function LoadLaporanKartu() {
 }
 
 function ShowDetailIdentity($id) {
-    $qry = "SELECT siswa.nama_siswa, siswa.nama_wali, siswa.layanan, siswa.alamat, siswa.no_tlp, siswa.kelas, sopir.nama, rute.nama_rute, rute.tarif, transaksi.kode_bayar FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa INNER JOIN rute ON transaksi.id_rute=rute.id_rute WHERE transaksi.id_transaksi=" . $id . " GROUP BY transaksi.id_transaksi";
+    $qry = "SELECT siswa.nama_siswa, siswa.nama_wali, siswa.layanan, siswa.alamat, siswa.no_tlp, siswa.kelas, sopir.nama, rute.nama_rute, rute.tarif, transaksi.kode_bayar FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa INNER JOIN rute ON transaksi.id_rute=rute.id_rute WHERE siswa.id_siswa=" . $id . " GROUP BY siswa.id_siswa";
     $exec = mysql_query($qry);
     if ($exec) {
         if (mysql_num_rows($exec) == 0) {
