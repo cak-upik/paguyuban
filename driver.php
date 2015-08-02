@@ -149,9 +149,10 @@ if (isset($_GET['page'])) {
                                 <section id="tables">
                                     <h3>Data Supir</h3>
                                     <div class="form-actions">
-                                        <a href="index.php?pgy=supir&page=create" class="btn btn-primary btn">Tambah Supir</a>
-                                        <a href="index.php?pgy=supir&page=edit" class="btn btn-info btn">Edit Supir</a>
-                                        <a href="index.php?pgy=supir&page=delete" class="btn btn-danger btn">Hapus Supir</a>
+                                        <a href="#" class="btn btn-inverse btn">Tambah Supir</a>
+                                        <a href="#" class="btn btn-inverse btn">Edit Supir</a>
+                                        <a href="#" class="btn btn-inverse btn">Hapus Supir</a>
+                                        <a href="index.php?pgy=supir&page=view" class="btn btn-danger btn">Batal</a>
                                     </div>
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>
@@ -282,9 +283,10 @@ if (isset($_GET['page'])) {
                                 <section id="tables">
                                     <h3>Data Supir</h3>
                                     <div class="form-actions">
-                                        <a href="index.php?pgy=supir&page=create" class="btn btn-primary btn">Tambah Supir</a>
-                                        <a href="index.php?pgy=supir&page=edit" class="btn btn-info btn">Edit Supir</a>
-                                        <a href="index.php?pgy=supir&page=delete" class="btn btn-danger btn">Hapus Supir</a>
+                                        <a href="#" class="btn btn-inverse btn">Tambah Siswa</a>
+                                        <a href="#" class="btn btn-inverse btn">Edit Siswa</a>
+                                        <a href="#" class="btn btn-inverse btn">Hapus Siswa</a>
+                                        <a href="index.php?pgy=supir&page=view" class="btn btn-danger btn">Batal</a>
                                     </div>
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>

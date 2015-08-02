@@ -773,7 +773,7 @@ function getSupirTransaksi($id) {
 /* ------------------------------------------- START USER DAO ------------------------------------------- */
 
 function SaveUser($usernames, $password, $nama, $role, $email, $checked) {
-    $checked = $_POST['checkboxs'];
+//    $checked = $_POST['checkboxs'];
     foreach ($checked as $idCheckbox) {
         $qry = "INSERT INTO user(username, password, role, id_hak_akses, email, nama)"
                 . " VALUES('" . $usernames . "','" . $password . "','" . $role . "','" . $idCheckbox . "','" . $email . "','" . $nama . "')";
@@ -781,12 +781,89 @@ function SaveUser($usernames, $password, $nama, $role, $email, $checked) {
     }
     if ($exec) {
         echo "<script>javascript:alert('Penyimpanan Data User Berhasil')</script>";
-        echo "<script>javascript:window.location.assign('index.php?pgy=user&page=view')</script>";
+        echo "<script>javascript:window.location.assign('index.php?pgy=user-manage&page=view')</script>";
     } else {
         echo "<script>javascript:alert('Penyimpanan Data User Gagal')</script>";
         echo "<script>javascript:history.go(-1)</script>";
     }
     return $exec;
+}
+
+function LoadUser() {
+    $i = 1;
+    $qry = "SELECT * FROM user where role not like 'superadmin'";
+    $exec = mysql_query($qry);
+    if ($exec) {
+        if (mysql_num_rows($exec) == 0) {
+            echo "<tr>
+                    <td colspan=7><center><h4>No Data</h4><center></td>
+                  </tr>";
+        }
+        while ($data = mysql_fetch_array($exec)) {
+//            if ($data['role'] == 'superadmin') {
+//                echo "<tr>
+//                      <td>" . $i . "</td>
+//                      <td>" . $data['username'] . "</td>
+//                      <td>" . $data['nama'] . "</td>
+//                      <td>" . $data['email'] . "</td>
+//                      <td>" . $data['jabatan'] . "</td>
+//                      <td>" . $data['role'] . "</td>
+//                 </tr>";
+//            } else {
+                echo "<tr>
+                      <td>" . $i . "</td>
+                      <td>" . $data['username'] . "</td>
+                      <td>" . $data['nama'] . "</td>
+                      <td>" . $data['email'] . "</td>
+                      <td>" . $data['jabatan'] . "</td>
+                      <td>" . $data['role'] . "</td>
+                 </tr>";
+//            }
+            $i++;
+        }
+    }
+}
+
+function EditUser() {
+    $qry = "SELECT * FROM user";
+    $exec = mysql_query($qry);
+    if ($exec) {
+        while ($data = mysql_fetch_array($exec)) {
+            echo "<tr>
+                      <td><input type=button class='btn btn-danger btn' name=btnId" . $data['id_user'] . " value=Ubah onclick=window.location.assign('index.php?pgy=user-manage&page=editor&id=$data[id_user]')></td>
+                      <td>" . $data['username'] . "</td>
+                      <td>" . $data['nama'] . "</td>
+                      <td>" . $data['email'] . "</td>
+                      <td>" . $data['jabatan'] . "</td>
+                      <td>" . $data['role'] . "</td>
+                 </tr>";
+        }
+    }
+}
+
+function getValueUser($field, $id, $param) {
+    $qry = "SELECT " . $field . " FROM user WHERE " . $param . "='" . $id . "'";
+    $exec = mysql_query($qry);
+    $data = mysql_fetch_array($exec);
+    $text = $data[$field];
+    return $text;
+}
+
+function DeleteUserView() {
+    $qry = "SELECT * FROM user";
+    $exec = mysql_query($qry);
+    if ($exec) {
+        while ($data = mysql_fetch_array($exec)) {
+            echo "<tr>
+                      <td><a class='btn btn-danger btn' href=\"index.php?pgy=user-manage&do=delete&id=" . $data['id_user'] . "\" onclick = \"if (! confirm('Anda Yakin Akan Menghapus?')) return false;\">Hapus</td>
+                      <td>" . $data['username'] . "</td>
+                      <td>" . $data['nama'] . "</td>
+                      <td>" . $data['email'] . "</td>
+                      <td>" . $data['jabatan'] . "</td>
+                      <td>" . $data['role'] . "</td>
+                 </tr>";
+        }
+    }
 }
 
 /* ------------------------------------------- END USER DAO ------------------------------------------- */
