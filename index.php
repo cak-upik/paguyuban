@@ -47,7 +47,8 @@ if (empty($_SESSION['login_user'])) {
         include './menu.php';
         include './connection.php';
         include './crudDao.php';
-
+        include './helper.php';
+        
         session_start();
         $admin = $_GET['pgy'];
         $act = $_GET['do'];
@@ -242,7 +243,7 @@ if (empty($_SESSION['login_user'])) {
                 <div class="row">
 
                     <div id="footer-copyright" class="span6">
-                        &copy; 2015 - E-Car | Fritiyana Kusuma [7411030834]
+                        &copy; 2015 - E-Car | Fitriyana Kusuma [7411030834]
                     </div> 
                 </div> <!-- /row -->
             </div> <!-- /container -->

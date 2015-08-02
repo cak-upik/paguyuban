@@ -1,5 +1,5 @@
 <?php
-include './helper.php';
+//include './helper.php';
 if (isset($_GET['page'])) {
     ?>
     <script src="./js/jquery-1-11-1.min.js"></script>
@@ -186,13 +186,13 @@ if (isset($_GET['page'])) {
                                             <tr>
                                                 <th class="span1">#</th>
                                                 <th class="span1"><center>Kode</center></th>
-                                        <th class="span3"><center>Nama Supir</center></th>
-                                        <th class="span3"><center>Nama Siswa</center></th>
-                                        <th class="span3"><center>Rute</center></th>
-                                        <th class="span2"><center>Tgl Pembayaran</center></th>
-                                        <th class="span1"><center>Layanan</center></th>
-                                        <th class="span3"><center>Total Pembayaran</center></th>                                           
-                                        </tr>
+                                                <th class="span3"><center>Nama Supir</center></th>
+                                                <th class="span3"><center>Nama Siswa</center></th>
+                                                <th class="span3"><center>Rute</center></th>
+                                                <th class="span2"><center>Tgl Pembayaran</center></th>
+                                                <th class="span1"><center>Layanan</center></th>
+                                                <th class="span3"><center>Total Pembayaran</center></th>                                           
+                                                </tr>
                                         </thead>
                                         <tbody>
                                             <?php EditTransaksi(); ?>
@@ -233,25 +233,25 @@ if (isset($_GET['page'])) {
                                         <div class="control-group">
                                             <label class="control-label" for="kode">Kode Pembayaran</label>
                                             <div class="controls">
-                                                <input type="text" class="input-large" name="kode" id="kode" value="<?php getValueTransaksi("kode_bayar", $_GET['id']) ?>" disabled=""/>
+                                                <input type="text" class="input-large" name="kode" id="kode" value="<?php echo getValueTransaksi("kode_bayar", $_GET['id']) ?>" disabled=""/>
                                             </div>
                                         </div>
                                         <div class="control-group">
                                             <label class="control-label" for="siswa">Nama Siswa</label>
                                             <div class="controls">
-                                                <input type="text" class="input-large" name="siswa" id="siswa" value="<?php getValueTransaksi("nama_siswa", $_GET['id']) ?>" disabled=""/>
+                                                <input type="text" class="input-large" name="siswa" id="siswa" value="<?php echo getValueTransaksi("nama_siswa", $_GET['id']) ?>" disabled=""/>
                                             </div>
                                         </div>
                                         <div class="control-group">
                                             <label class="control-label" for="supir">Nama Supir</label>
                                             <div class="controls">
-                                                <input type="text" class="input-large" name="supir" id="supir" value="<?php getValueTransaksi("nama", $_GET['id']) ?>" disabled=""/>
+                                                <input type="text" class="input-large" name="supir" id="supir" value="<?php echo getValueTransaksi("nama", $_GET['id']) ?>" disabled=""/>
                                             </div>
                                         </div>
                                         <div class="control-group">
                                             <label class="control-label" for="rute">Rute</label>
                                             <div class="controls">
-                                                <input type="text" class="input-large" name="rute" id="rute" value="<?php getValueTransaksi("nama_rute", $_GET['id']) ?>" disabled=""/>
+                                                <input type="text" class="input-large" name="rute" id="rute" value="<?php echo getValueTransaksi("nama_rute", $_GET['id']) ?>" disabled=""/>
                                             </div>
                                         </div>
                                     </div>
@@ -259,13 +259,13 @@ if (isset($_GET['page'])) {
                                         <div class="control-group">
                                             <label class="control-label" for="tanggal">Tanggal Pembayaran</label>
                                             <div class="controls">
-                                                <input type="text" class="input-large" name="tanggal" id="datepicker" value="<?php getValueTransaksi("tanggal_bayar", $_GET['id']) ?>" />
+                                                <input type="text" class="input-large" name="tanggal" id="datepicker" value="<?php echo getValueTransaksi("tanggal_bayar", $_GET['id']) ?>" />
                                             </div>
                                         </div>
                                         <div class="control-group">
                                             <label class="control-label" for="layanan">Jenis Layanan</label>
                                             <div class="controls">
-                                                <input type="text" class="input-large" name="layanan" id="layanan" value="<?php getValueTransaksi("layanan", $_GET['id']) ?>" disabled=""/>
+                                                <input type="text" class="input-large" name="layanan" id="layanan" value="<?php echo getValueTransaksi("layanan", $_GET['id']) ?>" disabled=""/>
                                             </div>
                                         </div>
                                         <div class="control-group">
@@ -273,7 +273,7 @@ if (isset($_GET['page'])) {
                                             <div class="controls">
                                                 <div class="input-prepend">
                                                     <span class="add-on">Rp</span>                     
-                                                    <input type="text" class="input-large" name="tarif" id="tarif" value="<?php getValueTransaksi("tarif", $_GET['id']) ?>" disabled=""/>
+                                                    <input type="text" class="input-large" name="tarif" id="tarif" value="<?php echo getValueTransaksi("tarif", $_GET['id']) ?>" disabled=""/>
                                                 </div>
                                             </div>
                                         </div>
@@ -282,7 +282,7 @@ if (isset($_GET['page'])) {
                                             <div class="controls">
                                                 <div class="input-prepend">
                                                     <span class="add-on">Rp</span>
-                                                    <input type="text" class="input-large" name="bayar" id="bayar" value="<?php getValueTransaksi('total_bayar', $_GET['id']) ?>" />
+                                                    <input type="text" class="input-large" name="bayar" id="bayar" value="<?php echo getValueTransaksi('total_bayar', $_GET['id']) ?>" />
                                                 </div>
                                             </div>
                                         </div>

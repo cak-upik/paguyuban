@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 /* ------------------------------------------- BEGIN SISWA DAO ------------------------------------------- */
@@ -657,7 +658,7 @@ function LoadTransaksi() {
 }
 
 function EditTransaksi() {
-    $qry = "SELECT siswa.nama_siswa, siswa.layanan, sopir.nama, rute.nama_rute, transaksi.kode_bayar, transaksi.tanggal_bayar, transaksi.total_bayar FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa INNER JOIN rute ON transaksi.id_rute=rute.id_rute GROUP BY transaksi.kode_bayar ORDER BY transaksi.kode_bayar ASC";
+    $qry = "SELECT siswa.nama_siswa, siswa.layanan, sopir.nama, rute.nama_rute, transaksi.id_transaksi, transaksi.kode_bayar, transaksi.tanggal_bayar, transaksi.total_bayar FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa INNER JOIN rute ON transaksi.id_rute=rute.id_rute GROUP BY transaksi.kode_bayar ORDER BY transaksi.kode_bayar ASC";
     $exec = mysql_query($qry);
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
@@ -793,7 +794,7 @@ function SaveUser($usernames, $password, $nama, $role, $email, $checked) {
 /* ------------------------------------------- LAPORAN KARTU PEMBAYARAN DAO ------------------------------------------- */
 
 function LoadLaporanKartu() {
-    $i=1;
+    $i = 1;
     $qry = "SELECT siswa.nama_siswa, siswa.nama_wali, siswa.layanan, siswa.alamat, siswa.no_tlp, siswa.kelas, sopir.nama, rute.nama_rute, rute.tarif, transaksi.kode_bayar, transaksi.tanggal_bayar, transaksi.total_bayar FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa INNER JOIN rute ON transaksi.id_rute=rute.id_rute GROUP BY siswa.id_siswa ORDER BY siswa.nama_siswa ASC";
     $exec = mysql_query($qry);
     if ($exec) {
@@ -814,33 +815,49 @@ function LoadLaporanKartu() {
     return $exec;
 }
 
-function ShowDetail($id) {
-    $qry = "SELECT siswa.nama_siswa, siswa.nama_wali, siswa.layanan, siswa.alamat, siswa.no_tlp, siswa.kelas, sopir.nama, rute.nama_rute, rute.tarif, transaksi.kode_bayar, transaksi.tanggal_bayar, transaksi.total_bayar FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa INNER JOIN rute ON transaksi.id_rute=rute.id_rute GROUP BY siswa.id_siswa ORDER BY siswa.nama_siswa ASC";
+function ShowDetailIdentity($id) {
+    $qry = "SELECT siswa.nama_siswa, siswa.nama_wali, siswa.layanan, siswa.alamat, siswa.no_tlp, siswa.kelas, sopir.nama, rute.nama_rute, rute.tarif, transaksi.kode_bayar FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa INNER JOIN rute ON transaksi.id_rute=rute.id_rute WHERE transaksi.id_transaksi=" . $id . " GROUP BY transaksi.id_transaksi";
     $exec = mysql_query($qry);
     if ($exec) {
-        while ($data = mysql_fetch_array($exec)) {
-            echo "<tr>
-                      <td><input type=button class='btn btn-info btn' name=btnDetail" . $data['id_transaksi'] . " value=Detail onclick=window.location.assign('index.php?pgy=transaksi&page=detail&id=$data[id_siswa]')></td>
-                      <td>" . $data['nama_siswa'] . "</td>
-                      <td>" . $data['nama_wali'] . "</td>
-                      <td>" . $data['kelas'] . "</td>
-                      <td>" . $data['nama'] . "</td>
-                      <td>" . $data['tanggal_bayar'] . "</td>
-                      <td>" . $data['tarif'] . "</td>
-                      <td>" . $data['total_bayar'] . "</td>
-                 </tr>";
+        if (mysql_num_rows($exec) == 0) {
+            echo "<script>javascript:alert('Tidak Ada Data');";
+        } else {
+            $identity = mysql_fetch_array($exec);
+            echo "  <label class=\"control-label\" for=\"namaSiswa\">: " . $identity['nama_siswa'] . "</label>
+                    <label class=\"control-label\" for=\"ortu\">: " . $identity['nama_wali'] . "</label>
+                    <label class=\"control-label\" for=\"alamat\">: " . $identity['alamat'] . "</label>
+                    <label class=\"control-label\" for=\"telp\">: " . $identity['no_tlp'] . "</label>
+                    <label class=\"control-label\" for=\"kelas\">: " . $identity['kelas'] . "</label>
+                    <label class=\"control-label\" for=\"tarif\">: " . $identity['tarif'] . "</label>
+                    <label class=\"control-label\" for=\"sopir\">: " . $identity['nama'] . "</label>
+                    <label class=\"control-label\" for=\"pilihan\">: " . $identity['layanan'] . "</label>";
         }
     }
     return $exec;
 }
 
-function DetailView(){
-    $qry = "SELECT siswa.nama_siswa, siswa.nama_wali, siswa.layanan, siswa.alamat, siswa.no_tlp, siswa.kelas, sopir.nama, rute.nama_rute, rute.tarif, transaksi.kode_bayar, transaksi.tanggal_bayar, transaksi.total_bayar FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa INNER JOIN rute ON transaksi.id_rute=rute.id_rute GROUP BY siswa.id_siswa ORDER BY siswa.nama_siswa ASC";
+function ShowDetailTransaction($id) {
+    $qry = "SELECT DATE(tanggal_bayar) as tanggal, MONTH(tanggal_bayar) as bulan, total_bayar FROM transaksi WHERE id_transaksi=" . $id;
+    $exec = mysql_query($qry);
+    while ($data = mysql_fetch_array($exec)) {
+        echo "<tr>
+                        <td class=\"span2\">" . $data['tanggal'] . "</td>
+                        <td class=\"span1\">" . parseNamaBulan($data['bulan']) . "</td>
+                        <td class=\"span3\">" . $data['total_bayar'] . "</td>
+                        <td class=\"span2\"></td>
+                        <td class=\"span2\"></td>
+                        
+                    </tr>";
+    }
+}
+
+function DetailView() {
+    $qry = "SELECT siswa.nama_siswa, siswa.nama_wali, siswa.layanan, siswa.alamat, siswa.no_tlp, siswa.kelas, sopir.nama, rute.nama_rute, rute.tarif, transaksi.id_transaksi, transaksi.kode_bayar, transaksi.tanggal_bayar, transaksi.total_bayar FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa INNER JOIN rute ON transaksi.id_rute=rute.id_rute GROUP BY siswa.id_siswa ORDER BY siswa.nama_siswa ASC";
     $exec = mysql_query($qry);
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td><input type=button class='btn btn-info btn' name=btnDetail" . $data['id_transaksi'] . " value=Detail onclick=window.location.assign('index.php?pgy=transaksi&page=detail&id=$data[id_siswa]')></td>
+                      <td><input type=button class='btn btn-info btn' name=btnDetail" . $data['id_transaksi'] . " value=Detail onclick=window.location.assign('index.php?pgy=laporan-pembayaran&page=detailer&id=" . $data['id_transaksi'] . "')></td>
                       <td>" . $data['nama_siswa'] . "</td>
                       <td>" . $data['nama_wali'] . "</td>
                       <td>" . $data['kelas'] . "</td>

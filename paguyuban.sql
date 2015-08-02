@@ -1,52 +1,57 @@
-/*
-Navicat MySQL Data Transfer
+-- phpMyAdmin SQL Dump
+-- version 4.0.10deb1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Aug 02, 2015 at 04:53 PM
+-- Server version: 5.5.43-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.11
 
-Source Server         : LOCAL
-Source Server Version : 50541
-Source Host           : localhost:3306
-Source Database       : paguyuban
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
-Target Server Type    : MYSQL
-Target Server Version : 50541
-File Encoding         : 65001
+--
+-- Database: `paguyuban`
+--
 
-Date: 2015-08-01 20:00:59
-*/
+-- --------------------------------------------------------
 
-SET FOREIGN_KEY_CHECKS=0;
+--
+-- Table structure for table `hak_akses`
+--
 
--- ----------------------------
--- Table structure for `hak_akses`
--- ----------------------------
-DROP TABLE IF EXISTS `hak_akses`;
-CREATE TABLE `hak_akses` (
+CREATE TABLE IF NOT EXISTS `hak_akses` (
   `id_hak_akses` bigint(20) NOT NULL AUTO_INCREMENT,
   `nama_hak_akses` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_hak_akses`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
--- ----------------------------
--- Records of hak_akses
--- ----------------------------
-INSERT INTO `hak_akses` VALUES ('1', 'master_siswa');
-INSERT INTO `hak_akses` VALUES ('2', 'master_sopir');
-INSERT INTO `hak_akses` VALUES ('3', 'master_karyawan');
-INSERT INTO `hak_akses` VALUES ('4', 'master_rute');
-INSERT INTO `hak_akses` VALUES ('5', 'trx_pendaftaran');
-INSERT INTO `hak_akses` VALUES ('6', 'trx_pembayaran');
-INSERT INTO `hak_akses` VALUES ('7', 'lap_pembayaran');
-INSERT INTO `hak_akses` VALUES ('8', 'lap_sopir');
-INSERT INTO `hak_akses` VALUES ('9', 'lap_siswa');
-INSERT INTO `hak_akses` VALUES ('10', 'laba');
-INSERT INTO `hak_akses` VALUES ('11', 'setting_user');
-INSERT INTO `hak_akses` VALUES ('12', 'setting_hak_akses');
-INSERT INTO `hak_akses` VALUES ('13', 'setting_template');
+--
+-- Dumping data for table `hak_akses`
+--
 
--- ----------------------------
--- Table structure for `karyawan`
--- ----------------------------
-DROP TABLE IF EXISTS `karyawan`;
-CREATE TABLE `karyawan` (
+INSERT INTO `hak_akses` (`id_hak_akses`, `nama_hak_akses`) VALUES
+(1, 'master_siswa'),
+(2, 'master_sopir'),
+(3, 'master_karyawan'),
+(4, 'master_rute'),
+(5, 'trx_pendaftaran'),
+(6, 'trx_pembayaran'),
+(7, 'lap_pembayaran'),
+(8, 'lap_sopir'),
+(9, 'lap_siswa'),
+(10, 'laba'),
+(11, 'setting_user'),
+(12, 'setting_hak_akses'),
+(13, 'setting_template');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `karyawan`
+--
+
+CREATE TABLE IF NOT EXISTS `karyawan` (
   `id_karyawan` int(10) NOT NULL AUTO_INCREMENT,
   `nama_karyawan` varchar(255) NOT NULL,
   `tempat_lahir` varchar(50) DEFAULT NULL,
@@ -56,36 +61,44 @@ CREATE TABLE `karyawan` (
   `no_tlp` varchar(100) DEFAULT NULL,
   `jabatan` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_karyawan`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
--- ----------------------------
--- Records of karyawan
--- ----------------------------
-INSERT INTO `karyawan` VALUES ('1', 'Taufik', 'Surabaya', '26 Mei 1992', 'Jl Rungkut Harapan H 22', 'muhammadtaufik92@programmer.net', '08963660652', 'direktur');
+--
+-- Dumping data for table `karyawan`
+--
 
--- ----------------------------
--- Table structure for `rute`
--- ----------------------------
-DROP TABLE IF EXISTS `rute`;
-CREATE TABLE `rute` (
+INSERT INTO `karyawan` (`id_karyawan`, `nama_karyawan`, `tempat_lahir`, `tanggal_lahir`, `alamat`, `email`, `no_tlp`, `jabatan`) VALUES
+(1, 'Taufik', 'Surabaya', '26 Mei 1992', 'Jl Rungkut Harapan H 22', 'muhammadtaufik92@programmer.net', '08963660652', 'direktur');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rute`
+--
+
+CREATE TABLE IF NOT EXISTS `rute` (
   `id_rute` bigint(20) NOT NULL AUTO_INCREMENT,
   `nama_rute` varchar(50) DEFAULT NULL,
   `kota` varchar(50) DEFAULT NULL,
   `tarif` double DEFAULT NULL,
   PRIMARY KEY (`id_rute`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
--- ----------------------------
--- Records of rute
--- ----------------------------
-INSERT INTO `rute` VALUES ('1', 'SBY-P', 'Surabaya', '100000');
-INSERT INTO `rute` VALUES ('3', 'SBY-PP', 'Surabaya', '200000');
+--
+-- Dumping data for table `rute`
+--
 
--- ----------------------------
--- Table structure for `siswa`
--- ----------------------------
-DROP TABLE IF EXISTS `siswa`;
-CREATE TABLE `siswa` (
+INSERT INTO `rute` (`id_rute`, `nama_rute`, `kota`, `tarif`) VALUES
+(1, 'SBY-P', 'Surabaya', 100000),
+(3, 'SBY-PP', 'Surabaya', 200000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `siswa`
+--
+
+CREATE TABLE IF NOT EXISTS `siswa` (
   `id_siswa` bigint(20) NOT NULL AUTO_INCREMENT,
   `nama_siswa` varchar(255) NOT NULL,
   `nama_wali` varchar(255) DEFAULT NULL,
@@ -97,22 +110,26 @@ CREATE TABLE `siswa` (
   `id_supir` bigint(20) DEFAULT NULL,
   `id_rute` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id_siswa`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
--- ----------------------------
--- Records of siswa
--- ----------------------------
-INSERT INTO `siswa` VALUES ('1', 'Taufik', 'Bambang Setijanto', 'Tambak Medokan Ayu 8A no 11', '5B', 'muhammadtaufik92@gmail.com', 'twoway', '089636606525', '4', '3');
-INSERT INTO `siswa` VALUES ('2', 'Wali', 'Hidayah', 'Rungkut', '5A', 'wali@yahoo.com', 'twoway', '089636606525', '4', '3');
-INSERT INTO `siswa` VALUES ('3', 'Zaidan', 'Nur Hidayati', 'Medokan', '1A', 'muhammadzaidan@gmail.com', 'twoway', '089636606525', '6', '3');
-INSERT INTO `siswa` VALUES ('4', 'Rizal', 'Rizal', 'Rungkut', '2 SD', 'muhammadrizal@gmail.com', 'oneway', '089636606525', '6', '1');
-INSERT INTO `siswa` VALUES ('5', 'ayu', '', '', '', '', 'twoway', '', '5', '1');
+--
+-- Dumping data for table `siswa`
+--
 
--- ----------------------------
--- Table structure for `sopir`
--- ----------------------------
-DROP TABLE IF EXISTS `sopir`;
-CREATE TABLE `sopir` (
+INSERT INTO `siswa` (`id_siswa`, `nama_siswa`, `nama_wali`, `alamat`, `kelas`, `email`, `layanan`, `no_tlp`, `id_supir`, `id_rute`) VALUES
+(1, 'Taufik', 'Bambang Setijanto', 'Tambak Medokan Ayu 8A no 11', '5B', 'muhammadtaufik92@gmail.com', 'twoway', '089636606525', 4, 3),
+(2, 'Wali', 'Hidayah', 'Rungkut', '5A', 'wali@yahoo.com', 'twoway', '089636606525', 4, 3),
+(3, 'Zaidan', 'Nur Hidayati', 'Medokan', '1A', 'muhammadzaidan@gmail.com', 'twoway', '089636606525', 6, 3),
+(4, 'Rizal', 'Rizal', 'Rungkut', '2 SD', 'muhammadrizal@gmail.com', 'oneway', '089636606525', 6, 1),
+(5, 'ayu', 'jali', 'rungkut medokan', '2A', 'ayu@gmail.com', 'twoway', '099898234', 5, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sopir`
+--
+
+CREATE TABLE IF NOT EXISTS `sopir` (
   `id_sopir` bigint(20) NOT NULL AUTO_INCREMENT,
   `nama` varchar(255) DEFAULT NULL,
   `alamat` varchar(255) DEFAULT NULL,
@@ -122,41 +139,54 @@ CREATE TABLE `sopir` (
   `merk_mobil` varchar(50) DEFAULT NULL,
   `no_mobil` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_sopir`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
--- ----------------------------
--- Records of sopir
--- ----------------------------
-INSERT INTO `sopir` VALUES ('4', 'Joko', 'Jl. Bulak Banteng Gg VI no 20', 'Surabaya', '923842', '0987654321', 'Toyota Avanza 2012', '987654321');
-INSERT INTO `sopir` VALUES ('5', 'Supadi', 'Rusun Pandugo', 'Surabaya', '08963660652', '1234567890', 'Toyota Kijang Innova', '098764321');
-INSERT INTO `sopir` VALUES ('6', 'Zaki', 'Medokan Ayu II', 'Surabaya', '08923948728', '0987654321', 'Toyota 86 TRD', '123456789');
+--
+-- Dumping data for table `sopir`
+--
 
--- ----------------------------
--- Table structure for `transaksi`
--- ----------------------------
-DROP TABLE IF EXISTS `transaksi`;
-CREATE TABLE `transaksi` (
-  `id_transaksi` bigint(20) NOT NULL AUTO_INCREMENT,
-  `kode_bayar` bigint(50) NOT NULL,
-  `id_siswa` bigint(20) NOT NULL DEFAULT '0',
-  `id_sopir` bigint(20) NOT NULL DEFAULT '0',
-  `id_rute` bigint(20) NOT NULL DEFAULT '0',
+INSERT INTO `sopir` (`id_sopir`, `nama`, `alamat`, `kota`, `no_tlp`, `no_sim`, `merk_mobil`, `no_mobil`) VALUES
+(4, 'Joko', 'Jl. Bulak Banteng Gg VI no 20', 'Surabaya', '923842', '0987654321', 'Toyota Avanza 2012', '987654321'),
+(5, 'Supadi', 'Rusun Pandugo', 'Surabaya', '08963660652', '1234567890', 'Toyota Kijang Innova', '098764321'),
+(6, 'Zaki', 'Medokan Ayu II', 'Surabaya', '08923948728', '0987654321', 'Toyota 86 TRD', '123456789');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaksi`
+--
+
+CREATE TABLE IF NOT EXISTS `transaksi` (
+  `id_transaksi` tinyint(5) NOT NULL AUTO_INCREMENT,
+  `kode_bayar` varchar(255) NOT NULL,
+  `id_siswa` tinyint(5) NOT NULL DEFAULT '0',
+  `id_sopir` tinyint(5) NOT NULL DEFAULT '0',
+  `id_rute` tinyint(5) NOT NULL DEFAULT '0',
   `tanggal_bayar` date DEFAULT NULL,
   `total_bayar` decimal(19,2) NOT NULL,
   `closing_intern` decimal(19,2) NOT NULL,
   `closing_supir` decimal(19,2) NOT NULL,
-  PRIMARY KEY (`id_transaksi`,`id_siswa`,`id_sopir`,`id_rute`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id_transaksi`,`id_siswa`,`id_sopir`,`id_rute`),
+  UNIQUE KEY `kode_bayar` (`kode_bayar`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
--- ----------------------------
--- Records of transaksi
--- ----------------------------
+--
+-- Dumping data for table `transaksi`
+--
 
--- ----------------------------
--- Table structure for `user`
--- ----------------------------
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user` (
+INSERT INTO `transaksi` (`id_transaksi`, `kode_bayar`, `id_siswa`, `id_sopir`, `id_rute`, `tanggal_bayar`, `total_bayar`, `closing_intern`, `closing_supir`) VALUES
+(1, 'RJ-02082015-01', 1, 4, 3, '2015-08-01', 250000.00, 12500.00, 237500.00),
+(2, 'RJ-02082015-02', 3, 6, 3, '2015-08-01', 200000.00, 10000.00, 190000.00),
+(3, 'RJ-02082015-03', 5, 5, 1, '2015-08-01', 100000.00, 5000.00, 95000.00),
+(4, 'RJ-02082015-04', 1, 4, 3, '2015-08-03', 200000.00, 10000.00, 190000.00);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE IF NOT EXISTS `user` (
   `id_user` bigint(20) NOT NULL AUTO_INCREMENT,
   `username` varchar(25) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
@@ -166,9 +196,11 @@ CREATE TABLE `user` (
   `email` varchar(20) DEFAULT NULL,
   `nama` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_user`,`id_hak_akses`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
--- ----------------------------
--- Records of user
--- ----------------------------
-INSERT INTO `user` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Manager', 'admin', '1', null, 'admin');
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id_user`, `username`, `password`, `jabatan`, `role`, `id_hak_akses`, `email`, `nama`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Manager', 'admin', 1, NULL, 'admin');
