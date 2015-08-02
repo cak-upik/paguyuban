@@ -1011,5 +1011,22 @@ function searchTerm($tgl) {
     return $exec;
 }
 
+function searchAll() {
+    $qry = "SELECT COUNT(id_transaksi) AS total_trx, SUM(total_bayar) AS total_byr, SUM(closing_intern) AS profit, MONTHNAME(tanggal_bayar) AS bulan FROM transaksi GROUP BY MONTH(tanggal_bayar)";
+    $exec = mysql_query($qry);
+    if ($exec) {
+//        echo "<script>javascript:window.location.assign('index.php?pgy=profit&do=detail')</script>";
+        while ($data = mysql_fetch_array($exec)) {
+            echo "<tr>
+                      <td><center>" . $data['bulan'] . "</center></td>
+                      <td><center>" . $data['total_trx'] . "</center></td>
+                      <td><center>" . $data['total_byr'] . "</center></td>
+                      <td><center>" . $data['profit'] . "</center></td>
+                 </tr>";
+        }
+    }
+    return $exec;
+}
+
 /* ------------------------------------------- END LAPORAN LABA DAO ------------------------------------------- */
 

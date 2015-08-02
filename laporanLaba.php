@@ -26,7 +26,9 @@ if (isset($_GET['page'])) {
                                         <div class="control-group">
                                             <label class="control-label" for="name">Bulan</label>
                                             <div class="controls">
-                                                <input type="text" class="input-large" name="bln" id="datepicker" />
+                                                <input type="text" class="input-large" name="bln" id="datepicker" />&nbsp;&nbsp;
+                                                <input type="checkbox" name="all" id="all" />&nbsp;Semua Bulan
+                                                <input type="hidden" name="allMonths" id="allMonths">
                                             </div>
                                         </div>
                                     </fieldset>
@@ -71,8 +73,9 @@ if (isset($_GET['page'])) {
                                         </thead>
                                         <tbody>
                                             <?php 
+                                            $all = $_POST['allMonths'];
                                             $tgl = date('Y-m-d', strtotime($_POST['bln']));
-                                            searchTerm($tgl); 
+                                            if($all == 1) searchAll();else searchTerm($tgl);
                                             ?>
                                         </tbody>
                                     </table>
@@ -89,7 +92,7 @@ if (isset($_GET['page'])) {
             </div>
         </div>
         <?php
-    } else if ($_GET['page'] == 'detailer') {
+    } else if ($_GET['page'] == 'cetak') {
         ?>
         <div class="main">
 

@@ -39,4 +39,10 @@ $(document).ready(function() {
         $('#closingSupir').val((supir).toFixed());
         $('#closingInt').val((intern).toFixed());
     });
+    
+    //check all month laporanLaba
+    $('#all').change(function(){
+        $('#datepicker').prop("disabled", $(this).is(':checked'));
+        $('#allMonths').val(1);
+    });
 });
