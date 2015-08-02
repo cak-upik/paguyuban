@@ -872,14 +872,14 @@ function DeleteUserView() {
 
 function LoadLaporanKartu() {
     $i = 1;
-    $qry = "SELECT siswa.nama_siswa, siswa.nama_wali, siswa.layanan, siswa.alamat, siswa.no_tlp, siswa.kelas, sopir.nama, rute.nama_rute, rute.tarif, transaksi.kode_bayar, transaksi.tanggal_bayar, transaksi.total_bayar FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa INNER JOIN rute ON transaksi.id_rute=rute.id_rute GROUP BY siswa.id_siswa ORDER BY siswa.nama_siswa ASC";
+    $qry = "SELECT siswa.nama_siswa, siswa.nama_wali, siswa.layanan, siswa.alamat, siswa.no_tlp, siswa.kelas, sopir.nama, rute.nama_rute, rute.tarif, transaksi.kode_bayar, transaksi.tanggal_bayar, transaksi.total_bayar FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa INNER JOIN rute ON transaksi.id_rute=rute.id_rute GROUP BY siswa.id_siswa ORDER BY transaksi.id_transaksi ASC";
     $exec = mysql_query($qry);
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
                       <td>$i</td>
+                      <td>" . $data['kode_bayar'] . "</td>
                       <td>" . $data['nama_siswa'] . "</td>
-                      <td>" . $data['nama_wali'] . "</td>
                       <td>" . $data['kelas'] . "</td>
                       <td>" . $data['nama'] . "</td>
                       <td>" . $data['tanggal_bayar'] . "</td>
@@ -914,12 +914,15 @@ function ShowDetailIdentity($id) {
 }
 
 function ShowDetailTransaction($id) {
-    $qry = "SELECT DATE(tanggal_bayar) as tanggal, MONTH(tanggal_bayar) as bulan, total_bayar FROM transaksi WHERE id_transaksi=" . $id;
+//    setlocale(LC_ALL, "id_ID");
+    date_default_timezone_set('Asia/Jakarta');
+//    strftime("%B", strtotime($data['tanggal']));
+    $qry = "SELECT DATE(tanggal_bayar) as tanggal, MONTH(tanggal_bayar) as bulan, total_bayar FROM transaksi INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa WHERE siswa.id_siswa=" . $id;
     $exec = mysql_query($qry);
     while ($data = mysql_fetch_array($exec)) {
         echo "<tr>
-                        <td class=\"span2\">" . $data['tanggal'] . "</td>
-                        <td class=\"span1\">" . parseNamaBulan($data['bulan']) . "</td>
+                        <td class=\"span2\">" . date('d-m-Y', strtotime($data['tanggal'])) . "</td>
+                        <td class=\"span1\">" . date("F", strtotime($data['tanggal'])) . "</td>
                         <td class=\"span3\">" . $data['total_bayar'] . "</td>
                         <td class=\"span2\"></td>
                         <td class=\"span2\"></td>
@@ -929,14 +932,14 @@ function ShowDetailTransaction($id) {
 }
 
 function DetailView() {
-    $qry = "SELECT siswa.nama_siswa, siswa.nama_wali, siswa.layanan, siswa.alamat, siswa.no_tlp, siswa.kelas, sopir.nama, rute.nama_rute, rute.tarif, transaksi.id_transaksi, transaksi.kode_bayar, transaksi.tanggal_bayar, transaksi.total_bayar FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa INNER JOIN rute ON transaksi.id_rute=rute.id_rute GROUP BY siswa.id_siswa ORDER BY siswa.nama_siswa ASC";
+    $qry = "SELECT siswa.id_siswa, siswa.nama_siswa, siswa.nama_wali, siswa.layanan, siswa.alamat, siswa.no_tlp, siswa.kelas, sopir.nama, rute.nama_rute, rute.tarif, transaksi.id_transaksi, transaksi.kode_bayar, transaksi.tanggal_bayar, transaksi.total_bayar FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa INNER JOIN rute ON transaksi.id_rute=rute.id_rute GROUP BY siswa.id_siswa ORDER BY transaksi.id_transaksi ASC";
     $exec = mysql_query($qry);
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td><input type=button class='btn btn-info btn' name=btnDetail" . $data['id_transaksi'] . " value=Detail onclick=window.location.assign('index.php?pgy=laporan-pembayaran&page=detailer&id=" . $data['id_transaksi'] . "')></td>
+                      <td><input type=button class='btn btn-info btn' name=btnDetail" . $data['id_siswa'] . " value=Detail onclick=window.location.assign('index.php?pgy=laporan-pembayaran&page=detailer&id=" . $data['id_siswa'] . "')></td>
+                      <td>" . $data['kode_bayar'] . "</td>
                       <td>" . $data['nama_siswa'] . "</td>
-                      <td>" . $data['nama_wali'] . "</td>
                       <td>" . $data['kelas'] . "</td>
                       <td>" . $data['nama'] . "</td>
                       <td>" . $data['tanggal_bayar'] . "</td>

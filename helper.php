@@ -53,38 +53,3 @@ function getMo($no) {
         return $no;
     }
 }
-
-function parseNamaBulan($when){
-    $monthName="";
-    if(isset($when)) {
-        switch ($when) {
-            case "1" :
-                $monthName = "Januari";
-            case "2" :
-                $monthName = "Februari";
-            case "3" :
-                $monthName = "Maret";
-            case "4" :
-                $monthName = "April";
-            case "5" :
-                $monthName = "Mei";
-            case "6" :
-                $monthName = "Juni";
-            case "7" :
-                $monthName = "Juli";
-            case "8" :
-                $monthName = "Agustus";
-            case "9" :
-                $monthName = "September";
-            case "10" :
-                $monthName = "Oktober";
-            case "11" :
-                $monthName = "November";
-            case "12" :
-                $monthName = "Desember";
-            default :
-                $monthName = "Invalid";
-        }
-    }
-    return $monthName;
-}
