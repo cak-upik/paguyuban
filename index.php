@@ -48,7 +48,7 @@ if (empty($_SESSION['login_user'])) {
         include './connection.php';
         include './crudDao.php';
         include './helper.php';
-        
+
         session_start();
         $admin = $_GET['pgy'];
         $act = $_GET['do'];
@@ -183,6 +183,10 @@ if (empty($_SESSION['login_user'])) {
                 include 'laporanPembayaran.php';
             } else if ($admin == 'laporan-laba') {
                 include 'provit.php';
+            } else if ($admin == 'lap-pembayaran-siswa') {
+                include 'laporanPembayaranSiswa.php';
+            } else if ($admin == 'lap-pembayaran-supir') {
+                include 'laporanPembayaranSupir.php';
             } else if ($admin == 'user-manage') {
                 switch ($act) {
                     case "save" :
@@ -197,22 +201,8 @@ if (empty($_SESSION['login_user'])) {
                     default :
                         include 'user.php';
                 }
-            }else if ($admin == 'profit') {
-                switch ($act) {
-//                    case "search" :
-//                        $usernames = $_POST['username'];
-//                        $password = $_POST['password'];
-//                        $nama = $_POST['name'];
-//                        $email = $_POST['email'];
-//                        $role = $_POST['role'];
-//                        $checked = $_POST['checkboxs'];
-//                        $tgl = date('Y-m-d', strtotime($_POST['bln']));
-//                        searchTerm($tgl);
-//                    case "cetak" :
-
-                    default :
-                        include 'laporanLaba.php';
-                }
+            } else if ($admin == 'profit') {
+                include 'laporanLaba.php';
             } else if ($admin == 'profile') {
                 include 'profile.php';
             } else if ($admin == 'layout') {
@@ -243,7 +233,7 @@ if (empty($_SESSION['login_user'])) {
                     default :
                         include 'transaction.php';
                 }
-            } 
+            }
 //            else if ($admin == 'logout') {
 //                include 'logout.php';
 //            }

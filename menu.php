@@ -47,8 +47,8 @@
                         </a>	    
                         <ul class="dropdown-menu">
                             <li <?php echo $active ?>><a href="index.php?pgy=laporan-pembayaran&page=view">Kartu Pembayaran</a></li>
-                            <li <?php echo $active ?>><a href="index.php?pgy=laporan-laba&page=view">Pembayaran Supir</a></li>
-                            <li <?php echo $active ?>><a href="index.php?pgy=laporan-laba&page=view">Pembayaran Siswa</a></li>
+                            <li <?php echo $active ?>><a href="index.php?pgy=lap-pembayaran-supir&page=view">Pembayaran Supir</a></li>
+                            <li <?php echo $active ?>><a href="index.php?pgy=lap-pembayaran-siswa&page=view">Pembayaran Siswa</a></li>
                             <li <?php echo $active ?>><a href="index.php?pgy=profit&page=view">Laba</a></li>
                         </ul> 				
                     </li>

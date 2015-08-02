@@ -43,6 +43,8 @@ $(document).ready(function() {
     //check all month laporanLaba
     $('#all').change(function(){
         $('#datepicker').prop("disabled", $(this).is(':checked'));
+        $('#siswa').prop("disabled", $(this).is(':checked'));
+        $('#supir').prop("disabled", $(this).is(':checked'));
         $('#allMonths').val(1);
     });
 });

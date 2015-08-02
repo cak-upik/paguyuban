@@ -1030,3 +1030,74 @@ function searchAll() {
 
 /* ------------------------------------------- END LAPORAN LABA DAO ------------------------------------------- */
 
+/* ------------------------------------------- START LAPORAN PEMBAYARAN SISWA DAO ------------------------------------------- */
+
+function searchSiswa($nama,$tgl) {
+    $qry = "SELECT transaksi.kode_bayar, siswa.nama_siswa, transaksi.total_bayar, DATE_FORMAT(transaksi.tanggal_bayar, '%d-%m-%Y') AS tanggal FROM transaksi INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa WHERE siswa.nama_siswa='". $nama ."' AND MONTH(tanggal_bayar) = MONTH('".$tgl."') ORDER BY transaksi.id_transaksi";
+    $exec = mysql_query($qry);
+    if ($exec) {
+        while ($data = mysql_fetch_array($exec)) {
+            echo "<tr>
+                      <td><center>" . $data['kode_bayar'] . "</center></td>
+                      <td><center>" . $data['nama_siswa'] . "</center></td>
+                      <td><center>" . $data['total_bayar'] . "</center></td>
+                      <td><center>" . $data['tanggal'] . "</center></td>
+                 </tr>";
+        }
+    }
+    return $exec;
+}
+
+function searchAllSiswa() {
+    $qry = "SELECT transaksi.kode_bayar, siswa.nama_siswa, transaksi.total_bayar, DATE_FORMAT(transaksi.tanggal_bayar, '%d-%m-%Y') AS tanggal FROM transaksi INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa ORDER BY transaksi.id_transaksi";
+    $exec = mysql_query($qry);
+    if ($exec) {
+        while ($data = mysql_fetch_array($exec)) {
+            echo "<tr>
+                      <td><center>" . $data['kode_bayar'] . "</center></td>
+                      <td><center>" . $data['nama_siswa'] . "</center></td>
+                      <td><center>" . $data['total_bayar'] . "</center></td>
+                      <td><center>" . $data['tanggal'] . "</center></td>
+                 </tr>";
+        }
+    }
+    return $exec;
+}
+
+/* ------------------------------------------- END LAPORAN PEMBAYARAN SISWA DAO ------------------------------------------- */
+
+/* ------------------------------------------- START LAPORAN PEMBAYARAN SUPIR DAO ------------------------------------------- */
+
+function searchSupir($nama,$tgl) {
+    $qry = "SELECT transaksi.kode_bayar, sopir.nama, transaksi.closing_supir, DATE_FORMAT(transaksi.tanggal_bayar, '%d-%m-%Y') AS tanggal FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir WHERE sopir.nama='". $nama ."' AND MONTH(tanggal_bayar) = MONTH('".$tgl."') ORDER BY transaksi.id_transaksi";
+    $exec = mysql_query($qry);
+    if ($exec) {
+        while ($data = mysql_fetch_array($exec)) {
+            echo "<tr>
+                      <td><center>" . $data['kode_bayar'] . "</center></td>
+                      <td><center>" . $data['nama'] . "</center></td>
+                      <td><center>" . $data['closing_supir'] . "</center></td>
+                      <td><center>" . $data['tanggal'] . "</center></td>
+                 </tr>";
+        }
+    }
+    return $exec;
+}
+
+function searchAllSupir() {
+    $qry = "SELECT transaksi.kode_bayar, sopir.nama, transaksi.closing_supir, DATE_FORMAT(transaksi.tanggal_bayar, '%d-%m-%Y') AS tanggal FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir ORDER BY transaksi.id_transaksi";
+    $exec = mysql_query($qry);
+    if ($exec) {
+        while ($data = mysql_fetch_array($exec)) {
+            echo "<tr>
+                      <td><center>" . $data['kode_bayar'] . "</center></td>
+                      <td><center>" . $data['nama'] . "</center></td>
+                      <td><center>" . $data['closing_supir'] . "</center></td>
+                      <td><center>" . $data['tanggal'] . "</center></td>
+                 </tr>";
+        }
+    }
+    return $exec;
+}
+
+/* ------------------------------------------- END LAPORAN PEMBAYARAN SISWA DAO ------------------------------------------- */
