@@ -1,11 +1,10 @@
 <?php
-//include './helper.php';
 if (isset($_GET['page'])) {
     ?>
     <script src="./js/jquery-1-11-1.min.js"></script>
     <script src="./js/jquery-ui.js"></script>
     <script src="./js/jquery-1.10.2.js"></script>
-    <script src="./js/calculate.js"></script>            
+    <script src="./js/helper.js"></script>            
 
     <?php
     if ($_GET['page'] == 'create') {

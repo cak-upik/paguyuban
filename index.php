@@ -197,6 +197,22 @@ if (empty($_SESSION['login_user'])) {
                     default :
                         include 'user.php';
                 }
+            }else if ($admin == 'profit') {
+                switch ($act) {
+//                    case "search" :
+//                        $usernames = $_POST['username'];
+//                        $password = $_POST['password'];
+//                        $nama = $_POST['name'];
+//                        $email = $_POST['email'];
+//                        $role = $_POST['role'];
+//                        $checked = $_POST['checkboxs'];
+//                        $tgl = date('Y-m-d', strtotime($_POST['bln']));
+//                        searchTerm($tgl);
+//                    case "cetak" :
+
+                    default :
+                        include 'laporanLaba.php';
+                }
             } else if ($admin == 'profile') {
                 include 'profile.php';
             } else if ($admin == 'layout') {
@@ -258,7 +274,7 @@ if (empty($_SESSION['login_user'])) {
         <script src="./js/libs/bootstrap.min.js"></script>
 
         <script src="./js/plugins/flot/jquery.flot.js"></script>
-        <script src="./js/plugins/flot/jquery.flot.pie.js"></script>
+        <script src="./js/plugins/flot/jqueryPembayaran_1.flot.pie.js"></script>
         <script src="./js/plugins/flot/jquery.flot.resize.js"></script>      
 
         <script src="./js/Application.js"></script>        

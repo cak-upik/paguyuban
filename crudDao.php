@@ -915,14 +915,15 @@ function ShowDetailIdentity($id) {
 
 function ShowDetailTransaction($id) {
 //    setlocale(LC_ALL, "id_ID");
-    date_default_timezone_set('Asia/Jakarta');
+//    date_default_timezone_set('Asia/Jakarta');
 //    strftime("%B", strtotime($data['tanggal']));
-    $qry = "SELECT DATE(tanggal_bayar) as tanggal, MONTH(tanggal_bayar) as bulan, total_bayar FROM transaksi INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa WHERE siswa.id_siswa=" . $id;
+//    date("F", strtotime($data['tanggal']))
+    $qry = "SELECT DATE(tanggal_bayar) as tanggal, MONTHNAME(tanggal_bayar) as bulan, total_bayar FROM transaksi INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa WHERE siswa.id_siswa=" . $id;
     $exec = mysql_query($qry);
     while ($data = mysql_fetch_array($exec)) {
         echo "<tr>
                         <td class=\"span2\">" . date('d-m-Y', strtotime($data['tanggal'])) . "</td>
-                        <td class=\"span1\">" . date("F", strtotime($data['tanggal'])) . "</td>
+                        <td class=\"span1\">" . $data['bulan'] . "</td>
                         <td class=\"span3\">" . $data['total_bayar'] . "</td>
                         <td class=\"span2\"></td>
                         <td class=\"span2\"></td>
@@ -990,4 +991,25 @@ function getValueProfile($field, $id) {
 }
 
 /* ------------------------------------------- END PROFILE DAO ------------------------------------------- */
+
+/* ------------------------------------------- START LAPORAN LABA DAO ------------------------------------------- */
+
+function searchTerm($tgl) {
+    $qry = "SELECT COUNT(id_transaksi) AS total_trx, SUM(total_bayar) AS total_byr, SUM(closing_intern) AS profit, MONTHNAME(tanggal_bayar) AS bulan FROM transaksi WHERE MONTH(tanggal_bayar) = MONTH('".$tgl."')";
+    $exec = mysql_query($qry);
+    if ($exec) {
+//        echo "<script>javascript:window.location.assign('index.php?pgy=profit&do=detail')</script>";
+        while ($data = mysql_fetch_array($exec)) {
+            echo "<tr>
+                      <td><center>" . $data['bulan'] . "</center></td>
+                      <td><center>" . $data['total_trx'] . "</center></td>
+                      <td><center>" . $data['total_byr'] . "</center></td>
+                      <td><center>" . $data['profit'] . "</center></td>
+                 </tr>";
+        }
+    }
+    return $exec;
+}
+
+/* ------------------------------------------- END LAPORAN LABA DAO ------------------------------------------- */
 
