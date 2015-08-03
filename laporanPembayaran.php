@@ -207,7 +207,7 @@ if (isset($_GET['page'])) {
                                 </div>
                                 <br />
 
-                                <table class="table table-bordered table-striped table-highlight">
+                                <table class="table table-bordered table-striped table-highlight span6">
                                     <thead>
                                         <tr>
                                             <th class="span1" rowspan=2>Tanggal</th>
