@@ -118,7 +118,7 @@ include"./connection.php";
         </tr>
     </table>
     <br/>
-    <table style="margin-left: 475px" border="1" cellpadding="10" cellspacing="0">
+    <table style="margin-left: 475px" cellpadding="10" cellspacing="0">
         <tr>
             <td>Sidoarjo, <?php echo "11-12-2014"?></td>
         </tr>
