@@ -97,20 +97,20 @@ if (isset($_GET['page'])) {
                                     <h3>Kartu Pembayaran</h3>
                                     <div class="form-actions">
                                         <a href="index.php?pgy=laporan-pembayaran&page=detail" class="btn btn-info btn">Detail</a>
-                                        <a href="index.php?pgy=laporan-pembayaran&page=cetak" class="btn btn-success btn">Cetak</a>
+                                        <a href="cetak.php" class="btn btn-success btn">Cetak</a>
                                     </div>
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>
                                             <tr>
                                                 <th class="span0"<center>No</center></th>
-                                                <th class="span2"><center>Kode Transaksi</center></th>
-                                                <th class="span4"><center>Nama Siswa</center></th>
-                                                <th class="span0"><center>Kelas</center></th>
-                                                <th class="span3"><center>Nama Sopir</center></th>
-                                                <th class="span2"><center>Tgl.Pembayaran</center></th>
-                                                <th class="span2"><center>Tarif</center></th>
-                                                <th class="span3"><center>Total</center></th>
-                                            </tr>
+                                        <th class="span2"><center>Kode Transaksi</center></th>
+                                        <th class="span4"><center>Nama Siswa</center></th>
+                                        <th class="span0"><center>Kelas</center></th>
+                                        <th class="span3"><center>Nama Sopir</center></th>
+                                        <th class="span2"><center>Tgl.Pembayaran</center></th>
+                                        <th class="span2"><center>Tarif</center></th>
+                                        <th class="span3"><center>Total</center></th>
+                                        </tr>
                                         </thead>
                                         <tbody>
                                             <?php LoadLaporanKartu(); ?>
@@ -149,14 +149,14 @@ if (isset($_GET['page'])) {
                                         <thead>
                                             <tr>
                                                 <th class="span0"<center>#</center></th>
-                                                <th class="span2"><center>Kode Transaksi</center></th>
-                                                <th class="span4"><center>Nama Siswa</center></th>
-                                                <th class="span0"><center>Kelas</center></th>
-                                                <th class="span3"><center>Nama Sopir</center></th>
-                                                <th class="span2"><center>Tgl.Pembayaran</center></th>
-                                                <th class="span2"><center>Tarif</center></th>
-                                                <th class="span3"><center>Total</center></th>
-                                            </tr>
+                                        <th class="span2"><center>Kode Transaksi</center></th>
+                                        <th class="span4"><center>Nama Siswa</center></th>
+                                        <th class="span0"><center>Kelas</center></th>
+                                        <th class="span3"><center>Nama Sopir</center></th>
+                                        <th class="span2"><center>Tgl.Pembayaran</center></th>
+                                        <th class="span2"><center>Tarif</center></th>
+                                        <th class="span3"><center>Total</center></th>
+                                        </tr>
                                         </thead>
                                         <tbody>
                                             <?php DetailView(); ?>
@@ -238,5 +238,5 @@ if (isset($_GET['page'])) {
 
         </div> <!-- /main -->
         <?php
-    }
+    } 
 }
