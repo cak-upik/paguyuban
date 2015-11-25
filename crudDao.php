@@ -772,32 +772,31 @@ function getSupirTransaksi($id) {
 
 /* ------------------------------------------- START USER DAO ------------------------------------------- */
 
-function SaveUser($usernames, $password, $nama, $role, $email, $checked) {
-//    $checked = $_POST['checkboxs'];
-    foreach ($checked as $idCheckbox) {
-        $qry = "INSERT INTO user(username, password, role, id_hak_akses, email, nama)"
-                . " VALUES('" . $usernames . "','" . $password . "','" . $role . "','" . $idCheckbox . "','" . $email . "','" . $nama . "')";
-        $exec = mysql_query($qry);
-    }
+function SaveUser($usernames, $password, $nama, $role, $email, $master_siswa, $master_sopir, $master_karyawan, $master_rute, $transaksi_pendaftaran, $transaksi_pembayaran, $kartu_pembayaran, $laporan_pembayaran, $laporan_sopir, $laporan_siswa, $laba, $setting_user, $setting_hak_akses, $setting_template) {
+    $qry = "INSERT INTO user(username, password, nama, role, email, master_siswa, master_sopir, master_karyawan, master_rute, trx_pendaftaran, trx_pembayaran, kartu_pembayaran, lap_pembayaran, lap_sopir, lap_siswa, laba, setting_user, setting_hak_akses, setting_template)"
+            . " VALUES('" . $usernames . "', '" . $password . "', '" . $nama . "','" . $role . "','" . $email . "','" . $master_siswa . "','" . $master_sopir . "','" . $master_karyawan . "','" . $master_rute . "','" . $transaksi_pendaftaran . "','" . $transaksi_pembayaran . "','" . $kartu_pembayaran . "','" . $laporan_pembayaran . "','" . $laporan_sopir . "','" . $laporan_siswa . "','" . $laba . "','" . $setting_user . "','" . $setting_hak_akses . "','" . $setting_template . "')";
+    $exec = mysql_query($qry);
     if ($exec) {
         echo "<script>javascript:alert('Penyimpanan Data User Berhasil')</script>";
-        echo "<script>javascript:window.location.assign('index.php?pgy=user-manage&page=view')</script>";
+        echo "<script>javascript:window.location.assign('index.php?pgy = user-manage&page = view')</script>";
     } else {
         echo "<script>javascript:alert('Penyimpanan Data User Gagal')</script>";
-        echo "<script>javascript:history.go(-1)</script>";
+        echo "<script>javascript:history.go( - 1)</script>";
     }
     return $exec;
 }
 
 function LoadUser() {
     $i = 1;
-    $qry = "SELECT * FROM user where role not like 'superadmin'";
+    $qry = "SELECT * FROM user where role not like '
+
+superadmin'";
     $exec = mysql_query($qry);
     if ($exec) {
         if (mysql_num_rows($exec) == 0) {
             echo "<tr>
-                    <td colspan=7><center><h4>No Data</h4><center></td>
-                  </tr>";
+    <td colspan=7><center><h4>No Data</h4><center></td>
+        </tr>";
         }
         while ($data = mysql_fetch_array($exec)) {
 //            if ($data['role'] == 'superadmin') {
@@ -810,14 +809,14 @@ function LoadUser() {
 //                      <td>" . $data['role'] . "</td>
 //                 </tr>";
 //            } else {
-                echo "<tr>
-                      <td>" . $i . "</td>
-                      <td>" . $data['username'] . "</td>
-                      <td>" . $data['nama'] . "</td>
-                      <td>" . $data['email'] . "</td>
-                      <td>" . $data['jabatan'] . "</td>
-                      <td>" . $data['role'] . "</td>
-                 </tr>";
+            echo "<tr>
+            <td>" . $i . "</td>
+            <td>" . $data['username'] . "</td>
+            <td>" . $data['nama'] . "</td>
+            <td>" . $data['email'] . "</td>
+            <td>" . $data['jabatan'] . "</td>
+            <td>" . $data['role'] . "</td>
+        </tr>";
 //            }
             $i++;
         }
@@ -830,19 +829,23 @@ function EditUser() {
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td><input type=button class='btn btn-danger btn' name=btnId" . $data['id_user'] . " value=Ubah onclick=window.location.assign('index.php?pgy=user-manage&page=editor&id=$data[id_user]')></td>
-                      <td>" . $data['username'] . "</td>
-                      <td>" . $data['nama'] . "</td>
-                      <td>" . $data['email'] . "</td>
-                      <td>" . $data['jabatan'] . "</td>
-                      <td>" . $data['role'] . "</td>
-                 </tr>";
+            <td><input type=button class='btn
+
+                       btn-danger btn' name=btnId" . $data['id_user'] . " value=Ubah onclick=window.location.assign('index.php?pgy = user-manage&page = editor&id = $data[id_user]')></td>
+            <td>" . $data['username'] . "</td>
+            <td>" . $data['nama'] . "</td>
+            <td>" . $data['email'] . "</td>
+            <td>" . $data['jabatan'] . "</td>
+            <td>" . $data['role'] . "</td>
+        </tr>";
         }
     }
 }
 
 function getValueUser($field, $id, $param) {
-    $qry = "SELECT " . $field . " FROM user WHERE " . $param . "='" . $id . "'";
+    $qry = "SELECT " . $field . " FROM user WHERE " . $param . "='
+
+        " . $id . "'";
     $exec = mysql_query($qry);
     $data = mysql_fetch_array($exec);
     $text = $data[$field];
@@ -855,13 +858,15 @@ function DeleteUserView() {
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td><a class='btn btn-danger btn' href=\"index.php?pgy=user-manage&do=delete&id=" . $data['id_user'] . "\" onclick = \"if (! confirm('Anda Yakin Akan Menghapus?')) return false;\">Hapus</td>
-                      <td>" . $data['username'] . "</td>
-                      <td>" . $data['nama'] . "</td>
-                      <td>" . $data['email'] . "</td>
-                      <td>" . $data['jabatan'] . "</td>
-                      <td>" . $data['role'] . "</td>
-                 </tr>";
+            <td><a class='btn btn-danger
+
+                   btn' href=\"index.php?pgy=user-manage&do=delete&id=" . $data['id_user'] . "\" onclick = \"if (! confirm('Anda Yakin Akan Menghapus?')) return false;\">Hapus</td>
+            <td>" . $data['username'] . "</td>
+            <td>" . $data['nama'] . "</td>
+            <td>" . $data['email'] . "</td>
+            <td>" . $data['jabatan'] . "</td>
+            <td>" . $data['role'] . "</td>
+        </tr>";
         }
     }
 }
@@ -877,15 +882,17 @@ function LoadLaporanKartu() {
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td>$i</td>
-                      <td>" . $data['kode_bayar'] . "</td>
-                      <td>" . $data['nama_siswa'] . "</td>
-                      <td>" . $data['kelas'] . "</td>
-                      <td>" . $data['nama'] . "</td>
-                      <td>" . $data['tanggal_bayar'] . "</td>
-                      <td>" . $data['tarif'] . "</td>
-                      <td>" . $data['total_bayar'] . "</td>
-                 </tr>";
+            <td>$i</td>
+            <td>" . $data['
+
+                kode_bayar'] . "</td>
+            <td>" . $data['nama_siswa'] . "</td>
+            <td>" . $data['kelas'] . "</td>
+            <td>" . $data['nama'] . "</td>
+            <td>" . $data['tanggal_bayar'] . "</td>
+            <td>" . $data['tarif'] . "</td>
+            <td>" . $data['total_bayar'] . "</td>
+        </tr>";
             $i++;
         }
     }
@@ -897,17 +904,19 @@ function ShowDetailIdentity($id) {
     $exec = mysql_query($qry);
     if ($exec) {
         if (mysql_num_rows($exec) == 0) {
-            echo "<script>javascript:alert('Tidak Ada Data');";
+            echo "<script>javascript:alert('Tidak 
+
+                                    Ada Data');";
         } else {
             $identity = mysql_fetch_array($exec);
             echo "  <label class=\"control-label\" for=\"namaSiswa\">: " . $identity['nama_siswa'] . "</label>
-                    <label class=\"control-label\" for=\"ortu\">: " . $identity['nama_wali'] . "</label>
-                    <label class=\"control-label\" for=\"alamat\">: " . $identity['alamat'] . "</label>
-                    <label class=\"control-label\" for=\"telp\">: " . $identity['no_tlp'] . "</label>
-                    <label class=\"control-label\" for=\"kelas\">: " . $identity['kelas'] . "</label>
-                    <label class=\"control-label\" for=\"tarif\">: " . $identity['tarif'] . "</label>
-                    <label class=\"control-label\" for=\"sopir\">: " . $identity['nama'] . "</label>
-                    <label class=\"control-label\" for=\"pilihan\">: " . $identity['layanan'] . "</label>";
+                                    < label class = \"control-label\" for=\"ortu\">: " . $identity['nama_wali'] . "</label>
+                                    < label class = \"control-label\" for=\"alamat\">: " . $identity['alamat'] . "</label>
+                                    < label class = \"control-label\" for=\"telp\">: " . $identity['no_tlp'] . "</label>
+                                    < label class = \"control-label\" for=\"kelas\">: " . $identity['kelas'] . "</label>
+                                    < label class = \"control-label\" for=\"tarif\">: " . $identity['tarif'] . "</label>
+                                    < label class = \"control-label\" for=\"sopir\">: " . $identity['nama'] . "</label>
+                                    < label class = \"control-label\" for=\"pilihan\">: " . $identity['layanan'] . "</label>";
         }
     }
     return $exec;
@@ -915,20 +924,21 @@ function ShowDetailIdentity($id) {
 
 function ShowDetailTransaction($id) {
 //    setlocale(LC_ALL, "id_ID");
-//    date_default_timezone_set('Asia/Jakarta');
+//    date_default_timezone_set('Asia
+//Jakarta');
 //    strftime("%B", strtotime($data['tanggal']));
 //    date("F", strtotime($data['tanggal']))
     $qry = "SELECT DATE(tanggal_bayar) as tanggal, MONTHNAME(tanggal_bayar) as bulan, total_bayar FROM transaksi INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa WHERE siswa.id_siswa=" . $id;
     $exec = mysql_query($qry);
     while ($data = mysql_fetch_array($exec)) {
         echo "<tr>
-                        <td class=\"span2\">" . date('d-m-Y', strtotime($data['tanggal'])) . "</td>
-                        <td class=\"span1\">" . $data['bulan'] . "</td>
-                        <td class=\"span3\">" . $data['total_bayar'] . "</td>
-                        <td class=\"span2\"></td>
-                        <td class=\"span2\"></td>
-                        
-                    </tr>";
+                    < td class = \"span2\">" . date('d-m-Y ', strtotime($data['tanggal'])) . "</td>
+                    < td class = \"span1\">" . $data['bulan'] . "</td>
+                    < td class = \"span3\">" . $data['total_bayar'] . "</td>
+                    < td class = \"span2\"></td>
+                    < td class = \"span2\"></td>
+
+                                                < /tr>";
     }
 }
 
@@ -938,29 +948,32 @@ function DetailView() {
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td><input type=button class='btn btn-info btn' name=btnDetail" . $data['id_siswa'] . " value=Detail onclick=window.location.assign('index.php?pgy=laporan-pembayaran&page=detailer&id=" . $data['id_siswa'] . "')></td>
-                      <td>" . $data['kode_bayar'] . "</td>
-                      <td>" . $data['nama_siswa'] . "</td>
-                      <td>" . $data['kelas'] . "</td>
-                      <td>" . $data['nama'] . "</td>
-                      <td>" . $data['tanggal_bayar'] . "</td>
-                      <td>" . $data['tarif'] . "</td>
-                      <td>" . $data['total_bayar'] . "</td>
-                 </tr>";
+                  < td > < input type = button class = '
+
+btn btn - info btn' name=btnDetail" . $data['id_siswa'] . " value=Detail onclick=window.location.assign('index.php?pgy = laporan - pembayaran & page = detailer & id = " . $data['id_siswa'] . "')></td>
+                  < td > " . $data['kode_bayar'] . " < /td>
+                  < td > " . $data['nama_siswa'] . " < /td>
+                  < td > " . $data['kelas'] . " < /td>
+                  < td > " . $data['nama'] . " < /td>
+                  < td > " . $data['tanggal_bayar'] . " < /td>
+                  < td > " . $data['tarif'] . " < /td>
+                  < td > " . $data['total_bayar'] . " < /td>
+                                              < /tr>";
         }
     }
     return $exec;
 }
 
 function GoPrint($nama, $wali, $kelas, $alamat, $email, $notelp, $id) {
-    $qry = "UPDATE siswa SET nama_siswa='" . $nama . "', nama_wali='" . $wali . "', alamat='" . $alamat . "', kelas='" . $kelas . "', email='" . $email . "', no_tlp='" . $notelp . "' WHERE id_siswa=" . $id;
+    $qry = "UPDATE siswa SET nama_siswa='"
+            . $nama . "', nama_wali='" . $wali . "', alamat='" . $alamat . "', kelas='" . $kelas . "', email='" . $email . "', no_tlp='" . $notelp . "' WHERE id_siswa=" . $id;
     $exec = mysql_query($qry);
     if ($exec) {
         echo "<script>javascript:alert('Update Data Siswa Berhasil')</script>";
-        echo "<script>javascript:window.location.assign('index.php?pgy=siswa&page=view')</script>";
+        echo "<script>javascript:window.location.assign('index.php?pgy = siswa&page = view')</script>";
     } else {
         echo "<script>javascript:alert('Update Data Siswa Gagal')</script>";
-        echo "<script>javascript:history.go(-1)</script>";
+        echo "<script>javascript:history.go( - 1)</script>";
     }
     return $exec;
 }
@@ -969,11 +982,13 @@ function PreviewMe($id) {
     $qry = "DELETE FROM siswa WHERE id_siswa=" . $id;
     $exec = mysql_query($qry);
     if ($exec) {
-        echo "<script>javascript:alert('Delete Data Siswa Berhasil')</script>";
-        echo "<script>javascript:window.location.assign('index.php?pgy=siswa&page=view')</script>";
+        echo "<script>javascript:alert('
+
+Delete Data Siswa Berhasil')</script>";
+        echo "<script>javascript:window.location.assign('index.php?pgy = siswa&page = view')</script>";
     } else {
         echo "<script>javascript:alert('Delete Data Siswa Gagal')</script>";
-        echo "<script>javascript:history.go(-1)</script>";
+        echo "<script>javascript:history.go( - 1)</script>";
     }
     return $exec;
 }
@@ -995,17 +1010,21 @@ function getValueProfile($field, $id) {
 /* ------------------------------------------- START LAPORAN LABA DAO ------------------------------------------- */
 
 function searchTerm($tgl) {
-    $qry = "SELECT COUNT(id_transaksi) AS total_trx, SUM(total_bayar) AS total_byr, SUM(closing_intern) AS profit, MONTHNAME(tanggal_bayar) AS bulan FROM transaksi WHERE MONTH(tanggal_bayar) = MONTH('".$tgl."')";
+    $qry = "SELECT COUNT(id_transaksi) AS total_trx, SUM(total_bayar) AS total_byr, SUM(closing_intern) AS profit, MONTHNAME(tanggal_bayar) AS bulan FROM transaksi WHERE MONTH(tanggal_bayar) = MONTH('
+
+" . $tgl . "
+
+')";
     $exec = mysql_query($qry);
     if ($exec) {
-//        echo "<script>javascript:window.location.assign('index.php?pgy=profit&do=detail')</script>";
+        //        echo "<script>javascript:window.location.assign('index.php?pgy = profit&do = detail')</script>";
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td><center>" . $data['bulan'] . "</center></td>
-                      <td><center>" . $data['total_trx'] . "</center></td>
-                      <td><center>" . $data['total_byr'] . "</center></td>
-                      <td><center>" . $data['profit'] . "</center></td>
-                 </tr>";
+            <td><center>" . $data['bulan'] . "</center></td>
+        <td><center>" . $data['total_trx'] . "</center></td>
+        <td><center>" . $data['total_byr'] . "</center></td>
+        <td><center>" . $data['profit'] . "</center></td>
+        </tr>";
         }
     }
     return $exec;
@@ -1015,14 +1034,14 @@ function searchAll() {
     $qry = "SELECT COUNT(id_transaksi) AS total_trx, SUM(total_bayar) AS total_byr, SUM(closing_intern) AS profit, MONTHNAME(tanggal_bayar) AS bulan FROM transaksi GROUP BY MONTH(tanggal_bayar)";
     $exec = mysql_query($qry);
     if ($exec) {
-//        echo "<script>javascript:window.location.assign('index.php?pgy=profit&do=detail')</script>";
+        echo "<script>javascript:window.location.assign('index.php?pgy = profit & do = detail')</script>";
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td><center>" . $data['bulan'] . "</center></td>
-                      <td><center>" . $data['total_trx'] . "</center></td>
-                      <td><center>" . $data['total_byr'] . "</center></td>
-                      <td><center>" . $data['profit'] . "</center></td>
-                 </tr>";
+            <td><center>" . $data['bulan'] . "</center></td>
+        <td><center>" . $data['total_trx'] . "</center></td>
+        <td><center>" . $data['total_byr'] . "</center></td>
+        <td><center>" . $data['profit'] . "</center></td>
+        </tr>";
         }
     }
     return $exec;
@@ -1032,33 +1051,37 @@ function searchAll() {
 
 /* ------------------------------------------- START LAPORAN PEMBAYARAN SISWA DAO ------------------------------------------- */
 
-function searchSiswa($nama,$tgl) {
-    $qry = "SELECT transaksi.kode_bayar, siswa.nama_siswa, transaksi.total_bayar, DATE_FORMAT(transaksi.tanggal_bayar, '%d-%m-%Y') AS tanggal FROM transaksi INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa WHERE siswa.nama_siswa='". $nama ."' AND MONTH(tanggal_bayar) = MONTH('".$tgl."') ORDER BY transaksi.id_transaksi";
+function searchSiswa($nama, $tgl) {
+    $qry = "SELECT transaksi.kode_bayar, siswa.nama_siswa, transaksi.total_bayar, DATE_FORMAT(transaksi.tanggal_bayar, ' %
+
+d -%m-%Y') AS tanggal FROM transaksi INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa WHERE siswa.nama_siswa='" . $nama . "' AND MONTH(tanggal_bayar) = MONTH('" . $tgl . "') ORDER BY transaksi.id_transaksi";
     $exec = mysql_query($qry);
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td><center>" . $data['kode_bayar'] . "</center></td>
-                      <td><center>" . $data['nama_siswa'] . "</center></td>
-                      <td><center>" . $data['total_bayar'] . "</center></td>
-                      <td><center>" . $data['tanggal'] . "</center></td>
-                 </tr>";
+            <td><center>" . $data['kode_bayar'] . "</center></td>
+        <td><center>" . $data['nama_siswa'] . "</center></td>
+        <td><center>" . $data['total_bayar'] . "</center></td>
+        <td><center>" . $data['tanggal'] . "</center></td>
+        </tr>";
         }
     }
     return $exec;
 }
 
 function searchAllSiswa() {
-    $qry = "SELECT transaksi.kode_bayar, siswa.nama_siswa, transaksi.total_bayar, DATE_FORMAT(transaksi.tanggal_bayar, '%d-%m-%Y') AS tanggal FROM transaksi INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa ORDER BY transaksi.id_transaksi";
+    $qry = "SELECT transaksi.kode_bayar, siswa.nama_siswa, transaksi.total_bayar, DATE_FORMAT(transaksi.tanggal_bayar, ' %
+
+d-%m-%Y') AS tanggal FROM transaksi INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa ORDER BY transaksi.id_transaksi";
     $exec = mysql_query($qry);
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td><center>" . $data['kode_bayar'] . "</center></td>
-                      <td><center>" . $data['nama_siswa'] . "</center></td>
-                      <td><center>" . $data['total_bayar'] . "</center></td>
-                      <td><center>" . $data['tanggal'] . "</center></td>
-                 </tr>";
+            <td><center>" . $data['kode_bayar'] . "</center></td>
+        <td><center>" . $data['nama_siswa'] . "</center></td>
+        <td><center>" . $data['total_bayar'] . "</center></td>
+        <td><center>" . $data['tanggal'] . "</center></td>
+        </tr>";
         }
     }
     return $exec;
@@ -1068,33 +1091,37 @@ function searchAllSiswa() {
 
 /* ------------------------------------------- START LAPORAN PEMBAYARAN SUPIR DAO ------------------------------------------- */
 
-function searchSupir($nama,$tgl) {
-    $qry = "SELECT transaksi.kode_bayar, sopir.nama, transaksi.closing_supir, DATE_FORMAT(transaksi.tanggal_bayar, '%d-%m-%Y') AS tanggal FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir WHERE sopir.nama='". $nama ."' AND MONTH(tanggal_bayar) = MONTH('".$tgl."') ORDER BY transaksi.id_transaksi";
+function searchSupir($nama, $tgl) {
+    $qry = "SELECT transaksi.kode_bayar, sopir.nama, transaksi.closing_supir, DATE_FORMAT(transaksi.tanggal_bayar, ' %
+
+d -%m-%Y') AS tanggal FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir WHERE sopir.nama='" . $nama . "' AND MONTH(tanggal_bayar) = MONTH('" . $tgl . "') ORDER BY transaksi.id_transaksi";
     $exec = mysql_query($qry);
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td><center>" . $data['kode_bayar'] . "</center></td>
-                      <td><center>" . $data['nama'] . "</center></td>
-                      <td><center>" . $data['closing_supir'] . "</center></td>
-                      <td><center>" . $data['tanggal'] . "</center></td>
-                 </tr>";
+            <td><center>" . $data['kode_bayar'] . "</center></td>
+        <td><center>" . $data['nama'] . "</center></td>
+        <td><center>" . $data['closing_supir'] . "</center></td>
+        <td><center>" . $data['tanggal'] . "</center></td>
+        </tr>";
         }
     }
     return $exec;
 }
 
 function searchAllSupir() {
-    $qry = "SELECT transaksi.kode_bayar, sopir.nama, transaksi.closing_supir, DATE_FORMAT(transaksi.tanggal_bayar, '%d-%m-%Y') AS tanggal FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir ORDER BY transaksi.id_transaksi";
+    $qry = "SELECT transaksi.kode_bayar, sopir.nama, transaksi.closing_supir, DATE_FORMAT(transaksi.tanggal_bayar, ' %
+
+d-%m-%Y') AS tanggal FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir ORDER BY transaksi.id_transaksi";
     $exec = mysql_query($qry);
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                      <td><center>" . $data['kode_bayar'] . "</center></td>
-                      <td><center>" . $data['nama'] . "</center></td>
-                      <td><center>" . $data['closing_supir'] . "</center></td>
-                      <td><center>" . $data['tanggal'] . "</center></td>
-                 </tr>";
+            <td><center>" . $data['kode_bayar'] . "</center></td>
+        <td><center>" . $data['nama'] . "</center></td>
+        <td><center>" . $data['closing_supir'] . "</center></td>
+        <td><center>" . $data['tanggal'] . "</center></td>
+        </tr>";
         }
     }
     return $exec;

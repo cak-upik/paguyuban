@@ -210,7 +210,7 @@ if (empty($get['login_user'])) {
                         $setting_user = $_POST['setting_user'];
                         $setting_hak_akses = $_POST['setting_hak_akses'];
                         $setting_template = $_POST['setting_template'];
-                        SaveUser($usernames, $password, $nama, $role, $email, $checked);
+                        SaveUser($usernames, $password, $nama, $role, $email, $master_siswa, $master_sopir, $master_karyawan, $master_rute, $transaksi_pendaftaran, $transaksi_pembayaran, $kartu_pembayaran, $laporan_pembayaran, $laporan_sopir, $laporan_siswa, $laba, $setting_user, $setting_hak_akses, $setting_template);
 
                     default :
                         include 'user.php';

@@ -121,7 +121,6 @@ if (isset($_GET['page'])) {
                                                     <label class="control-label" for="user_role">User Role</label>
                                                     <div class="controls">
                                                         <select name="role">
-                                                            <option value="superadmin">Superadmin</option>
                                                             <option value="admin">Admin</option>
                                                             <option value="user">User</option>
                                                         </select>                                                            
