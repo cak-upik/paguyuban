@@ -45,6 +45,6 @@ $(document).ready(function() {
         $('#datepicker').prop("disabled", $(this).is(':checked'));
         $('#siswa').prop("disabled", $(this).is(':checked'));
         $('#supir').prop("disabled", $(this).is(':checked'));
-        $('#allMonths').val(1);
+        $('#allMonths').val(1);	
     });
 });

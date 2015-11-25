@@ -47,6 +47,36 @@ if (isset($_GET['page'])) {
         <?php
     } elseif ($_GET['page'] == "create") {
         ?>
+        <script type="text/javascript">
+
+            function pilihan()
+            {
+                // membaca jumlah komponen dalam form bernama 'myform'
+                var jumKomponen = document.myform.length;
+
+                // jika checkbox 'Pilih Semua' dipilih
+                if (document.myform[0].checked === true)
+                {
+                    // semua checkbox pada data akan terpilih
+                    for (i = 1; i <= jumKomponen; i++)
+                    {
+                        if (document.myform[i].type === "checkbox")
+                            document.myform[i].checked = true;
+                    }
+                }
+                // jika checkbox 'Pilih Semua' tidak dipilih
+                else if (document.myform[0].checked === false)
+                {
+                    // semua checkbox pada data tidak dipilih
+                    for (i = 1; i <= jumKomponen; i++)
+                    {
+                        if (document.myform[i].type === "checkbox")
+                            document.myform[i].checked = false;
+                    }
+                }
+            }
+
+        </script>
         <div class="main">
             <div class="container">
                 <div class="row">
@@ -61,7 +91,7 @@ if (isset($_GET['page'])) {
                                     <br />
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="profile">
-                                            <form id="edit-profile" class="form-horizontal" method="post" action="index.php?pgy=user-manage&do=save"  />
+                                            <form id="edit-profile" name="myform" class="form-horizontal" method="post" action="index.php?pgy=user-manage&do=save"  />
                                             <fieldset>
                                                 <div class="control-group">											
                                                     <label class="control-label" for="username">Username</label>
@@ -107,20 +137,20 @@ if (isset($_GET['page'])) {
                                                     <div class="widget-content">
                                                         <div class="control-group">
                                                             <div class="checkbox">
-                                                                <label class="checkbox"><input type="checkbox" name="checkboxs" > Master Siswa</label>
-                                                                <label class="checkbox"><input type="checkbox" name="checkboxs" > Master Sopir</label>
-                                                                <label class="checkbox"><input type="checkbox" name="checkboxs" > Master Karyawan</label>
-                                                                <label class="checkbox"><input type="checkbox" name="checkboxs" > Master Rute</label>
-                                                                <label class="checkbox"><input type="checkbox" name="checkboxs" > Transaksi Pendaftaran</label>
-                                                                <label class="checkbox"><input type="checkbox" name="checkboxs" > Transaksi Pembayaran</label>
-                                                                <label class="checkbox"><input type="checkbox" name="checkboxs" > Kartu Pembayaran</label>
-                                                                <label class="checkbox"><input type="checkbox" name="checkboxs" > Laporan Pembayaran</label>
-                                                                <label class="checkbox"><input type="checkbox" name="checkboxs" > Laporan Sopir</label>
-                                                                <label class="checkbox"><input type="checkbox" name="checkboxs" > Laporan Siswa</label>
-                                                                <label class="checkbox"><input type="checkbox" name="checkboxs" > Laba</label>
-                                                                <label class="checkbox"><input type="checkbox" name="checkboxs" > Setting User</label>
-                                                                <label class="checkbox"><input type="checkbox" name="checkboxs" > Setting Hak Akses</label>
-                                                                <label class="checkbox"><input type="checkbox" name="checkboxs" > Setting Template</label>
+                                                                <label class="checkbox"><input type="checkbox" value="master_siswa" name="master_siswa" > Master Siswa</label>
+                                                                <label class="checkbox"><input type="checkbox" value="master_sopir" name="master_sopir" > Master Sopir</label>
+                                                                <label class="checkbox"><input type="checkbox" value="master_karyawan" name="master_karyawan" > Master Karyawan</label>
+                                                                <label class="checkbox"><input type="checkbox" value="master_rute" name="master_rute" > Master Rute</label>
+                                                                <label class="checkbox"><input type="checkbox" value="transaksi_pendaftaran" name="transaksi_pendaftaran" > Transaksi Pendaftaran</label>
+                                                                <label class="checkbox"><input type="checkbox" value="transaksi_pembayaran" name="transaksi_pembayaran" > Transaksi Pembayaran</label>
+                                                                <label class="checkbox"><input type="checkbox" value="kartu_pembayaran" name="kartu_pembayaran" > Kartu Pembayaran</label>
+                                                                <label class="checkbox"><input type="checkbox" value="laporan_pembayaran" name="laporan_pembayaran" > Laporan Pembayaran</label>
+                                                                <label class="checkbox"><input type="checkbox" value="laporan_sopir" name="laporan_sopir" > Laporan Sopir</label>
+                                                                <label class="checkbox"><input type="checkbox" value="laporan_siswa" name="laporan_siswa" > Laporan Siswa</label>
+                                                                <label class="checkbox"><input type="checkbox" value="laba" name="laba" > Laba</label>
+                                                                <label class="checkbox"><input type="checkbox" value="setting_user" name="setting_user" > Setting User</label>
+                                                                <label class="checkbox"><input type="checkbox" value="setting_hak_akses" name="setting_hak_akses" > Setting Hak Akses</label>
+                                                                <label class="checkbox"><input type="checkbox" value="setting_template" name="setting_template" > Setting Template</label>
                                                             </div> <!-- /controls -->				
                                                         </div> <!-- /control-group -->
                                                     </div>
