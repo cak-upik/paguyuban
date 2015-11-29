@@ -195,6 +195,7 @@ if (empty($get['login_user'])) {
                         $password = $_POST['password'];
                         $nama = $_POST['name'];
                         $email = $_POST['email'];
+                        $jabatan = $_POST['jabatan'];
                         $role = $_POST['role'];
                         $master_siswa = $_POST['master_siswa'];
                         $master_sopir = $_POST['master_sopir'];
@@ -210,8 +211,30 @@ if (empty($get['login_user'])) {
                         $setting_user = $_POST['setting_user'];
                         $setting_hak_akses = $_POST['setting_hak_akses'];
                         $setting_template = $_POST['setting_template'];
-                        SaveUser($usernames, $password, $nama, $role, $email, $master_siswa, $master_sopir, $master_karyawan, $master_rute, $transaksi_pendaftaran, $transaksi_pembayaran, $kartu_pembayaran, $laporan_pembayaran, $laporan_sopir, $laporan_siswa, $laba, $setting_user, $setting_hak_akses, $setting_template);
-
+                        SaveUser($usernames, $password, $nama, $role, $email,$jabatan, $master_siswa, $master_sopir, $master_karyawan, $master_rute, $transaksi_pendaftaran, $transaksi_pembayaran, $kartu_pembayaran, $laporan_pembayaran, $laporan_sopir, $laporan_siswa, $laba, $setting_user, $setting_hak_akses, $setting_template);
+                    case "update":
+                        $id = $_GET['id'];
+                        $usernames = $_POST['username'];
+                        $password = $_POST['password'];
+                        $nama = $_POST['name'];
+                        $email = $_POST['email'];
+                        $jabatan = $_POST['jabatan'];
+                        $role = $_POST['role'];
+                        $master_siswa = $_POST['master_siswa'];
+                        $master_sopir = $_POST['master_sopir'];
+                        $master_karyawan = $_POST['master_karyawan'];
+                        $master_rute = $_POST['master_rute'];
+                        $transaksi_pendaftaran = $_POST['transaksi_pendaftaran'];
+                        $transaksi_pembayaran = $_POST['transaksi_pembayaran'];
+                        $kartu_pembayaran = $_POST['kartu_pembayaran'];
+                        $laporan_pembayaran = $_POST['laporan_pembayaran'];
+                        $laporan_sopir = $_POST['laporan_sopir'];
+                        $laporan_siswa = $_POST['laporan_siswa'];
+                        $laba = $_POST['laba'];
+                        $setting_user = $_POST['setting_user'];
+                        $setting_hak_akses = $_POST['setting_hak_akses'];
+                        $setting_template = $_POST['setting_template'];
+                        UpdateUser($id, $usernames, $password, $nama, $role, $email,$jabatan, $master_siswa, $master_sopir, $master_karyawan, $master_rute, $transaksi_pendaftaran, $transaksi_pembayaran, $kartu_pembayaran, $laporan_pembayaran, $laporan_sopir, $laporan_siswa, $laba, $setting_user, $setting_hak_akses, $setting_template);                    
                     default :
                         include 'user.php';
                 }

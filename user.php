@@ -118,6 +118,12 @@ if (isset($_GET['page'])) {
                                                     </div> <!-- /controls -->				
                                                 </div> <!-- /control-group -->
                                                 <div class="control-group">											
+                                                    <label class="control-label" for="jabatan">Jabatan</label>
+                                                    <div class="controls">
+                                                        <input type="text" class="input-large" name="jabatan" id="jabatan"/>
+                                                    </div> <!-- /controls -->				
+                                                </div> <!-- /control-group -->
+                                                <div class="control-group">											
                                                     <label class="control-label" for="user_role">User Role</label>
                                                     <div class="controls">
                                                         <select name="role">
@@ -187,7 +193,7 @@ if (isset($_GET['page'])) {
                                     <h3>Data User</h3>
                                     <div class="form-actions">
                                         <a href="#" class="btn btn-inverse btn">Tambah User</a>
-                                        <a href="#" class="btn btn-inverse btn">Edit User</a>
+                                        <a href="index.php?pgy=user-manage&page=editor" class="btn btn-inverse btn">Edit User</a>
                                         <a href="#" class="btn btn-inverse btn">Hapus User</a>
                                         <a href="index.php?pgy=user-manage&page=view" class="btn btn-danger btn">Batal</a>
                                     </div>
@@ -256,10 +262,15 @@ if (isset($_GET['page'])) {
                                                     </div> <!-- /controls -->				
                                                 </div> <!-- /control-group -->
                                                 <div class="control-group">											
+                                                    <label class="control-label" for="jabatan">Jabatan</label>
+                                                    <div class="controls">
+                                                        <input type="text" class="input-large" name="jabatan" id="jabatan" value='<?php echo getValueUser("jabatan", $_GET['id'], "id_user") ?>' />
+                                                    </div> <!-- /controls -->				
+                                                </div> <!-- /control-group -->
+                                                <div class="control-group">											
                                                     <label class="control-label" for="user_role">User Role</label>
                                                     <div class="controls">
                                                         <select name="role">
-                                                            <option value="superadmin" <?php echo(getValueUser("role", $_GET['id'], "id_user") == 'superadmin') ? 'selected' : '' ?>>Superadmin</option>
                                                             <option value="admin" <?php echo(getValueUser("role", $_GET['id'], "id_user") == 'admin') ? 'selected' : '' ?>>Admin</option>
                                                             <option value="user" <?php echo(getValueUser("role", $_GET['id'], "id_user") == 'user') ? 'selected' : '' ?>>User</option>
                                                         </select>                                                            
@@ -284,7 +295,8 @@ if (isset($_GET['page'])) {
                                                             </div> <!-- /controls -->				
                                                         </div> <!-- /control-group -->
                                                     </div>
-                                                </div>                                            
+                                                </div>                  
+                                                <input type="hidden" name="idUser" id="idUser" value=<?php echo $_GET['id'] ?>>                          
                                                 <div class="form-actions">
                                                     <button type="submit" class="btn btn-primary">Simpan</button>
                                                     <input type=button class='btn btn-danger btn' value=Batal onclick=window.location.assign('index.php?pgy=user-manage&page=view')>                                                

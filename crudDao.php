@@ -772,9 +772,9 @@ function getSupirTransaksi($id) {
 
 /* ------------------------------------------- START USER DAO ------------------------------------------- */
 
-function SaveUser($usernames, $password, $nama, $role, $email, $master_siswa, $master_sopir, $master_karyawan, $master_rute, $transaksi_pendaftaran, $transaksi_pembayaran, $kartu_pembayaran, $laporan_pembayaran, $laporan_sopir, $laporan_siswa, $laba, $setting_user, $setting_hak_akses, $setting_template) {
-    $qry = "INSERT INTO user(username, password, nama, role, email, master_siswa, master_sopir, master_karyawan, master_rute, trx_pendaftaran, trx_pembayaran, kartu_pembayaran, lap_pembayaran, lap_sopir, lap_siswa, laba, setting_user, setting_hak_akses, setting_template)"
-            . " VALUES('" . $usernames . "', '" . $password . "', '" . $nama . "','" . $role . "','" . $email . "','" . $master_siswa . "','" . $master_sopir . "','" . $master_karyawan . "','" . $master_rute . "','" . $transaksi_pendaftaran . "','" . $transaksi_pembayaran . "','" . $kartu_pembayaran . "','" . $laporan_pembayaran . "','" . $laporan_sopir . "','" . $laporan_siswa . "','" . $laba . "','" . $setting_user . "','" . $setting_hak_akses . "','" . $setting_template . "')";
+function SaveUser($usernames, $password, $nama, $role, $email, $jabatan, $master_siswa, $master_sopir, $master_karyawan, $master_rute, $transaksi_pendaftaran, $transaksi_pembayaran, $kartu_pembayaran, $laporan_pembayaran, $laporan_sopir, $laporan_siswa, $laba, $setting_user, $setting_hak_akses, $setting_template) {
+    $qry = "INSERT INTO user(username, password, nama, role, email, jabatan, master_siswa, master_sopir, master_karyawan, master_rute, trx_pendaftaran, trx_pembayaran, kartu_pembayaran, lap_pembayaran, lap_sopir, lap_siswa, laba, setting_user, setting_hak_akses, setting_template)"
+            . " VALUES('" . $usernames . "', '" . $password . "', '" . $nama . "','" . $role . "','" . $email . "','" . "','" . $jabatan . "','" . $master_siswa . "','" . $master_sopir . "','" . $master_karyawan . "','" . $master_rute . "','" . $transaksi_pendaftaran . "','" . $transaksi_pembayaran . "','" . $kartu_pembayaran . "','" . $laporan_pembayaran . "','" . $laporan_sopir . "','" . $laporan_siswa . "','" . $laba . "','" . $setting_user . "','" . $setting_hak_akses . "','" . $setting_template . "')";
     $exec = mysql_query($qry);
     if ($exec) {
         echo "<script>javascript:alert('Penyimpanan Data User Berhasil')</script>";
@@ -782,6 +782,24 @@ function SaveUser($usernames, $password, $nama, $role, $email, $master_siswa, $m
     } else {
         echo "<script>javascript:alert('Penyimpanan Data User Gagal')</script>";
         echo "<script>javascript:history.go( - 1)</script>";
+    }
+    return $exec;
+}
+
+function UpdateUser($id, $usernames, $password, $nama, $role, $email, $jabatan, $master_siswa, $master_sopir, $master_karyawan, $master_rute, $transaksi_pendaftaran, $transaksi_pembayaran, $kartu_pembayaran, $laporan_pembayaran, $laporan_sopir, $laporan_siswa, $laba, $setting_user, $setting_hak_akses, $setting_template) {
+    $qry = "UPDATE user SET username='" . $usernames . "', password ='" . $password . "', nama ='" . $nama . "', role='" . $role . "', email='" . $email . "'"
+            . ", jabatan='" . $jabatan . "', master_siswa='" . $master_siswa . "', master_sopir='" . $master_sopir . "', master_karyawan='" . $master_karyawan . "'"
+            . ", master_rute='" . $master_rute . "', trx_pendaftaran='" . $transaksi_pendaftaran . "', trx_pembayaran='" . $transaksi_pembayaran . "'"
+            . ", kartu_pembayaran='" . $kartu_pembayaran . "', lap_pembayaran='" . $laporan_pembayaran . "', lap_sopir='" . $laporan_sopir . "', lap_siswa='" . $laporan_siswa . "'"
+            . ", laba='" . $laba . "', setting_user='" . $setting_user . "', setting_hak_akses='" . $setting_hak_akses . "', setting_template='" . $setting_template . " WHERE id_karyawan=" . $id;
+    
+    $exec = mysql_query($qry);
+    if ($exec) {
+        echo "<script>javascript:alert('Update Data User Berhasil')</script>";
+        echo "<script>javascript:window.location.assign('index.php?pgy=user-manage&page=view')</script>";
+    } else {
+        echo "<script>javascript:alert('Update Data User Gagal')</script>";
+        echo "<script>javascript:history.go(-1)</script>";
     }
     return $exec;
 }
@@ -843,9 +861,7 @@ function EditUser() {
 }
 
 function getValueUser($field, $id, $param) {
-    $qry = "SELECT " . $field . " FROM user WHERE " . $param . "='
-
-        " . $id . "'";
+    $qry = "SELECT " . $field . " FROM user WHERE " . $param . "='" . $id . "'";
     $exec = mysql_query($qry);
     $data = mysql_fetch_array($exec);
     $text = $data[$field];
