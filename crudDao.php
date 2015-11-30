@@ -792,7 +792,7 @@ function UpdateUser($id, $usernames, $password, $nama, $role, $email, $jabatan, 
             . ", master_rute='" . $master_rute . "', trx_pendaftaran='" . $transaksi_pendaftaran . "', trx_pembayaran='" . $transaksi_pembayaran . "'"
             . ", kartu_pembayaran='" . $kartu_pembayaran . "', lap_pembayaran='" . $laporan_pembayaran . "', lap_sopir='" . $laporan_sopir . "', lap_siswa='" . $laporan_siswa . "'"
             . ", laba='" . $laba . "', setting_user='" . $setting_user . "', setting_hak_akses='" . $setting_hak_akses . "', setting_template='" . $setting_template . " WHERE id_karyawan=" . $id;
-    
+
     $exec = mysql_query($qry);
     if ($exec) {
         echo "<script>javascript:alert('Update Data User Berhasil')</script>";
@@ -899,9 +899,7 @@ function LoadLaporanKartu() {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
             <td>$i</td>
-            <td>" . $data['
-
-                kode_bayar'] . "</td>
+            <td>" . $data['kode_bayar'] . "</td>
             <td>" . $data['nama_siswa'] . "</td>
             <td>" . $data['kelas'] . "</td>
             <td>" . $data['nama'] . "</td>
@@ -920,19 +918,41 @@ function ShowDetailIdentity($id) {
     $exec = mysql_query($qry);
     if ($exec) {
         if (mysql_num_rows($exec) == 0) {
-            echo "<script>javascript:alert('Tidak 
-
-                                    Ada Data');";
+            echo "<script>javascript:alert('Tidak Ada Data');";
         } else {
             $identity = mysql_fetch_array($exec);
-            echo "  <label class=\"control-label\" for=\"namaSiswa\">: " . $identity['nama_siswa'] . "</label>
-                                    < label class = \"control-label\" for=\"ortu\">: " . $identity['nama_wali'] . "</label>
-                                    < label class = \"control-label\" for=\"alamat\">: " . $identity['alamat'] . "</label>
-                                    < label class = \"control-label\" for=\"telp\">: " . $identity['no_tlp'] . "</label>
-                                    < label class = \"control-label\" for=\"kelas\">: " . $identity['kelas'] . "</label>
-                                    < label class = \"control-label\" for=\"tarif\">: " . $identity['tarif'] . "</label>
-                                    < label class = \"control-label\" for=\"sopir\">: " . $identity['nama'] . "</label>
-                                    < label class = \"control-label\" for=\"pilihan\">: " . $identity['layanan'] . "</label>";
+            echo "<table class=\"report table table-bordered\" style=\"border:0px;\">
+                        <tbody>
+                            <tr style=\"border:0px;\">
+                                <td style=\"border:0px;\" class=\"description\">Nama Siswa</td>
+                                <td style=\"border:0px;\" class=\"value\"><span>: " . $identity['nama_siswa'] . "</span></td>
+                            </tr>
+                            <tr>
+                                <td style=\"border:0px;\" class=\"description\">Nama Orang Tua</td>
+                                <td style=\"border:0px;\" class=\"value\"><span>: " . $identity['nama_wali'] . "</span></td>
+                            </tr>
+                            <tr>
+                                <td style=\"border:0px;\" class=\"description\">Alamat</td>
+                                <td style=\"border:0px;\" class=\"value\"><span>: " . $identity['alamat'] . "</span></td>
+                            </tr>
+                            <tr>
+                                <td style=\"border:0px;\" class=\"description\">Telp. / HP</td>
+                                <td style=\"border:0px;\" class=\"value\"><span>: " . $identity['no_tlp'] . "</span></td>
+                            </tr>
+                            <tr>
+                                <td style=\"border:0px;\" class=\"description\">Kelas</td>
+                                <td style=\"border:0px;\" class=\"value\"><span>: " . $identity['kelas'] . "</span></td>
+                            </tr>
+                            <tr>
+                                <td style=\"border:0px;\" class=\"description\">Sopir</td>
+                                <td style=\"border:0px;\" class=\"value\"><span>: " . $identity['tarif'] . "</span></td>
+                            </tr>
+                            <tr>
+                                <td style=\"border:0px;\" class=\"description\">Pilihan</td>
+                                <td style=\"border:0px;\" class=\"value\"><span>: " . $identity['layanan'] . "</span></td>
+                            </tr>
+                        </tbody>
+                    </table>";
         }
     }
     return $exec;
@@ -948,13 +968,12 @@ function ShowDetailTransaction($id) {
     $exec = mysql_query($qry);
     while ($data = mysql_fetch_array($exec)) {
         echo "<tr>
-                    < td class = \"span2\">" . date('d-m-Y ', strtotime($data['tanggal'])) . "</td>
-                    < td class = \"span1\">" . $data['bulan'] . "</td>
-                    < td class = \"span3\">" . $data['total_bayar'] . "</td>
-                    < td class = \"span2\"></td>
-                    < td class = \"span2\"></td>
-
-                                                < /tr>";
+                    <td class = \"span2\">" . date('d-m-Y ', strtotime($data['tanggal'])) . "</td>
+                    <td class = \"span1\">" . $data['bulan'] . "</td>
+                    <td class = \"span3\">" . $data['total_bayar'] . "</td>
+                    <td class = \"span2\"></td>
+                    <td class = \"span2\"></td>
+              </tr>";
     }
 }
 
@@ -964,17 +983,15 @@ function DetailView() {
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
             echo "<tr>
-                  < td > < input type = button class = '
-
-btn btn - info btn' name=btnDetail" . $data['id_siswa'] . " value=Detail onclick=window.location.assign('index.php?pgy = laporan - pembayaran & page = detailer & id = " . $data['id_siswa'] . "')></td>
-                  < td > " . $data['kode_bayar'] . " < /td>
-                  < td > " . $data['nama_siswa'] . " < /td>
-                  < td > " . $data['kelas'] . " < /td>
-                  < td > " . $data['nama'] . " < /td>
-                  < td > " . $data['tanggal_bayar'] . " < /td>
-                  < td > " . $data['tarif'] . " < /td>
-                  < td > " . $data['total_bayar'] . " < /td>
-                                              < /tr>";
+                  <td><input type = button class = 'btn btn - info btn' name=btnDetail" . $data['id_siswa'] . " value=Detail onclick=window.location.assign('index.php?pgy=laporan-pembayaran&page=detailer&id=" . $data['id_siswa'] . "')></td>
+                  <td>" . $data['kode_bayar'] . " </td>
+                  <td>" . $data['nama_siswa'] . " </td>
+                  <td>" . $data['kelas'] . " </td>
+                  <td>" . $data['nama'] . " </td>
+                  <td>" . $data['tanggal_bayar'] . " </td>
+                  <td>" . $data['tarif'] . " </td>
+                  <td>" . $data['total_bayar'] . " </td>
+                 </tr>";
         }
     }
     return $exec;
@@ -1143,4 +1160,48 @@ d-%m-%Y') AS tanggal FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir
     return $exec;
 }
 
+function ShowDetailSupir($id) {
+    $qry = "SELECT siswa.nama_siswa, siswa.nama_wali, siswa.layanan, siswa.alamat, siswa.no_tlp, siswa.kelas, sopir.nama, rute.nama_rute, rute.tarif, transaksi.kode_bayar FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa INNER JOIN rute ON transaksi.id_rute=rute.id_rute WHERE siswa.id_siswa=" . $id . " GROUP BY siswa.id_siswa";
+    $exec = mysql_query($qry);
+    if ($exec) {
+        if (mysql_num_rows($exec) == 0) {
+            echo "<script>javascript:alert('Tidak Ada Data');";
+        } else {
+            $identity = mysql_fetch_array($exec);
+            echo "<table class=\"report table table-bordered\" style=\"border:0px;\">
+                        <tbody>
+                            <tr style=\"border:0px;\">
+                                <td style=\"border:0px;\" class=\"description\">Nama Siswa</td>
+                                <td style=\"border:0px;\" class=\"value\"><span>: " . $identity['nama_siswa'] . "</span></td>
+                            </tr>
+                            <tr>
+                                <td style=\"border:0px;\" class=\"description\">Nama Orang Tua</td>
+                                <td style=\"border:0px;\" class=\"value\"><span>: " . $identity['nama_wali'] . "</span></td>
+                            </tr>
+                            <tr>
+                                <td style=\"border:0px;\" class=\"description\">Alamat</td>
+                                <td style=\"border:0px;\" class=\"value\"><span>: " . $identity['alamat'] . "</span></td>
+                            </tr>
+                            <tr>
+                                <td style=\"border:0px;\" class=\"description\">Telp. / HP</td>
+                                <td style=\"border:0px;\" class=\"value\"><span>: " . $identity['no_tlp'] . "</span></td>
+                            </tr>
+                            <tr>
+                                <td style=\"border:0px;\" class=\"description\">Kelas</td>
+                                <td style=\"border:0px;\" class=\"value\"><span>: " . $identity['kelas'] . "</span></td>
+                            </tr>
+                            <tr>
+                                <td style=\"border:0px;\" class=\"description\">Sopir</td>
+                                <td style=\"border:0px;\" class=\"value\"><span>: " . $identity['tarif'] . "</span></td>
+                            </tr>
+                            <tr>
+                                <td style=\"border:0px;\" class=\"description\">Pilihan</td>
+                                <td style=\"border:0px;\" class=\"value\"><span>: " . $identity['layanan'] . "</span></td>
+                            </tr>
+                        </tbody>
+                    </table>";
+        }
+    }
+    return $exec;
+}
 /* ------------------------------------------- END LAPORAN PEMBAYARAN SISWA DAO ------------------------------------------- */

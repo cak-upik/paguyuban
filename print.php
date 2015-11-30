@@ -17,7 +17,7 @@
                 <table class="table" style="border: 0px">
                     <thead>
                         <tr>
-                            <td style="border: 0px"><img src="img/gallery/lr1.png" class="img-circle pull-right"></td>
+                            <td style="border: 0px" class="span5"><img src="img/gallery/lr1.png" class="img-circle pull-right"></td>
                             <td style="border: 0px"><h4>PERGURUAN ISLAM RAUDLATUL JANNAH</h4> <br/>Jl. Jatisari Permai X/2 Pepelegi, Waru-Sidoarjo</td>
                         </tr>
                     </thead>

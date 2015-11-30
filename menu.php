@@ -5,7 +5,6 @@
                 <i class="icon-reorder"></i>
             </a>
             <?php
-            
             ?>
             <div class="subnav-collapse collapse">
                 <ul class="mainnav">
@@ -15,6 +14,17 @@
                             <span>Dashboard</span>
                         </a>	    				
                     </li>
+                    <?php
+                    include './connection.php';
+                    $user_login = $_SESSION['login_user'];
+                    $sql = "select * from user where id_user = '$user_login'";
+                    $result = mysql_query($sql);
+                    while ($row = mysql_fetch_array($result)) {
+                        if ($result['master_siswa'] == '1') {
+                            $siswa = '<li><a href="index.php?pgy=siswa&page=view">Siswa</a></li>';
+                        }
+                    }
+                    ?>
                     <li class="dropdown">					
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="icon-edit"></i>
@@ -22,11 +32,13 @@
                             <b class="caret"></b>
                         </a>	    
                         <ul class="dropdown-menu">
-                            <li <?php echo $active ?>><a href="index.php?pgy=siswa&page=view">Siswa</a></li>
-                            <li <?php echo $active ?>><a href="index.php?pgy=supir&page=view">Supir</a></li>
-                            <li <?php echo $active ?>><a href="index.php?pgy=karyawan&page=view">Karyawan</a></li>
-                            <li <?php echo $active ?>><a href="index.php?pgy=rute&page=view">Rute</a></li>
-                        </ul> 				
+                            <?php
+                            if (isset($siswa)) {
+                                echo $siswa;
+                            }
+                            
+                            ?>
+                        </ul>
                     </li>
                     <li class="dropdown">					
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
