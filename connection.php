@@ -1,9 +1,10 @@
 <?php
 
-$host = "localhost";
-$user = "root";
-$pswd = "root";
-$db = "paguyuban";
+$host="localhost";
+$user="root";
+$psswd="Password1";
+$db_name="ci_db";
 
-mysql_connect($host, $pswd, $user) or die("Database Connect Failed, Check Configuration");
-mysql_select_db($db) or die("No DB");
+
+mysql_connect("$host", "$user", "$psswd")or die("cannot connect to server");
+mysql_select_db("$db_name")or die("cannot select db"); 

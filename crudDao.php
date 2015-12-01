@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-
+include './function.php';
 /* ------------------------------------------- BEGIN SISWA DAO ------------------------------------------- */
 
 function SaveSiswa($nama, $wali, $alamat, $kelas, $email, $notelp) {
@@ -962,18 +962,18 @@ function ShowDetailTransaction($id) {
 //    setlocale(LC_ALL, "id_ID");
 //    date_default_timezone_set('Asia
 //Jakarta');
-//    strftime("%B", strtotime($data['tanggal']));
 //    date("F", strtotime($data['tanggal']))
     $qry = "SELECT DATE(tanggal_bayar) as tanggal, MONTHNAME(tanggal_bayar) as bulan, total_bayar FROM transaksi INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa WHERE siswa.id_siswa=" . $id;
     $exec = mysql_query($qry);
+    $no = 1;
     while ($data = mysql_fetch_array($exec)) {
         echo "<tr>
-                    <td class = \"span2\">" . date('d-m-Y ', strtotime($data['tanggal'])) . "</td>
+                    <td>" . $no . "</td>
+                    <td class = \"span2\">" . date('d F Y ', strtotime($data['tanggal'])) . "</td>
                     <td class = \"span1\">" . $data['bulan'] . "</td>
-                    <td class = \"span3\">" . $data['total_bayar'] . "</td>
-                    <td class = \"span2\"></td>
-                    <td class = \"span2\"></td>
+                    <td class = \"span3\">" . formatIDR($data['total_bayar']) . "</td>
               </tr>";
+        $no++;
     }
 }
 
@@ -1204,4 +1204,5 @@ function ShowDetailSupir($id) {
     }
     return $exec;
 }
+
 /* ------------------------------------------- END LAPORAN PEMBAYARAN SISWA DAO ------------------------------------------- */
