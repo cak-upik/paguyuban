@@ -33,13 +33,11 @@
                             <b class="caret"></b>
                         </a>	    
                         <ul class="dropdown-menu">
-                            <?php
-                            if (isset($siswa)) {
-                                echo $siswa;
-                            }
-                            
-                            ?>
-                        </ul>
+                            <li <?php echo $active ?>><a href="index.php?pgy=siswa&page=view">Siswa</a></li>
+                            <li <?php echo $active ?>><a href="index.php?pgy=supir&page=view">Supir</a></li>
+                            <li <?php echo $active ?>><a href="index.php?pgy=karyawan&page=view">Karyawan</a></li>
+                            <li <?php echo $active ?>><a href="index.php?pgy=rute&page=view">Rute</a></li>
+                        </ul> 		
                     </li>
                     <li class="dropdown">					
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
