@@ -123,6 +123,7 @@ if (isset($_GET['page'])) {
                                                 <th class="span5"><center>Nama Supir</center></th>
                                                 <th class="span4"><center>Rute</center></th>
                                                 <th class="span2"><center>Jenis Layanan</center></th>
+                                                <th class="span2"><center>Tarif</center></th>
                                             </tr>
                                         </thead>
                                         <tbody>

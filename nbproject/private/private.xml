@@ -9,10 +9,17 @@
             <file>file:/var/www/paguyuban/report_payment.php</file>
         </group>
         <group name="PHP">
-            <file>file:/var/www/html/paguyuban/crudDao.php</file>
-            <file>file:/var/www/html/paguyuban/laporanPembayaran.php</file>
             <file>file:/var/www/html/paguyuban/index.php</file>
+            <file>file:/var/www/html/paguyuban/crudDao.php</file>
             <file>file:/var/www/html/paguyuban/transaction.php</file>
+            <file>file:/var/www/html/paguyuban/laporanPembayaran.php</file>
+            <file>file:/var/www/html/paguyuban/laporanLaba.php</file>
+            <file>file:/var/www/html/paguyuban/menu.php</file>
+            <file>file:/var/www/html/paguyuban/helper.php</file>
+            <file>file:/var/www/html/paguyuban/js/helper.js</file>
+            <file>file:/var/www/html/paguyuban/laporanPembayaranSiswa.php</file>
+            <file>file:/var/www/html/paguyuban/laporanPembayaranSupir.php</file>
         </group>
+        <group/>
     </open-files>
 </project-private>

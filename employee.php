@@ -65,11 +65,10 @@ if (isset($_GET['page'])) {
                                         <div class="controls">
                                             <select id="status" name="jabatan">
                                                 <option value="" />Select...
-                                                <option value="supir" />Supir
-                                                <option value="administrasi" />Administrasi
-                                                <option value="keuangan" />Keuangan
-                                                <option value="manajer" />Manajer
-                                                <option value="direktur" />Direktur
+                                                <option value="supir" />SUPIR
+                                                <option value="administrasi" />ADMINISTRASI
+                                                <option value="keuangan" />KEUANGAN
+                                                <option value="manajer" />DIREKTUR / KPLA WARLAH
                                             </select>
                                         </div>
                                     </div>

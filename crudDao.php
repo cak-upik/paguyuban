@@ -478,12 +478,12 @@ function DeleteLayanan($id) {
 
 function LoadLayanan() {
     $i = 1;
-    $qry = "SELECT siswa.nama_siswa, siswa.layanan, sopir.nama, rute.nama_rute FROM siswa INNER JOIN sopir ON siswa.id_supir=sopir.id_sopir INNER JOIN rute ON siswa.id_rute=rute.id_rute GROUP BY siswa.id_siswa ORDER BY siswa.id_siswa ASC";
+    $qry = "SELECT siswa.nama_siswa, siswa.layanan, sopir.nama, rute.nama_rute, rute.tarif FROM siswa INNER JOIN sopir ON siswa.id_supir=sopir.id_sopir INNER JOIN rute ON siswa.id_rute=rute.id_rute GROUP BY siswa.id_siswa ORDER BY siswa.id_siswa ASC";
     $exec = mysql_query($qry);
     if ($exec) {
         if (mysql_num_rows($exec) == 0) {
             echo "<tr>
-                    <td colspan=7><center><h4>No Data</h4><center></td>
+                    <td colspan=8><center><h4>No Data</h4><center></td>
                   </tr>";
         }
         while ($data = mysql_fetch_array($exec)) {
@@ -493,6 +493,7 @@ function LoadLayanan() {
                       <td>" . $data['nama'] . "</td>
                       <td>" . $data['nama_rute'] . "</td>
                       <td>" . $data['layanan'] . "</td>
+                      <td>" . $data['tarif'] . "</td>
                  </tr>";
             $i++;
         }
