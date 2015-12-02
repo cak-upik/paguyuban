@@ -50,7 +50,7 @@ if (empty($get['login_user'])) {
         include './crudDao.php';
         include './helper.php';
 
-        session_start();
+//        session_start();
         $admin = $_GET['pgy'];
         $act = $_GET['do'];
         if (isset($admin)) {

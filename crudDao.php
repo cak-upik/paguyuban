@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+//session_start();
 include './function.php';
 /* ------------------------------------------- BEGIN SISWA DAO ------------------------------------------- */
 
@@ -635,7 +635,13 @@ function DeleteTransaksi($id) {
 }
 
 function LoadTransaksi() {
-    $qry = "SELECT siswa.nama_siswa, siswa.layanan, sopir.nama, rute.nama_rute, transaksi.kode_bayar, transaksi.tanggal_bayar, transaksi.total_bayar FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa INNER JOIN rute ON transaksi.id_rute=rute.id_rute GROUP BY transaksi.kode_bayar ORDER BY transaksi.kode_bayar ASC";
+    $qry = "SELECT siswa.nama_siswa, siswa.layanan, sopir.nama, rute.nama_rute, transaksi.kode_bayar, 
+            transaksi.tanggal_bayar, transaksi.total_bayar FROM transaksi 
+            INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir 
+            INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa 
+            INNER JOIN rute ON transaksi.id_rute=rute.id_rute 
+            -- GROUP BY transaksi.kode_bayar 
+            ORDER BY transaksi.kode_bayar ASC";
     $exec = mysql_query($qry);
     if ($exec) {
         if (mysql_num_rows($exec) == 0) {
@@ -651,14 +657,19 @@ function LoadTransaksi() {
                       <td>" . $data['nama_rute'] . "</td>
                       <td>" . $data['tanggal_bayar'] . "</td>
                       <td>" . $data['layanan'] . "</td>
-                      <td>" . $data['total_bayar'] . "</td>
+                      <td>" . formatIDR($data['total_bayar']) . "</td>
                  </tr>";
         }
     }
 }
 
 function EditTransaksi() {
-    $qry = "SELECT siswa.nama_siswa, siswa.layanan, sopir.nama, rute.nama_rute, transaksi.id_transaksi, transaksi.kode_bayar, transaksi.tanggal_bayar, transaksi.total_bayar FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa INNER JOIN rute ON transaksi.id_rute=rute.id_rute GROUP BY transaksi.kode_bayar ORDER BY transaksi.kode_bayar ASC";
+    $qry = "SELECT siswa.nama_siswa, siswa.layanan, sopir.nama, rute.nama_rute, transaksi.id_transaksi, transaksi.kode_bayar, transaksi.tanggal_bayar, transaksi.total_bayar FROM transaksi 
+INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir 
+INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa 
+INNER JOIN rute ON transaksi.id_rute=rute.id_rute 
+-- GROUP BY transaksi.kode_bayar 
+ORDER BY transaksi.kode_bayar ASC";
     $exec = mysql_query($qry);
     if ($exec) {
         while ($data = mysql_fetch_array($exec)) {
@@ -696,7 +707,7 @@ function DeleteTransaksiView() {
 }
 
 function getValueTransaksi($field, $id) {
-    $qry = "SELECT siswa.nama_siswa, siswa.layanan, sopir.nama, rute.nama_rute, transaksi.kode_bayar, transaksi.tanggal_bayar, transaksi.total_bayar FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa INNER JOIN rute ON transaksi.id_rute=rute.id_rute GROUP BY transaksi.kode_bayar WHERE id_transaksi=" . $id . " ORDER BY transaksi.kode_bayar ASC";
+    $qry = "SELECT siswa.nama_siswa, siswa.layanan, sopir.nama, rute.nama_rute, transaksi.kode_bayar, transaksi.tanggal_bayar, rute.tarif, transaksi.total_bayar FROM transaksi INNER JOIN sopir ON transaksi.id_sopir=sopir.id_sopir INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa INNER JOIN rute ON transaksi.id_rute=rute.id_rute WHERE id_transaksi=" . $id . " ORDER BY transaksi.kode_bayar ASC";
     $exec = mysql_query($qry);
     $data = mysql_fetch_array($exec);
     $text = $data[$field];

@@ -120,7 +120,12 @@ if (isset($_GET['page'])) {
                                                 <div class="control-group">											
                                                     <label class="control-label" for="jabatan">Jabatan</label>
                                                     <div class="controls">
-                                                        <input type="text" class="input-large" name="jabatan" id="jabatan"/>
+                                                        <!--<input type="text" class="input-large" name="jabatan" id="jabatan"/>-->
+                                                        <select name="jabatan">
+                                                            <option value="Admininistrasi">Administrasi</option>
+                                                            <option value="Keuangan">Keuangan</option>
+                                                            <option value="Supir">Sopir</option>
+                                                        </select>       
                                                     </div> <!-- /controls -->				
                                                 </div> <!-- /control-group -->
                                                 <div class="control-group">											

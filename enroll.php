@@ -27,8 +27,8 @@ if (isset($_GET['page'])) {
                                         <label class="control-label" for="siswa">Nama Siswa</label>
                                         <div class="controls">
                                             <select id="siswa" name="siswa" class="span3" >
-                                            <option value="">Pilih Siswa</option>
-                                                <?php getOptionSiswa();?>
+                                                <option value="">Pilih Siswa</option>
+                                                <?php getOptionSiswa(); ?>
                                             </select>
                                         </div>
                                     </div>
@@ -36,8 +36,8 @@ if (isset($_GET['page'])) {
                                         <label class="control-label" for="supir">Nama Supir</label>
                                         <div class="controls">
                                             <select id="supir" name="supir" class="span3" >
-                                            <option value="">Pilih Supir</option>
-                                                <?php getOptionSupir();?>
+                                                <option value="">Pilih Supir</option>
+                                                <?php getOptionSupir(); ?>
                                             </select>
                                         </div>
                                     </div>
@@ -45,8 +45,8 @@ if (isset($_GET['page'])) {
                                         <label class="control-label" for="rute">Rute</label>
                                         <div class="controls">
                                             <select id="rute" name="rute" class="span3" >
-                                            <option value="">Pilih Rute</option>
-                                                <?php getOptionRute();?>
+                                                <option value="">Pilih Rute</option>
+                                                <?php getOptionRute(); ?>
                                             </select>
                                         </div>
                                     </div>
@@ -54,12 +54,20 @@ if (isset($_GET['page'])) {
                                         <label class="control-label" for="layanan">Jenis Layanan</label>
                                         <div class="controls">
                                             <select id="layanan" name="layanan" class="span3" >
-                                            <option value="oneway">One-Way</option>
-                                            <option value="twoway">Two-Way</option>
+                                                <option value="oneway">One-Way</option>
+                                                <option value="twoway">Two-Way</option>
                                             </select>
                                         </div>
                                     </div>
-
+                                    <div class="control-group">
+                                        <label class="control-label" for="bayar">Harga</label>
+                                        <div class="controls">
+                                            <div class="input-prepend">
+                                                <span class="add-on">Rp</span>
+                                                <input type="text" class="input-large" name="harga" id="harga" />
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="form-actions">
                                         <button type="submit" class="btn btn-success btn">Simpan Data</button>&nbsp;&nbsp;
                                         <a href="index.php?pgy=enroll&page=view" class="btn btn-danger btn">Batal</a>
@@ -96,37 +104,38 @@ if (isset($_GET['page'])) {
                                 <section id="tables">
                                     <h3>Data Pendaftaran Layanan</h3>
                                     <div class="form-actions">
-                                    <?php $qry = "SELECT * FROM siswa";
-                                          $exec = mysql_query($qry);
-                                          if ($exec) {
-                                             if(mysql_num_rows($exec) == 0) {
-                                    ?>
-                                        <a href="javascript:alert('Untuk Melanjutkan Harap Isi Data Siswa Terlebih Dahulu')" class="btn btn-primary btn">Tambah</a>
-                                        <a href="javascript:alert('Untuk Melanjutkan Harap Isi Data Siswa Terlebih Dahulu')" class="btn btn-info btn">Edit</a>
-                                        <a href="javascript:alert('Untuk Melanjutkan Harap Isi Data Siswa Terlebih Dahulu')" class="btn btn-danger btn">Hapus</a>
-                                   <?php
-                                             } else {
-                                   ?>
-                                        <a href="index.php?pgy=enroll&page=create" class="btn btn-primary btn">Tambah</a>
-                                        <a href="index.php?pgy=enroll&page=edit" class="btn btn-info btn">Edit</a>
-                                        <a href="index.php?pgy=enroll&page=delete" class="btn btn-danger btn">Hapus</a>
-                                   <?php
-                                             }
-                                          }
-                                    ?>
+                                        <?php
+                                        $qry = "SELECT * FROM siswa";
+                                        $exec = mysql_query($qry);
+                                        if ($exec) {
+                                            if (mysql_num_rows($exec) == 0) {
+                                                ?>
+                                                <a href="javascript:alert('Untuk Melanjutkan Harap Isi Data Siswa Terlebih Dahulu')" class="btn btn-primary btn">Tambah</a>
+                                                <a href="javascript:alert('Untuk Melanjutkan Harap Isi Data Siswa Terlebih Dahulu')" class="btn btn-info btn">Edit</a>
+                                                <a href="javascript:alert('Untuk Melanjutkan Harap Isi Data Siswa Terlebih Dahulu')" class="btn btn-danger btn">Hapus</a>
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <a href="index.php?pgy=enroll&page=create" class="btn btn-primary btn">Tambah</a>
+                                                <a href="index.php?pgy=enroll&page=edit" class="btn btn-info btn">Edit</a>
+                                                <a href="index.php?pgy=enroll&page=delete" class="btn btn-danger btn">Hapus</a>
+                                                <?php
+                                            }
+                                        }
+                                        ?>
                                     </div>
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>
                                             <tr>
                                                 <th class="span0"><center>No</center></th>
-                                                <th class="span5"><center>Nama Siswa</center></th>
-                                                <th class="span5"><center>Nama Supir</center></th>
-                                                <th class="span4"><center>Rute</center></th>
-                                                <th class="span2"><center>Jenis Layanan</center></th>
-                                            </tr>
+                                        <th class="span5"><center>Nama Siswa</center></th>
+                                        <th class="span5"><center>Nama Supir</center></th>
+                                        <th class="span4"><center>Rute</center></th>
+                                        <th class="span2"><center>Jenis Layanan</center></th>
+                                        </tr>
                                         </thead>
                                         <tbody>
-                                        <?php LoadLayanan();?>
+                                            <?php LoadLayanan(); ?>
                                         </tbody>
                                     </table>
                                     <br />
@@ -154,23 +163,23 @@ if (isset($_GET['page'])) {
                                 <section id="tables">
                                     <h3>Data Pendaftaran Layanan</h3>
                                     <div class="form-actions">
-                                    <a href="#" class="btn btn-inverse btn">Tambah</a>
-                                    <a href="#" class="btn btn-inverse btn">Edit</a>
-                                    <a href="#" class="btn btn-inverse btn">Hapus</a>
-                                    <a href="index.php?pgy=enroll&page=view" class="btn btn-danger btn">Batal</a>
+                                        <a href="#" class="btn btn-inverse btn">Tambah</a>
+                                        <a href="#" class="btn btn-inverse btn">Edit</a>
+                                        <a href="#" class="btn btn-inverse btn">Hapus</a>
+                                        <a href="index.php?pgy=enroll&page=view" class="btn btn-danger btn">Batal</a>
                                     </div>
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>
                                             <tr>
                                                 <th class="span0"><center>#</center></th>
-                                                <th class="span5"><center>Nama Siswa</center></th>
-                                                <th class="span5"><center>Nama Supir</center></th>
-                                                <th class="span4"><center>Rute</center></th>
-                                                <th class="span2"><center>Jenis Layanan</center></th>
-                                            </tr>
+                                        <th class="span5"><center>Nama Siswa</center></th>
+                                        <th class="span5"><center>Nama Supir</center></th>
+                                        <th class="span4"><center>Rute</center></th>
+                                        <th class="span2"><center>Jenis Layanan</center></th>
+                                        </tr>
                                         </thead>
                                         <tbody>
-                                        <?php EditLayanan();?>
+                                            <?php EditLayanan(); ?>
                                         </tbody>
                                     </table>
                                     <br />
@@ -182,7 +191,7 @@ if (isset($_GET['page'])) {
             </div>
         </div>
         <?php
-    } else if($_GET['page'] == 'editor') {
+    } else if ($_GET['page'] == 'editor') {
         ?>
         <div class="main">
 
@@ -208,14 +217,14 @@ if (isset($_GET['page'])) {
                                     <div class="control-group">
                                         <label class="control-label" for="siswa">Nama Siswa</label>
                                         <div class="controls">
-                                            <input type="text" class="span3" name="siswa" id="siswa" value='<?php echo getValueLayanan("nama_siswa", $_GET['id'],"id_siswa")?>' disabled/>
+                                            <input type="text" class="span3" name="siswa" id="siswa" value='<?php echo getValueLayanan("nama_siswa", $_GET['id'], "id_siswa") ?>' disabled/>
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label" for="supir">Nama Supir</label>
                                         <div class="controls">
                                             <select id="supir" name="supir" class="span3" >
-                                                <?php echo getLayananSupir($_GET['id'])?>
+                                                <?php echo getLayananSupir($_GET['id']) ?>
                                             </select>
                                         </div>
                                     </div>
@@ -223,7 +232,7 @@ if (isset($_GET['page'])) {
                                         <label class="control-label" for="rute">Rute</label>
                                         <div class="controls">
                                             <select id="rute" name="rute" class="span3" >
-                                                <?php echo getLayananRute($_GET['id'])?>
+                                                <?php echo getLayananRute($_GET['id']) ?>
                                             </select>
                                         </div>
                                     </div>
@@ -236,7 +245,16 @@ if (isset($_GET['page'])) {
                                             </select>
                                         </div>
                                     </div>
-                                    <input type="hidden" name="idSiswa" id="idSiswa" value=<?php echo $_GET['id']?>>
+                                    <div class="control-group">
+                                        <label class="control-label" for="bayar">Harga</label>
+                                        <div class="controls">
+                                            <div class="input-prepend">
+                                                <span class="add-on">Rp</span>
+                                                <input type="text" class="input-large" name="harga" id="harga" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="idSiswa" id="idSiswa" value=<?php echo $_GET['id'] ?>>
 
                                     <div class="form-actions">
                                         <button type="submit" class="btn btn-success btn">Simpan Data</button>&nbsp;&nbsp;
@@ -274,23 +292,23 @@ if (isset($_GET['page'])) {
                                 <section id="tables">
                                     <h3>Data Pendaftaran Layanan</h3>
                                     <div class="form-actions">
-                                    <a href="#" class="btn btn-inverse btn">Tambah</a>
-                                    <a href="#" class="btn btn-inverse btn">Edit</a>
-                                    <a href="#" class="btn btn-inverse btn">Hapus</a>
-                                    <a href="index.php?pgy=enroll&page=view" class="btn btn-danger btn">Batal</a>
+                                        <a href="#" class="btn btn-inverse btn">Tambah</a>
+                                        <a href="#" class="btn btn-inverse btn">Edit</a>
+                                        <a href="#" class="btn btn-inverse btn">Hapus</a>
+                                        <a href="index.php?pgy=enroll&page=view" class="btn btn-danger btn">Batal</a>
                                     </div>
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>
                                             <tr>
                                                 <th class="span0"><center>#</center></th>
-                                                <th class="span5"><center>Nama Siswa</center></th>
-                                                <th class="span5"><center>Nama Supir</center></th>
-                                                <th class="span4"><center>Rute</center></th>
-                                                <th class="span2"><center>Jenis Layanan</center></th>
-                                            </tr>
+                                        <th class="span5"><center>Nama Siswa</center></th>
+                                        <th class="span5"><center>Nama Supir</center></th>
+                                        <th class="span4"><center>Rute</center></th>
+                                        <th class="span2"><center>Jenis Layanan</center></th>
+                                        </tr>
                                         </thead>
                                         <tbody>
-                                        <?php DeleteLayananView();?>
+                                            <?php DeleteLayananView(); ?>
                                         </tbody>
                                     </table>
                                     <br />
