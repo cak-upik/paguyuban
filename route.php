@@ -30,6 +30,15 @@ if (isset($_GET['page'])) {
                                         </div>
                                     </div>
                                     <div class="control-group">
+                                        <label class="control-label" for="supir">Nama Supir</label>
+                                        <div class="controls">
+                                            <select id="supir" name="supir" class="span3" >
+                                                <option value="">Pilih Supir</option>
+                                                <?php getOptionSupir(); ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
                                         <label class="control-label" for="kota">Kota</label>
                                         <div class="controls">
                                             <input type="text" class="input-large" name="kota" id="kota" />
@@ -78,9 +87,9 @@ if (isset($_GET['page'])) {
                                 <section id="tables">
                                     <h3>Data Rute</h3>
                                     <div class="form-actions">
-                                    <a href="index.php?pgy=rute&page=create" class="btn btn-primary btn">Tambah Rute</a>
-                                    <a href="index.php?pgy=rute&page=edit" class="btn btn-info btn">Edit Rute</a>
-                                    <a href="index.php?pgy=rute&page=delete" class="btn btn-danger btn">Hapus Rute</a>
+                                        <a href="index.php?pgy=rute&page=create" class="btn btn-primary btn">Tambah Rute</a>
+                                        <a href="index.php?pgy=rute&page=edit" class="btn btn-info btn">Edit Rute</a>
+                                        <a href="index.php?pgy=rute&page=delete" class="btn btn-danger btn">Hapus Rute</a>
                                     </div>
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>
@@ -92,7 +101,7 @@ if (isset($_GET['page'])) {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php LoadRute();?>
+                                            <?php LoadRute(); ?>
                                         </tbody>
                                     </table>
                                     <br />
@@ -120,10 +129,10 @@ if (isset($_GET['page'])) {
                                 <section id="tables">
                                     <h3>Data Rute</h3>
                                     <div class="form-actions">
-                                    <a href="#" class="btn btn-inverse btn">Tambah Rute</a>
-                                    <a href="#" class="btn btn-inverse btn">Edit Rute</a>
-                                    <a href="#" class="btn btn-inverse btn">Hapus Rute</a>
-                                    <a href="index.php?pgy=rute&page=view" class="btn btn-danger btn">Batal</a>
+                                        <a href="#" class="btn btn-inverse btn">Tambah Rute</a>
+                                        <a href="#" class="btn btn-inverse btn">Edit Rute</a>
+                                        <a href="#" class="btn btn-inverse btn">Hapus Rute</a>
+                                        <a href="index.php?pgy=rute&page=view" class="btn btn-danger btn">Batal</a>
                                     </div>
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>
@@ -135,7 +144,7 @@ if (isset($_GET['page'])) {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php EditRute();?>
+                                            <?php EditRute(); ?>
                                         </tbody>
                                     </table>
                                     <br />
@@ -147,7 +156,7 @@ if (isset($_GET['page'])) {
             </div>
         </div>
         <?php
-    } else if($_GET['page'] == 'editor') {
+    } else if ($_GET['page'] == 'editor') {
         ?>
         <div class="main">
 
@@ -173,22 +182,22 @@ if (isset($_GET['page'])) {
                                     <div class="control-group">
                                         <label class="control-label" for="name">Nama Rute</label>
                                         <div class="controls">
-                                            <input type="text" class="input-xxlarge" name="nama" id="nama" value='<?php echo getValueRute("nama_rute", $_GET['id'],"id_rute")?>'/>
+                                            <input type="text" class="input-xxlarge" name="nama" id="nama" value='<?php echo getValueRute("nama_rute", $_GET['id'], "id_rute") ?>'/>
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label" for="kota">Kota</label>
                                         <div class="controls">
-                                            <input type="text" class="input-large" name="kota" id="kota" value='<?php echo getValueRute("kota", $_GET['id'],"id_rute")?>'/>
+                                            <input type="text" class="input-large" name="kota" id="kota" value='<?php echo getValueRute("kota", $_GET['id'], "id_rute") ?>'/>
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label" for="tarif">Tarif</label>
                                         <div class="controls">
-                                            <input type="text" class="input-large" name="tarif" id="tarif" value='<?php echo getValueRute("tarif", $_GET['id'],"id_rute")?>' />
+                                            <input type="text" class="input-large" name="tarif" id="tarif" value='<?php echo getValueRute("tarif", $_GET['id'], "id_rute") ?>' />
                                         </div>
                                     </div>
-                                    <input type="hidden" name="idRute" id="idRute" value=<?php echo $_GET['id']?>>
+                                    <input type="hidden" name="idRute" id="idRute" value=<?php echo $_GET['id'] ?>>
 
                                     <div class="form-actions">
                                         <button type="submit" class="btn btn-success btn">Simpan Data</button>&nbsp;&nbsp;
@@ -226,10 +235,10 @@ if (isset($_GET['page'])) {
                                 <section id="tables">
                                     <h3>Data Rute</h3>
                                     <div class="form-actions">
-                                    <a href="#" class="btn btn-inverse btn">Tambah Rute</a>
-                                    <a href="#" class="btn btn-inverse btn">Edit Rute</a>
-                                    <a href="#" class="btn btn-inverse btn">Hapus Rute</a>
-                                    <a href="index.php?pgy=rute&page=view" class="btn btn-danger btn">Batal</a>
+                                        <a href="#" class="btn btn-inverse btn">Tambah Rute</a>
+                                        <a href="#" class="btn btn-inverse btn">Edit Rute</a>
+                                        <a href="#" class="btn btn-inverse btn">Hapus Rute</a>
+                                        <a href="index.php?pgy=rute&page=view" class="btn btn-danger btn">Batal</a>
                                     </div>
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>
@@ -241,7 +250,7 @@ if (isset($_GET['page'])) {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php DeleteRuteView();?>
+                                            <?php DeleteRuteView(); ?>
                                         </tbody>
                                     </table>
                                     <br />

@@ -5,6 +5,7 @@
                 <i class="icon-reorder"></i>
             </a>
             <?php
+            $active = "";
             ?>
             <div class="subnav-collapse collapse">
                 <ul class="mainnav">
