@@ -20,35 +20,35 @@ if (isset($_GET['page'])) {
                             <div class="widget-content">
                                 <section id="tables">
                                     <h3>Laporan Pembayaran Supir</h3>
-                                    <br />
-                                    <form action="index.php?pgy=lap-pembayaran-supir&page=detail" method="post" class="form-horizontal" />
-                                    <fieldset>
+                                    <section id="tables">
+                                        <form action="index.php?pgy=lap-pembayaran-supir&page=detail" method="post" class="form-horizontal" />                                    
                                         <div class="control-group">
                                             <label class="control-label" for="supir">Nama Supir</label>
                                             <div class="controls">
-                                                <input type="text" class="input-large" name="supir" id="supir" />
+                                                <select id="supir" name="supir" class="span3" >
+                                                    <option value="">Pilih Supir</option>
+                                                    <?php getOptionSupir(); ?>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="control-group">
-                                            <label class="control-label" for="name">Bulan</label>
+                                            <label class="control-label" for="date">Filter Tanggal</label>
                                             <div class="controls">
-                                                <input type="text" class="input-large" name="bln" id="datepicker" />
-                                            </div>
+                                                <?php
+                                                $date_start = begin_date_month();
+                                                $date_end = last_date_month();
+                                                ?>
+                                                <input type="date" name="date1" class="input-medium" value="<?php echo $date_start; ?>" />
+                                                <span class="add-on"> Sampai </span>
+                                                <input type="date" name="date2" class="input-medium" value="<?php echo $date_end; ?>" />
+                                            </div>	
                                         </div>
-                                        <div class="control-group">
-                                            <div class="controls">
-                                                <input type="checkbox" name="all" id="all" />&nbsp;Semua Bulan
-                                                <input type="hidden" name="allMonths" id="allMonths">
-                                            </div>
-                                        </div>
-                                        </div>
-                                    </fieldset>
-                                    <div class="form-actions">
-                                        <!--<a href="index.php?pgy=laporan-pembayaran&page=detail" class="btn btn-info btn">Detail</a>-->
-                                        <button type="submit" class="btn btn-success">&nbsp;&nbsp;Cari&nbsp;&nbsp;&nbsp;</button>
-                                        <!--<a href="index.php?pgy=laporan-pembayaran&page=cetak" class="btn btn-success btn">Cetak</a>-->
-                                    </div>
-                                    </form>
+                                        <div class="form-actions">
+                                            <button type="submit" class="btn btn-inverse">Cari</button> 
+                                            <button class="btn">Cancel</button>
+                                        </div> 
+                                        </form>                                    
+                                    </section>
                                     <br />
                                 </section>
                             </div> <!-- /widget-content -->
@@ -77,9 +77,9 @@ if (isset($_GET['page'])) {
                                         <thead>
                                             <tr>
                                                 <th class="span1"><center>Kode Transaksi</center></th>
-                                                <th class="span3"><center>Nama Supir</center></th>
-                                                <th class="span3"><center>Pembayaran Supir</center></th>
-                                                <th class="span3"><center>Tanggal Pembayaran</center></th>
+                                        <th class="span3"><center>Nama Supir</center></th>
+                                        <th class="span3"><center>Pembayaran Supir</center></th>
+                                        <th class="span3"><center>Tanggal Pembayaran</center></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -90,7 +90,7 @@ if (isset($_GET['page'])) {
                                             if ($all == 1)
                                                 searchAllSupir();
                                             else
-                                                searchSupir($nama,$tgl);
+                                                searchSupir($nama, $tgl);
                                             ?>
                                         </tbody>
                                     </table>

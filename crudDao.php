@@ -971,10 +971,6 @@ function ShowDetailIdentity($id) {
 }
 
 function ShowDetailTransaction($id) {
-//    setlocale(LC_ALL, "id_ID");
-//    date_default_timezone_set('Asia
-//Jakarta');
-//    date("F", strtotime($data['tanggal']))
     $qry = "SELECT DATE(tanggal_bayar) as tanggal, MONTHNAME(tanggal_bayar) as bulan, total_bayar FROM transaksi INNER JOIN siswa ON transaksi.id_siswa=siswa.id_siswa WHERE siswa.id_siswa=" . $id;
     $exec = mysql_query($qry);
     $no = 1;

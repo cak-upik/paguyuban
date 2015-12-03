@@ -12,21 +12,22 @@
 <div class="main">
     <div class="container">
         <div class="row">
-            <div class="span12">
+            <div class="span2"></div>
+            <div class="span7">
                 <br/>
                 <table class="table" style="border: 0px">
                     <thead>
                         <tr>
-                            <td style="border: 0px"><img src="img/gallery/lr1.png" class="img-circle pull-right"></td>
-                            <td style="border: 0px"><h4>PERGURUAN ISLAM RAUDLATUL JANNAH</h4> <br/>Jl. Jatisari Permai X/2 Pepelegi, Waru-Sidoarjo</td>
+                            <td style="border: 0px;"><img src="img/gallery/lr1.png"  style="width: 85px; height: 75px;" class="img-circle pull-right"></td>
+                            <td style="border: 0px"><h5>PERGURUAN ISLAM RAUDLATUL JANNAH</h5> <br/>Jl. Jatisari Permai X/2 Pepelegi, Waru-Sidoarjo</td>
                         </tr>
                     </thead>
                 </table>
                 <div class="widget stacked">
                     <div class="widget-content">
                         <div class="row-fluid">
-                            <div class="span6">
-                                <table class="table table-bordered" style="border:0px; font-size: 12px">
+                            <div class="span8">
+                                <table class="table table-bordered" style="border:1px; font-size: 12px">
                                     <tbody>
                                         <tr style="border:0px;">
                                             <td style="border:0px;" class="description">Nama Siswa</td>
@@ -44,23 +45,19 @@
                                             <td style="border:0px;" class="description">Telp. / HP</td>
                                             <td style="border:0px;" class="value"><span>: " . $identity['no_tlp'] . "</span></td>
                                         </tr>
+                                        <tr>
+                                            <td style="border:0px;" class="description">Kelas</td>
+                                            <td style="border:0px;" class="value"><span>: " . $identity['kelas'] . "</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="border:0px;" class="description">Sopir</td>
+                                            <td style="border:0px;" class="value"><span>: " . $identity['tarif'] . "</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="border:0px;" class="description">Pilihan</td>
+                                            <td style="border:0px;" class="value"><span>: " . $identity['layanan'] . "</span></td>
+                                        </tr>
                                     </tbody>
-                                </table>
-                            </div>
-                            <div class="span6">
-                                <table class="table table-bordered" style="border:0px; font-size: 12px">
-                                    <tr>
-                                        <td style="border:0px;" class="description">Kelas</td>
-                                        <td style="border:0px;" class="value"><span>: " . $identity['kelas'] . "</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="border:0px;" class="description">Sopir</td>
-                                        <td style="border:0px;" class="value"><span>: " . $identity['tarif'] . "</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="border:0px;" class="description">Pilihan</td>
-                                        <td style="border:0px;" class="value"><span>: " . $identity['layanan'] . "</span></td>
-                                    </tr>
                                 </table>
                             </div>
                             <div class="row-fluid">
@@ -78,27 +75,27 @@
                                                 <th class="span1">Petugas</th>
                                             </tr>
                                         </thead>
-                                            <tr>
-                                                <td style="border:0px;" class="description">Sopir</td>
-                                                <td style="border:0px;" class="value"><span></span></td>
-                                                <td style="border:0px;" class="description">Sopir</td>
-                                                <td style="border:0px;" class="value"><span></span></td>    
-                                                <td style="border:0px;" class="value"><span></span></td>     
-                                            </tr>
-                                            <tr>
-                                                <td style="border:0px;" class="description">Sopir</td>
-                                                <td style="border:0px;" class="value"><span></span></td>
-                                                <td style="border:0px;" class="description">Sopir</td>
-                                                <td style="border:0px;" class="value"><span></span></td>    
-                                                <td style="border:0px;" class="value"><span></span></td>     
-                                            </tr>
-                                            <tr>
-                                                <td style="border:0px;" class="description">Sopir</td>
-                                                <td style="border:0px;" class="value"><span></span></td>
-                                                <td style="border:0px;" class="description">Sopir</td>
-                                                <td style="border:0px;" class="value"><span></span></td>    
-                                                <td style="border:0px;" class="value"><span></span></td>     
-                                            </tr>
+                                        <tr>
+                                            <td style="border:0px;" class="description">Sopir</td>
+                                            <td style="border:0px;" class="value"><span></span></td>
+                                            <td style="border:0px;" class="description">Sopir</td>
+                                            <td style="border:0px;" class="value"><span></span></td>    
+                                            <td style="border:0px;" class="value"><span></span></td>     
+                                        </tr>
+                                        <tr>
+                                            <td style="border:0px;" class="description">Sopir</td>
+                                            <td style="border:0px;" class="value"><span></span></td>
+                                            <td style="border:0px;" class="description">Sopir</td>
+                                            <td style="border:0px;" class="value"><span></span></td>    
+                                            <td style="border:0px;" class="value"><span></span></td>     
+                                        </tr>
+                                        <tr>
+                                            <td style="border:0px;" class="description">Sopir</td>
+                                            <td style="border:0px;" class="value"><span></span></td>
+                                            <td style="border:0px;" class="description">Sopir</td>
+                                            <td style="border:0px;" class="value"><span></span></td>    
+                                            <td style="border:0px;" class="value"><span></span></td>     
+                                        </tr>
                                     </table>
                                 </div>
                             </div>
@@ -108,7 +105,7 @@
                 </div> <!-- /widget -->					
 
             </div> <!-- /span12 -->     	
-
+            <div class="span2"></div>
 
         </div> <!-- /row -->
 

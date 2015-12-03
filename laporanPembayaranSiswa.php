@@ -19,38 +19,44 @@ if (isset($_GET['page'])) {
                             </div> <!-- /widget-header -->
                             <div class="widget-content">
                                 <section id="tables">
-                                    <h3>Laporan Pembayaran Siswa</h3>
-                                    <br />
-                                    <form action="index.php?pgy=lap-pembayaran-siswa&page=detail" method="post" class="form-horizontal" />
-                                    <fieldset>
-                                        <div class="control-group">
-                                            <label class="control-label" for="siswa">Nama Siswa</label>
-                                            <div class="controls">
-                                                <input type="text" class="input-large" name="siswa" id="siswa" />
+                                    <section id="tables">
+                                        <h3>Laporan Pembayaran Siswa</h3>
+                                        <section id="tables">
+                                            <form action="index.php?pgy=lap-pembayaran-siswa&page=detail" method="post" class="form-horizontal" />
+                                            <div class="control-group">
+                                                <label class="control-label" for="supir">Nama Supir</label>
+                                                <div class="controls">
+                                                    <select name="student" id="student" class="input-large">
+                                                        <option name="0">-Pilih-</option>
+                                                        <?php
+                                                        $query = mysql_query("SELECT id_siswa, nama_siswa FROM siswa");
+                                                        while ($a = mysql_fetch_array($query)) {
+                                                            echo"<option value='$a[id_siswa]'>$a[nama_siswa]</option>";
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="control-group">
-                                            <label class="control-label" for="name">Bulan</label>
-                                            <div class="controls">
-                                                <input type="text" class="input-large" name="bln" id="datepicker" />
+                                            <div class="control-group">
+                                                <label class="control-label" for="date">Filter Tanggal</label>
+                                                <div class="controls">
+                                                    <?php
+                                                    $date_start = begin_date_month();
+                                                    $date_end = last_date_month();
+                                                    ?>
+                                                    <input type="date" name="date1" class="input-medium" value="<?php echo $date_start; ?>" />
+                                                    <span class="add-on"> Sampai </span>
+                                                    <input type="date" name="date2" class="input-medium" value="<?php echo $date_end; ?>" />
+                                                </div>	
                                             </div>
-                                        </div>
-                                        <div class="control-group">
-                                            <div class="controls">
-                                                <input type="checkbox" name="all" id="all" />&nbsp;Semua Bulan
-                                                <input type="hidden" name="allMonths" id="allMonths">
-                                            </div>
-                                        </div>
-                                        </div>
-                                    </fieldset>
-                                    <div class="form-actions">
-                                        <!--<a href="index.php?pgy=laporan-pembayaran&page=detail" class="btn btn-info btn">Detail</a>-->
-                                        <button type="submit" class="btn btn-success">&nbsp;&nbsp;Cari&nbsp;&nbsp;&nbsp;</button>
-                                        <!--<a href="index.php?pgy=laporan-pembayaran&page=cetak" class="btn btn-success btn">Cetak</a>-->
-                                    </div>
-                                    </form>
-                                    <br />
-                                </section>
+                                            <div class="form-actions">
+                                                <button type="submit" class="btn btn-inverse">Cari</button> 
+                                                <button class="btn">Cancel</button>
+                                            </div> 
+                                            </form>                                    
+                                        </section>
+                                        <br />
+                                    </section>
                             </div> <!-- /widget-content -->
                         </div> <!-- /widget -->
                     </div> <!-- /span12 -->
@@ -77,9 +83,9 @@ if (isset($_GET['page'])) {
                                         <thead>
                                             <tr>
                                                 <th class="span1"><center>Kode Transaksi</center></th>
-                                                <th class="span3"><center>Nama Siswa</center></th>
-                                                <th class="span3"><center>Nominal Pembayaran</center></th>
-                                                <th class="span3"><center>Tanggal Pembayaran</center></th>
+                                        <th class="span3"><center>Nama Siswa</center></th>
+                                        <th class="span3"><center>Nominal Pembayaran</center></th>
+                                        <th class="span3"><center>Tanggal Pembayaran</center></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -90,7 +96,7 @@ if (isset($_GET['page'])) {
                                             if ($all == 1)
                                                 searchAllSiswa();
                                             else
-                                                searchSiswa($nama,$tgl);
+                                                searchSiswa($nama, $tgl);
                                             ?>
                                         </tbody>
                                     </table>
