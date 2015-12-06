@@ -20,6 +20,17 @@
             <file>file:/var/www/html/paguyuban/laporanPembayaranSiswa.php</file>
             <file>file:/var/www/html/paguyuban/laporanPembayaranSupir.php</file>
         </group>
-        <group/>
+        <group>
+            <file>file:/C:/AppServ/www/paguyuban/menu.php</file>
+            <file>file:/C:/AppServ/www/paguyuban/user.php</file>
+            <file>file:/C:/AppServ/www/paguyuban/crudDao.php</file>
+            <file>file:/C:/AppServ/www/paguyuban/enroll.php</file>
+        </group>
+        <group name="Web">
+            <file>file:/C:/AppServ/www/paguyuban/user.php</file>
+            <file>file:/C:/AppServ/www/paguyuban/crudDao.php</file>
+            <file>file:/C:/AppServ/www/paguyuban/enroll.php</file>
+            <file>file:/C:/AppServ/www/paguyuban/menu.php</file>
+        </group>
     </open-files>
 </project-private>
