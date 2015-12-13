@@ -115,18 +115,14 @@ if (isset($_GET['page'])) {
                                 </div>
                                 <hr>
                                 <div class="row-fluid">
-                                    <div class="span12">
+                                    <div>
                                         <table class="table table-bordered table-striped table-highlight">
                                             <thead>
-                                                <tr>
-                                                    <th class="span1" rowspan=2>Tanggal</th>
-                                                    <th class="span1" rowspan=2>Bulan</th>
-                                                    <th class="span3" rowspan=2>Nominal</th>
-                                                    <th class="span2" colspan=2>Tanda Tangan</th>
-                                                </tr>
-                                                <tr>
-                                                    <th class="span1">Orang Tua</th>
-                                                    <th class="span1">Petugas</th>
+                                                <tr>                                                    
+                                                    <th>No.</th>
+                                                    <th>Tanggal</th>
+                                                    <th>Bulan</th>
+                                                    <th>Nominal</th>
                                                 </tr>
                                             </thead>
                                             <tbody>

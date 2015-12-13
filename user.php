@@ -139,7 +139,7 @@ if (isset($_GET['page'])) {
                                                 </div> <!-- /control-group -->
                                                 <br />
 
-                                                <div class="widget stacked ">
+<!--                                                <div class="widget stacked ">
                                                     <div class="widget-header">
                                                         <i class="icon-user"></i>
                                                         <h3>User Permission </h3>
@@ -161,10 +161,10 @@ if (isset($_GET['page'])) {
                                                                 <label class="checkbox"><input type="checkbox" value="setting_user" name="setting_user" > Setting User</label>
                                                                 <label class="checkbox"><input type="checkbox" value="setting_hak_akses" name="setting_hak_akses" > Setting Hak Akses</label>
                                                                 <label class="checkbox"><input type="checkbox" value="setting_template" name="setting_template" > Setting Template</label>
-                                                            </div> <!-- /controls -->				
-                                                        </div> <!-- /control-group -->
+                                                            </div>  /controls 				
+                                                        </div>  /control-group 
                                                     </div>
-                                                </div>                                            
+                                                </div>                                            -->
                                                 <div class="form-actions">
                                                     <button type="submit" class="btn btn-primary">Simpan</button>
                                                     <input type=button class='btn btn-danger btn' value=Batal onclick=window.location.assign('index.php?pgy=user-manage&page=view')>                                                
