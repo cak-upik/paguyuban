@@ -8,6 +8,7 @@ session_start();
                 <i class="icon-cog"></i>
             </a>
             <a class="brand" href="index.php?pgy=home">
+                <img src="img/android-icon-72x72.png" class="pull-left img-circle">
                 E-Car <br>
                 Antar Jemput Siswa
                 Raudhatul Jannah

@@ -118,10 +118,10 @@ if (isset($_GET['page'])) {
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>
                                             <tr>
-                                                <th class="span0"><center>No</center></th>
-                                                <th class="span5"><center>Nama Siswa</center></th>
-                                                <th class="span5"><center>Nama Supir</center></th>
-                                                <th class="span4"><center>Rute</center></th>
+                                                <th class="span1"><center>No</center></th>
+                                                <th><center>Nama Siswa</center></th>
+                                                <th><center>Nama Supir</center></th>
+                                                <th><center>Rute</center></th>
                                                 <th class="span2"><center>Jenis Layanan</center></th>
                                                 <th class="span2"><center>Tarif</center></th>
                                             </tr>
@@ -163,11 +163,12 @@ if (isset($_GET['page'])) {
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>
                                             <tr>
-                                                <th class="span0"><center>#</center></th>
-                                                <th class="span5"><center>Nama Siswa</center></th>
-                                                <th class="span5"><center>Nama Supir</center></th>
-                                                <th class="span4"><center>Rute</center></th>
-                                                <th class="span2"><center>Jenis Layanan</center></th>
+                                                <th class="span1"><center>#</center></th>
+                                                <th><center>Nama Siswa</center></th>
+                                                <th><center>Nama Supir</center></th>
+                                                <th><center>Rute</center></th>
+                                                <th><center>Jenis Layanan</center></th>
+                                                <th><center>Tarif</center></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -283,11 +284,12 @@ if (isset($_GET['page'])) {
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>
                                             <tr>
-                                                <th class="span0"><center>#</center></th>
-                                                <th class="span5"><center>Nama Siswa</center></th>
-                                                <th class="span5"><center>Nama Supir</center></th>
-                                                <th class="span4"><center>Rute</center></th>
-                                                <th class="span2"><center>Jenis Layanan</center></th>
+                                                <th class="span1"><center>#</center></th>
+                                                <th><center>Nama Siswa</center></th>
+                                                <th><center>Nama Supir</center></th>
+                                                <th><center>Rute</center></th>
+                                                <th><center>Jenis Layanan</center></th>
+                                                <th><center>Tarif</center></th>
                                             </tr>
                                         </thead>
                                         <tbody>

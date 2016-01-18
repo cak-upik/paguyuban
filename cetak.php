@@ -62,7 +62,7 @@
                             </div>
                             <div class="row-fluid">
                                 <div class="span12">
-                                    <table class="table table-bordered table-striped table-highlight" style="font-size: 12px">
+                                    <table class="table table-bordered table-striped" style="font-size: 12px">
                                         <thead>
                                             <tr>
                                                 <th class="span1" rowspan=2>Tanggal</th>

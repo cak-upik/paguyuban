@@ -21,12 +21,13 @@ if (isset($_GET['page'])) {
                                 <section id="tables">
                                     <h3>Laporan Pembayaran Supir</h3>
                                     <section id="tables">
-                                        <form action="index.php?pgy=lap-pembayaran-supir&page=detail" method="post" class="form-horizontal" />                                    
+                                        <form action="index.php?pgy=lap-pembayaran-supir&do=find" method="post" class="form-horizontal" />                                    
                                         <div class="control-group">
                                             <label class="control-label" for="supir">Nama Supir</label>
                                             <div class="controls">
                                                 <select id="supir" name="supir" class="span3" >
-                                                    <option value="">Pilih Supir</option>
+                                                    <!--<option value="">Pilih Supir</option>-->
+                                                    <option value="0">All</option>
                                                     <?php getOptionSupir(); ?>
                                                 </select>
                                             </div>

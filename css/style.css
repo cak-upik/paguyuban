@@ -12,10 +12,10 @@ abbr[title], dfn[title] { border-bottom: 1px dotted; cursor: help; }
 table { border-collapse: collapse; border-spacing: 0; }
 hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
 input, select { vertical-align: middle; }
-
-body { font:13px/1.231 sans-serif; *font-size:small; } /* Hack retained to preserve specificity */
+@import url(https://fonts.googleapis.com/css?family=Arimo:400,700italic,700,400italic);
+body { font:13px/1.231 Arimo; *font-size:small; } /* Hack retained to preserve specificity */
 select, input, textarea, button { font:99% sans-serif; }
-pre, code, kbd, samp { font-family: monospace, sans-serif; }
+pre, code, kbd, samp { font-family: 'Arimo', sans-serif;}
 
 
 body { background: #EEE; color: #444; line-height: 1.4em; }
@@ -27,7 +27,7 @@ div#content { background: white; border: 1px solid #ccc; border-width: 0 1px 1px
 
 footer { color: #999; padding-top: 40px; font-size: 0.8em; text-align: center; }
 
-body { font-family: sans-serif; font-size: 1em; }
+body { font-family: 'Arimo', sans-serif;; font-size: 1em; }
 
 p { margin: 0 0 .7em; max-width: 700px; }
 table+p { margin-top: 1em; }
@@ -79,7 +79,7 @@ i { font-style: italic; }
   color: #555555;
   cursor: pointer;
   display: inline-block;
-  font-family: "Helvetica Neue", Arial, Verdana, "Nimbus Sans L", sans-serif;
+  font-family: "Arimo", Arial, Verdana, "Nimbus Sans L", sans-serif;
   font-size: 13px;
   font-weight: 500;
   height: 31px;

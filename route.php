@@ -47,7 +47,10 @@ if (isset($_GET['page'])) {
                                     <div class="control-group">
                                         <label class="control-label" for="tarif">Tarif</label>
                                         <div class="controls">
-                                            <input type="text" class="input-large" name="tarif" id="tarif" />
+                                            <div class="input-prepend">
+                                                <span class="add-on">Rp</span>
+                                                <input type="text" class="input-large" name="tarif" id="tarif" />
+                                            </div>
                                         </div>
                                     </div>
 
@@ -194,7 +197,10 @@ if (isset($_GET['page'])) {
                                     <div class="control-group">
                                         <label class="control-label" for="tarif">Tarif</label>
                                         <div class="controls">
-                                            <input type="text" class="input-large" name="tarif" id="tarif" value='<?php echo getValueRute("tarif", $_GET['id'], "id_rute") ?>' />
+                                            <div class="input-prepend">
+                                                <span class="add-on">Rp</span>
+                                                <input type="text" class="input-large" name="tarif" id="tarif" value='<?php echo getValueRute("tarif", $_GET['id'], "id_rute") ?>' />                                        
+                                            </div>
                                         </div>
                                     </div>
                                     <input type="hidden" name="idRute" id="idRute" value=<?php echo $_GET['id'] ?>>

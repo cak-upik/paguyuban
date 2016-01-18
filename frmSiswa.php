@@ -152,8 +152,8 @@ if (isset($_GET['page'])) {
                                                 <th class="span1">#</th>
                                                 <th>Nama Siswa</th>
                                                 <th>Nama OrangTua/Wali</th>
-                                                <th>Kelas</th>
                                                 <th>Alamat</th>
+                                                <th>Kelas</th>
                                                 <th>Email</th>
                                                 <th>No.Telp</th>
                                             </tr>

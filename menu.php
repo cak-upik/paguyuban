@@ -72,7 +72,7 @@
                         <ul class="dropdown-menu">
                             <li <?php echo $active ?>><a href="index.php?pgy=user-manage&page=view">User</a></li>
                             <li <?php echo $active ?>><a href="index.php?pgy=profile&page=view">Hak Akses</a></li>
-                            <li <?php echo $active ?>><a href="index.php?pgy=layout&page=view">Paguyuban</a></li>
+                            <!--<li <?php echo $active ?>><a href="index.php?pgy=layout&page=view">Paguyuban</a></li>-->
                         </ul> 				
                     </li>
                     <!--                    <li class="dropdown">					

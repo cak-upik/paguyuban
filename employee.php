@@ -38,7 +38,7 @@ if (isset($_GET['page'])) {
                                     <div class="control-group">
                                         <label class="control-label" for="tanggallahir">Tanggal Lahir</label>
                                         <div class="controls">
-                                            <input type="text" class="input-large" name="tanggal" id="tanggal" />
+                                            <input type="date" class="input-large" name="tanggal" id="tanggal" />
                                         </div>
                                     </div>
                                     <div class="control-group">
@@ -64,7 +64,6 @@ if (isset($_GET['page'])) {
                                         <label class="control-label" for="jabatan">Jabatan</label>
                                         <div class="controls">
                                             <select id="status" name="jabatan">
-                                                <option value="" />Select...
                                                 <option value="supir" />SUPIR
                                                 <option value="administrasi" />ADMINISTRASI
                                                 <option value="keuangan" />KEUANGAN
@@ -224,7 +223,7 @@ if (isset($_GET['page'])) {
                                     <div class="control-group">
                                         <label class="control-label" for="tanggal">Tanggal Lahir</label>
                                         <div class="controls">
-                                            <input type="text" class="input-large" name="tanggal" id="tanggal" value='<?php echo getValueKaryawan("tanggal_lahir", $_GET['id'],"id_karyawan")?>'/>
+                                            <input type="date" class="input-large" name="tanggal" id="tanggal" value='<?php echo getValueKaryawan("tanggal_lahir", $_GET['id'],"id_karyawan")?>'/>
                                         </div>
                                     </div>
                                     <div class="control-group">

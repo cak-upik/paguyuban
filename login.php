@@ -42,7 +42,8 @@ if (!empty($_SESSION['login_user'])) {
                         <i class="icon-cog"></i>
                     </a>
 
-                    <a class="brand" href="./index-bak.html">
+                    <a class="brand" href="./login.php">
+                    <img src="img/android-icon-72x72.png" class="pull-left img-circle">
                         E-Car <br>
                         Antar Jemput Siswa
                         Raudhatul Jannah
@@ -86,10 +87,10 @@ if (!empty($_SESSION['login_user'])) {
 
 
         <!-- Text Under Box -->
-        <div class="login-extra">
+<!--        <div class="login-extra">
             Don't have an account? <a href="./signup.html">Sign Up</a><br />
             Remind <a href="#">Password</a>
-        </div> <!-- /login-extra -->
+        </div>  /login-extra -->
 
 
         <!-- Le javascript

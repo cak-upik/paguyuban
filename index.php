@@ -16,6 +16,7 @@ if (empty($get['login_user'])) {
 
         <link href="./css/bootstrap.min.css" rel="stylesheet" />
         <link href="./css/bootstrap-responsive.min.css" rel="stylesheet" />
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
 
         <!--<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet" />-->
         <link href="./css/font-awesome.min.css" rel="stylesheet" />        
@@ -187,7 +188,17 @@ if (empty($get['login_user'])) {
             } else if ($admin == 'lap-pembayaran-siswa') {
                 include 'laporanPembayaranSiswa.php';
             } else if ($admin == 'lap-pembayaran-supir') {
-                include 'laporanPembayaranSupir.php';
+            	switch($act) {
+            	   case "find" :
+	            	$name = $_POST['supir'];
+	            	$start = $_POST['date1'];
+	            	$end = $_POST['date2'];
+			if ($name == 0) findSupirPayment($name, $start, $end, TRUE);
+            	   	else findSupirPayment($name, $start, $end, FALSE);
+            	   
+            	   default :  
+			include 'laporanPembayaranSupir.php';
+            	}
             } else if ($admin == 'user-manage') {
                 switch ($act) {
                     case "save" :
@@ -258,15 +269,13 @@ if (empty($get['login_user'])) {
                         $total = $_POST['payment'];
                         SaveTransaksi($code, $siswa, $supir, $rute, $tgl, $total, $cli, $cls);
                     case "update" :
-                        $siswa = $_POST['siswa'];
-                        $supir = $_POST['supir'];
-                        $rute = $_POST['rute'];
-                        $layanan = $_POST['layanan'];
-                        $id = $_POST['idSiswa'];
-                        SaveLayanan($layanan, $supir, $rute, $id);
+                        $tgl = date('Y-m-d', strtotime($_POST['tanggal']));
+                        $total = $_POST['bayar'];
+                        $id = $_POST['id_trx'];
+                        UpdateTransaksi($tgl, $total, $id);
                     case "delete" :
                         $id = $_GET['id'];
-                        DeleteLayanan($id);
+                        DeleteTransaksi($id);
                     default :
                         include 'transaction.php';
                 }

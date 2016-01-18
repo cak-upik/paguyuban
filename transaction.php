@@ -43,7 +43,7 @@ if (isset($_GET['page'])) {
                                                     <select name="student" id="student">
                                                         <option name="0">-Pilih-</option>
                                                         <?php
-                                                        $query = mysql_query("SELECT id_siswa, nama_siswa FROM siswa");
+                                                        $query = mysql_query("SELECT id_siswa, nama_siswa FROM siswa WHERE id_supir <> 0 AND id_rute <> 0 ORDER BY id_siswa");
                                                         while ($a = mysql_fetch_array($query)) {
                                                             echo"<option value='$a[id_siswa]'>$a[nama_siswa]</option>";
                                                         }
@@ -137,14 +137,14 @@ if (isset($_GET['page'])) {
                                     <table class="table table-bordered table-striped table-highlight">
                                         <thead>
                                             <tr>
-                                                <th class="span1"><center>Kode</center></th>
-                                        <th class="span3"><center>Nama Supir</center></th>
-                                        <th class="span3"><center>Nama Siswa</center></th>
-                                        <th class="span3"><center>Rute</center></th>
-                                        <th class="span2"><center>Tgl Pembayaran</center></th>
-                                        <th class="span1"><center>Layanan</center></th>
-                                        <th class="span3"><center>Total Pembayaran</center></th>
-                                        </tr>
+                                                <th class="span2"><center>Kode</center></th>
+                                                <th class="span3"><center>Nama Siswa</center></th>
+                                                <th class="span3"><center>Nama Supir</center></th>
+                                                <th class="span1"><center>Rute</center></th>
+                                                <th class="span2"><center>Tgl Pembayaran</center></th>
+                                                <th class="span1"><center>Layanan</center></th>
+                                                <th class="span3"><center>Total Pembayaran</center></th>
+                                            </tr>
                                         </thead>
                                         <tbody>
                                             <?php LoadTransaksi(); ?>
@@ -184,14 +184,14 @@ if (isset($_GET['page'])) {
                                         <thead>
                                             <tr>
                                                 <th class="span1">#</th>
-                                                <th class="span1"><center>Kode</center></th>
+                                                <th class="span2"><center>Kode</center></th>
                                                 <th class="span3"><center>Nama Supir</center></th>
                                                 <th class="span3"><center>Nama Siswa</center></th>
-                                                <th class="span3"><center>Rute</center></th>
+                                                <th class="span1"><center>Rute</center></th>
                                                 <th class="span2"><center>Tgl Pembayaran</center></th>
                                                 <th class="span1"><center>Layanan</center></th>
-                                                <th class="span3"><center>Total Pembayaran</center></th>                                           
-                                                </tr>
+                                                <th class="span3"><center>Total Pembayaran</center></th>
+                                        </tr>
                                         </thead>
                                         <tbody>
                                             <?php EditTransaksi(); ?>
@@ -285,6 +285,7 @@ if (isset($_GET['page'])) {
                                                 </div>
                                             </div>
                                         </div>
+                                        <input type="hidden" name="id_trx" id="id_trx" value=<?php echo $_GET['id'] ?>>
                                     </div>
                                 </div>
                                 <div class="form-actions">
@@ -330,13 +331,13 @@ if (isset($_GET['page'])) {
                                         <thead>
                                             <tr>
                                                 <th class="span1">#</th>
-                                                <th class="span1"><center>Kode</center></th>
-                                        <th class="span3"><center>Nama Supir</center></th>
-                                        <th class="span3"><center>Nama Siswa</center></th>
-                                        <th class="span3"><center>Rute</center></th>
-                                        <th class="span2"><center>Tgl Pembayaran</center></th>
-                                        <th class="span1"><center>Layanan</center></th>
-                                        <th class="span3"><center>Total Pembayaran</center></th>                                    
+                                                <th class="span2"><center>Kode</center></th>
+                                                <th class="span3"><center>Nama Supir</center></th>
+                                                <th class="span3"><center>Nama Siswa</center></th>
+                                                <th class="span1"><center>Rute</center></th>
+                                                <th class="span2"><center>Tgl Pembayaran</center></th>
+                                                <th class="span1"><center>Layanan</center></th>
+                                                <th class="span3"><center>Total Pembayaran</center></th>
                                         </tr>
                                         </thead>
                                         <tbody>

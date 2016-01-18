@@ -1,0 +1,43 @@
+[13-Dec-2015 11:18:22 UTC] PHP Warning:  mysql_connect(): Access denied for user 'rofionec-paguyuban'@'localhost' (using password: YES) in /home/rofionec/public_html/antarjemput/connection.php on line 8
+[13-Dec-2015 11:18:26 UTC] PHP Warning:  mysql_connect(): Access denied for user 'rofionec-paguyuban'@'localhost' (using password: YES) in /home/rofionec/public_html/antarjemput/connection.php on line 8
+[13-Dec-2015 11:18:26 UTC] PHP Warning:  mysql_connect(): Access denied for user 'rofionec-paguyuban'@'localhost' (using password: YES) in /home/rofionec/public_html/antarjemput/connection.php on line 8
+[13-Dec-2015 11:18:26 UTC] PHP Warning:  mysql_connect(): Access denied for user 'rofionec-paguyuban'@'localhost' (using password: YES) in /home/rofionec/public_html/antarjemput/connection.php on line 8
+[13-Dec-2015 11:19:06 UTC] PHP Warning:  mysql_connect(): Access denied for user 'rofionec-paguyub'@'localhost' (using password: YES) in /home/rofionec/public_html/antarjemput/connection.php on line 8
+[13-Dec-2015 11:19:06 UTC] PHP Warning:  mysql_connect(): Access denied for user 'rofionec-paguyub'@'localhost' (using password: YES) in /home/rofionec/public_html/antarjemput/connection.php on line 8
+[13-Dec-2015 11:19:06 UTC] PHP Warning:  mysql_connect(): Access denied for user 'rofionec-paguyub'@'localhost' (using password: YES) in /home/rofionec/public_html/antarjemput/connection.php on line 8
+[14-Dec-2015 00:29:41 UTC] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/rofionec/public_html/antarjemput/profile.php on line 74
+[14-Dec-2015 03:35:43 UTC] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/fitriyan/public_html/proyek-akhir/antarjemput/header.php on line 24
+[14-Dec-2015 03:35:43 UTC] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/fitriyan/public_html/proyek-akhir/antarjemput/menu.php on line 23
+[14-Dec-2015 03:35:47 UTC] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in /home/fitriyan/public_html/proyek-akhir/antarjemput/process.php on line 14
+[14-Dec-2015 03:35:47 UTC] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/fitriyan/public_html/proyek-akhir/antarjemput/process.php on line 15
+[14-Dec-2015 03:35:47 UTC] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/fitriyan/public_html/proyek-akhir/antarjemput/header.php on line 24
+[14-Dec-2015 03:35:47 UTC] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/fitriyan/public_html/proyek-akhir/antarjemput/menu.php on line 23
+[14-Dec-2015 03:35:48 UTC] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/fitriyan/public_html/proyek-akhir/antarjemput/header.php on line 24
+[14-Dec-2015 03:35:48 UTC] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/fitriyan/public_html/proyek-akhir/antarjemput/menu.php on line 23
+[10-Jan-2016 08:09:43 UTC] PHP Warning:  include(provit.php): failed to open stream: No such file or directory in /home/fitriyan/public_html/proyek-akhir/index.php on line 187
+[10-Jan-2016 08:09:43 UTC] PHP Warning:  include(provit.php): failed to open stream: No such file or directory in /home/fitriyan/public_html/proyek-akhir/index.php on line 187
+[10-Jan-2016 08:09:43 UTC] PHP Warning:  include(): Failed opening 'provit.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/fitriyan/public_html/proyek-akhir/index.php on line 187
+[10-Jan-2016 08:10:00 UTC] PHP Warning:  include(provit.php): failed to open stream: No such file or directory in /home/fitriyan/public_html/proyek-akhir/index.php on line 187
+[10-Jan-2016 08:10:00 UTC] PHP Warning:  include(provit.php): failed to open stream: No such file or directory in /home/fitriyan/public_html/proyek-akhir/index.php on line 187
+[10-Jan-2016 08:10:00 UTC] PHP Warning:  include(): Failed opening 'provit.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/fitriyan/public_html/proyek-akhir/index.php on line 187
+[13-Jan-2016 11:00:47 UTC] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/fitriyan/public_html/proyek-akhir/profile.php on line 74
+[13-Jan-2016 12:29:46 UTC] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/fitriyan/public_html/proyek-akhir/profile.php on line 74
+[13-Jan-2016 12:30:58 UTC] PHP Warning:  include(layout.php): failed to open stream: No such file or directory in /home/fitriyan/public_html/proyek-akhir/index.php on line 247
+[13-Jan-2016 12:30:58 UTC] PHP Warning:  include(layout.php): failed to open stream: No such file or directory in /home/fitriyan/public_html/proyek-akhir/index.php on line 247
+[13-Jan-2016 12:30:58 UTC] PHP Warning:  include(): Failed opening 'layout.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/fitriyan/public_html/proyek-akhir/index.php on line 247
+[13-Jan-2016 16:00:23 UTC] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/fitriyan/public_html/proyek-akhir/crudDao.php on line 997
+[14-Jan-2016 14:41:17 UTC] PHP Fatal error:  Call to undefined function findSupirPayment() in /home/fitriyan/public_html/proyek-akhir/index.php on line 196
+[14-Jan-2016 15:16:36 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/fitriyan/public_html/proyek-akhir/crudDao.php on line 1194
+[14-Jan-2016 15:23:06 UTC] PHP Fatal error:  Call to undefined function findSupirPayment() in /home/fitriyan/public_html/proyek-akhir/index.php on line 196
+[14-Jan-2016 15:24:45 UTC] PHP Fatal error:  Call to undefined function findSupirPayment() in /home/fitriyan/public_html/proyek-akhir/index.php on line 196
+[14-Jan-2016 15:27:51 UTC] PHP Fatal error:  Call to undefined function findSupirPayment() in /home/fitriyan/public_html/proyek-akhir/index.php on line 196
+[14-Jan-2016 15:35:23 UTC] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/fitriyan/public_html/proyek-akhir/crudDao.php on line 1184
+[14-Jan-2016 15:35:28 UTC] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/fitriyan/public_html/proyek-akhir/crudDao.php on line 1184
+[15-Jan-2016 09:02:23 UTC] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/fitriyan/public_html/proyek-akhir/profile.php on line 74
+[15-Jan-2016 09:02:29 UTC] PHP Warning:  include(layout.php): failed to open stream: No such file or directory in /home/fitriyan/public_html/proyek-akhir/index.php on line 257
+[15-Jan-2016 09:02:29 UTC] PHP Warning:  include(layout.php): failed to open stream: No such file or directory in /home/fitriyan/public_html/proyek-akhir/index.php on line 257
+[15-Jan-2016 09:02:29 UTC] PHP Warning:  include(): Failed opening 'layout.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/fitriyan/public_html/proyek-akhir/index.php on line 257
+[15-Jan-2016 14:31:31 UTC] PHP Warning:  include(layout.php): failed to open stream: No such file or directory in /home/fitriyan/public_html/proyek-akhir/index.php on line 257
+[15-Jan-2016 14:31:31 UTC] PHP Warning:  include(layout.php): failed to open stream: No such file or directory in /home/fitriyan/public_html/proyek-akhir/index.php on line 257
+[15-Jan-2016 14:31:31 UTC] PHP Warning:  include(): Failed opening 'layout.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/fitriyan/public_html/proyek-akhir/index.php on line 257
+[15-Jan-2016 14:32:27 UTC] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/fitriyan/public_html/proyek-akhir/profile.php on line 74
